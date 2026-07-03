@@ -2617,5 +2617,56 @@ function toggleGalleryMore(btn) {
 </script>
 <!-- ===== END COOKIE CONSENT BANNER ===== -->
 
+<!-- ===== URL PARAMETER PASSTHROUGH FOR AD TRACKING ===== -->
+<script>
+(function(){
+  // Grab all URL parameters from the current landing page
+  var params = window.location.search;
+  if(!params || params.length <= 1) return; // nothing to pass through
+
+  // Find every link on the page that points to sia.ie and append the parameters
+  function decorateLinks(){
+    var links = document.querySelectorAll('a[href*="sia.ie"]');
+    for(var i = 0; i < links.length; i++){
+      var href = links[i].getAttribute('href');
+      // Skip mailto: and tel: links
+      if(!href || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) continue;
+      // Remove any existing query string we may have appended before (avoid duplication)
+      var base = href.split('?')[0];
+      // Merge: if the original href already had params, combine them with landing page params
+      var origSearch = href.indexOf('?') !== -1 ? href.split('?')[1] : '';
+      var landingParams = params.substring(1); // remove leading '?'
+      var merged = origSearch ? origSearch + '&' + landingParams : landingParams;
+      links[i].setAttribute('href', base + '?' + merged);
+    }
+  }
+
+  // Run on DOM ready
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', decorateLinks);
+  } else {
+    decorateLinks();
+  }
+
+  // Also decorate on click (catches any dynamically added links)
+  document.addEventListener('click', function(e){
+    var link = e.target.closest ? e.target.closest('a[href*="sia.ie"]') : null;
+    if(!link) return;
+    var href = link.getAttribute('href');
+    if(!href || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+    var base = href.split('?')[0];
+    var origSearch = href.indexOf('?') !== -1 ? href.split('?')[1] : '';
+    // Remove any previously appended landing params to avoid duplication
+    var landingParams = params.substring(1);
+    // Only append if not already present
+    if(origSearch.indexOf(landingParams) === -1){
+      var merged = origSearch ? origSearch + '&' + landingParams : landingParams;
+      link.setAttribute('href', base + '?' + merged);
+    }
+  }, true);
+})();
+</script>
+<!-- ===== END URL PARAMETER PASSTHROUGH ===== -->
+
 </body>
 </html>
