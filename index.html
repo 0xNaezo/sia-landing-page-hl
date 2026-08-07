@@ -2238,6 +2238,7 @@ document.addEventListener('DOMContentLoaded', function(){
 <script>
 
 
+  var _e=new Date('2026-07-14T23:59:59').getTime();
   var d=Math.max(0,_e-Date.now()),p=function(n){return String(Math.floor(n)).padStart(2,'0');};
   var bd=document.getElementById('bb-d'),bh=document.getElementById('bb-h'),bm=document.getElementById('bb-m'),bs=document.getElementById('bb-s');
   var bdm=document.getElementById('bb-dm'),bhm=document.getElementById('bb-hm'),bmm=document.getElementById('bb-mm'),bsm=document.getElementById('bb-sm');
@@ -2249,7 +2250,6 @@ document.addEventListener('DOMContentLoaded', function(){
   if(bhm)bhm.textContent=p(d%864e5/36e5);
   if(bmm)bmm.textContent=p(d%36e5/6e4);
   if(bsm)bsm.textContent=p(d%6e4/1e3);
-}
 
 
 // ── LIGHTBOX ──────────────────────────────────────────────────────
