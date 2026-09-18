@@ -2,7 +2,19 @@
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 .hero-inner>*{opacity:0;animation:fadeUp .7s ease forwards}
 .hero-left{animation-delay:.15s!important}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+
+/* `.reveal-ready` is set by scripts/modules/reveal.js once it has an observer
+   ready to undo this. Without that gate `opacity:0` is the default state of
+   ~50 content blocks, so a bundle that fails to load leaves a blank page. */
+.reveal-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
+@media (prefers-reduced-motion:reduce){
+  .hero-inner>*{opacity:1;animation:none}
+  .reveal-ready .reveal{opacity:1;transform:none;transition:none}
+}
+@media print{
+  .hero-inner>*{opacity:1;animation:none}
+  .reveal-ready .reveal{opacity:1;transform:none}
+}
