@@ -10,19 +10,45 @@ export function initGallery() {
   if (!items.length) return;
   const images = items.map((el) => el.dataset.src);
 
-  // Set grid backgrounds once each image has actually loaded.
-  items.forEach((item, i) => {
-    const img = new Image();
-    img.onload = () => {
-      item.querySelector('.gal-img').style.backgroundImage = `url(${images[i]})`;
-      item.setAttribute('data-loaded', '1');
-    };
-    img.src = images[i];
-  });
-
+  initGridLoading(items, images);
   initLightbox(images);
   initShowMore();
   initMobileSlideshow(images);
+}
+
+/**
+ * Fetch a grid photo only when its tile is about to scroll into view.
+ *
+ * Tiles behind "Show more" (`.gal-hidden`) and the entire grid on phones
+ * (`.gal-grid{display:none}` below 481px) generate no box, so they never
+ * intersect and their images are never downloaded. Revealing a tile makes it
+ * intersect, which loads it then.
+ */
+function initGridLoading(items, images) {
+  const load = (item, src) => {
+    const img = new Image();
+    img.onload = () => {
+      item.querySelector('.gal-img').style.backgroundImage = `url(${src})`;
+    };
+    img.src = src;
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    items.forEach((item, i) => load(item, images[i]));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        load(entry.target, entry.target.dataset.src);
+      });
+    },
+    { rootMargin: '200px' },
+  );
+  items.forEach((item) => observer.observe(item));
 }
 
 function initLightbox(images) {

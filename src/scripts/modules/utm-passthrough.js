@@ -3,11 +3,24 @@
  * outbound sia.ie link, so campaign attribution survives the hop to the
  * booking site.
  */
+
+/**
+ * Merge the landing page's parameters into `href`'s query string.
+ *
+ * Parsed with `URL` so a fragment stays a fragment: `/summer-camps/#book`
+ * becomes `/summer-camps/?utm_source=…#book`, not `…#book?utm_source=…`.
+ * Parameters the link already declares win, and re-running this is a no-op.
+ */
 function mergeParams(href, landingParams) {
-  const base = href.split('?')[0];
-  const origSearch = href.indexOf('?') !== -1 ? href.split('?')[1] : '';
-  const merged = origSearch ? origSearch + '&' + landingParams : landingParams;
-  return base + '?' + merged;
+  try {
+    const url = new URL(href, window.location.href);
+    new URLSearchParams(landingParams).forEach((value, key) => {
+      if (!url.searchParams.has(key)) url.searchParams.set(key, value);
+    });
+    return url.href;
+  } catch {
+    return href; // not a URL we can parse — leave it untouched
+  }
 }
 
 function isDecoratable(href) {
@@ -19,12 +32,14 @@ export function initUtmPassthrough() {
   if (!params || params.length <= 1) return; // nothing to pass through
   const landingParams = params.substring(1);
 
+  function decorate(link) {
+    const href = link.getAttribute('href');
+    if (!isDecoratable(href)) return;
+    link.setAttribute('href', mergeParams(href, landingParams));
+  }
+
   function decorateLinks() {
-    document.querySelectorAll('a[href*="sia.ie"]').forEach((link) => {
-      const href = link.getAttribute('href');
-      if (!isDecoratable(href)) return;
-      link.setAttribute('href', mergeParams(href, landingParams));
-    });
+    document.querySelectorAll('a[href*="sia.ie"]').forEach(decorate);
   }
 
   if (document.readyState === 'loading') {
@@ -37,14 +52,10 @@ export function initUtmPassthrough() {
   document.addEventListener(
     'click',
     (e) => {
-      const link = e.target.closest ? e.target.closest('a[href*="sia.ie"]') : null;
-      if (!link) return;
-      const href = link.getAttribute('href');
-      if (!isDecoratable(href)) return;
-      const origSearch = href.indexOf('?') !== -1 ? href.split('?')[1] : '';
-      if (origSearch.indexOf(landingParams) === -1) {
-        link.setAttribute('href', mergeParams(href, landingParams));
-      }
+      const target = e.target;
+      if (!target || typeof target.closest !== 'function') return;
+      const link = target.closest('a[href*="sia.ie"]');
+      if (link) decorate(link);
     },
     true,
   );
