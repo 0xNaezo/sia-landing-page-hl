@@ -1,11 +1,12 @@
 ---
 import site from '../data/site.json';
 import nav from '../data/nav.json';
+import { asset } from '../lib/asset';
 ---
 
 <nav id="nav">
   <a href="#" class="logo">
-    <img src="/assets/images/logo-mark.webp" alt="SIA Logo" class="logo-img" />
+    <img src={asset("/assets/images/logo-mark.webp")} alt="SIA Logo" class="logo-img" />
     <div class="logo-brand-group">
       <span class="logo-brand-name">{site.name}</span>
       <span class="logo-brand-tagline">{site.tagline}</span>

@@ -1,10 +1,11 @@
 ---
 // Photo strip shown above the booking CTA on mobile only (see mobile.css / mobile-extras.css).
+import { asset } from '../../lib/asset';
 ---
 
 <div class="photo-banner reveal">
   <img
-    src="/assets/images/photo-banner.webp"
+    src={asset("/assets/images/photo-banner.webp")}
     alt=""
     class="photo-banner-img"
     width="1537"

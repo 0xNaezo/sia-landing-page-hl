@@ -2,6 +2,7 @@
 import site from '../data/site.json';
 import IconPhone from './icons/IconPhone.astro';
 import IconMail from './icons/IconMail.astro';
+import { asset } from '../lib/asset';
 ---
 
 <footer>
@@ -9,7 +10,7 @@ import IconMail from './icons/IconMail.astro';
     <!-- Col 1: logo + description + socials -->
     <div>
       <a href="#" class="footer-logo">
-        <img src="/assets/images/logo-mark.webp" alt="SIA Logo" />
+        <img src={asset("/assets/images/logo-mark.webp")} alt="SIA Logo" />
       </a>
       <p class="footer-desc">
         Exploring the past with our future — bringing archaeology to life for curious young minds

@@ -1,6 +1,7 @@
 ---
 import gallery from '../../data/gallery.json';
 import SectionHead from '../SectionHead.astro';
+import { asset } from '../../lib/asset';
 ---
 
 <section class="sec sec-deep" id="gallery">
@@ -43,7 +44,7 @@ import SectionHead from '../SectionHead.astro';
             class:list={['gal-item', { 'gal-hidden': i >= gallery.visibleCount }]}
             data-action="lb-open"
             data-index={i}
-            data-src={src}
+            data-src={asset(src)}
             role="button"
             tabindex="0"
             aria-label={`Open photo ${i + 1}`}

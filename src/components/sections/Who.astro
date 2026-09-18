@@ -1,5 +1,6 @@
 ---
 import site from '../../data/site.json';
+import { asset } from '../../lib/asset';
 ---
 
 <section class="sec sec-white" id="who">
@@ -15,7 +16,7 @@ import site from '../../data/site.json';
           aria-label="Watch our story"
         >
           <img
-            src="/assets/images/team-photo.webp"
+            src={asset("/assets/images/team-photo.webp")}
             alt="SIA Team"
             class="who-video-img"
             width="3839"

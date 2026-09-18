@@ -22,8 +22,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      # Supplies the real origin and path prefix: a project site is served from
+      # /<repo>/, so the build needs `base` set or every /assets/... link 404s.
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
       - name: Build with Astro
         uses: withastro/action@v3
+        env:
+          SITE: ${{ steps.pages.outputs.origin }}
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
         with:
           node-version: 22
           package-manager: npm@latest

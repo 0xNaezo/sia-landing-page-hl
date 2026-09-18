@@ -1,5 +1,6 @@
 ---
 // Founder section. Prose lives here rather than in JSON: it is a single block of copy, not a list.
+import { asset } from '../../lib/asset';
 ---
 
 <section class="sec sec-white" id="founder">
@@ -7,7 +8,7 @@
     <div class="found-grid">
       <div class="found-vis reveal">
         <div class="found-port mob-found-port">
-          <img src="/assets/images/founder-portrait.webp" alt="Mark Kelly" class="found-photo" />
+          <img src={asset("/assets/images/founder-portrait.webp")} alt="Mark Kelly" class="found-photo" />
           <div class="found-lbl">· Founder ·</div>
           <div class="found-yrs">
             <span class="n">15+</span><span class="l">Years inspiring<br />young archaeologists</span>

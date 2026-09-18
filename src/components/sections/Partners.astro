@@ -1,6 +1,7 @@
 ---
 import partners from '../../data/partners.json';
 import SectionHead from '../SectionHead.astro';
+import { asset } from '../../lib/asset';
 ---
 
 <section class="sec sec-cream" id="awards">
@@ -16,7 +17,7 @@ import SectionHead from '../SectionHead.astro';
           <div class:list={['marquee-track', { 'marquee-reverse': i % 2 === 1 }]} id={`mtrack${i + 1}`}>
             {row.map((file) => (
               <div class="mlogo">
-                <img src={`/assets/images/Logo/${file}`} alt="partner logo" loading="lazy" decoding="async" />
+                <img src={asset(`/assets/images/Logo/${file}`)} alt="partner logo" loading="lazy" decoding="async" />
               </div>
             ))}
           </div>
