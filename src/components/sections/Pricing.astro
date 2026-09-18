@@ -14,7 +14,10 @@ import SectionHead from '../SectionHead.astro';
             {plan.badge && <div class="pbadge">{plan.badge}</div>}
             <div class="picon">{plan.icon}</div>
             <div class="pnow">{plan.price}</div>
-            <div class="pwas">{plan.was}</div>
+            {/* Reserved slot for a struck-through "was" price. `pricing.json` carries no
+                such field today, so it renders empty — the box still holds its place in
+                the card grid (pricing.css:11, mobile.css:170). */}
+            <div class="pwas" />
             <div class="pname">{plan.name}</div>
             <ul class="pfeats">
               {plan.features.map((feature) => (
