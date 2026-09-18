@@ -1,0 +1,34 @@
+---
+import site from '../../data/site.json';
+import IconPhone from '../icons/IconPhone.astro';
+import IconMail from '../icons/IconMail.astro';
+---
+
+<section class="lead-cta" id="book">
+  <div class="lead-cta-bg"></div>
+  <div class="lead-cta-overlay"></div>
+  <div class="lead-cta-inner">
+    <div class="lead-cta-text">
+      <h2 class="lead-cta-h2">
+        READY TO BOOK A CAMP<br />FOR YOUR <span>CHILDREN?</span>
+      </h2>
+      <p class="lead-cta-sub lead-cta-desc">
+        Give your child an unforgettable week of discovery, friendship and fun they'll never forget!
+      </p>
+      <div class="lead-cta-book">
+        <a href={site.bookingUrl} class="lead-cta-btn" target="_blank" rel="noopener">BOOK A CAMP</a>
+      </div>
+      <p class="lead-cta-sub lead-cta-q">Still have questions? We&rsquo;re here to help!</p>
+      <div class="lead-cta-contacts">
+        <a href={site.phone.href} class="lead-cta-contact"
+          ><IconPhone size={15} /> {site.phone.display}</a
+        >
+        <a href={`mailto:${site.email}`} class="lead-cta-contact"
+          ><IconMail size={15} /> {site.email}</a
+        >
+      </div>
+    </div>
+    <!-- Spacer so the photo shows through on the right side -->
+    <div class="lead-cta-spacer"></div>
+  </div>
+</section>

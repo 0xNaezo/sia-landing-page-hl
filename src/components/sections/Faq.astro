@@ -1,0 +1,26 @@
+---
+import faq from '../../data/faq.json';
+import SectionHead from '../SectionHead.astro';
+const delays = ['', 'd1', 'd2'];
+---
+
+<section class="sec sec-cream" id="faq">
+  <div class="container">
+    <SectionHead label="FAQ" title="Quick Answers Parents Actually Care About" />
+    <div class="faq-list">
+      {
+        faq.map((item, i) => (
+          <div class:list={['faq-item', 'reveal', delays[i % delays.length]]}>
+            <button class="faq-q" type="button" data-action="faq-toggle">
+              {item.q}
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-in">{item.a}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+:root{
+  --amber:       #E07B1A;
+  --amber-light: #F0A040;
+  --amber-dark:  #B85F10;
+  --gold:        #C8971A;
+  --green-deep:  #0d0d0d;
+  --green-dark:  #161616;
+  --green-mid:   #222222;
+  /* light palette */
+  --white:       #FFFFFF;
+  --cream:       #FAF6EF;
+  --cream-dark:  #F0E8D6;
+  --text-dark:   #1A1A12;
+  --text-mid:    #4A4840;
+  --text-light:  #7A786A;
+  --border:      rgba(0,0,0,0.08);
+  --border-mid:  rgba(0,0,0,0.14);
+  --shadow:      0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg:   0 10px 40px rgba(0,0,0,0.12);
+  --font-display:'Oswald', sans-serif;
+  --font-body:   'Lato', sans-serif;
+}

@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import VideoModal from '../components/VideoModal.astro';
+import Lightbox from '../components/Lightbox.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+
+import Hero from '../components/sections/Hero.astro';
+import Who from '../components/sections/Who.astro';
+import Stats from '../components/sections/Stats.astro';
+import Schedule from '../components/sections/Schedule.astro';
+import Activities from '../components/sections/Activities.astro';
+import Why from '../components/sections/Why.astro';
+import Locations from '../components/sections/Locations.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import Pricing from '../components/sections/Pricing.astro';
+import Founder from '../components/sections/Founder.astro';
+import Partners from '../components/sections/Partners.astro';
+import Gallery from '../components/sections/Gallery.astro';
+import Faq from '../components/sections/Faq.astro';
+import PhotoBanner from '../components/sections/PhotoBanner.astro';
+import LeadCta from '../components/sections/LeadCta.astro';
+---
+
+<Base>
+  <Nav />
+  <main>
+    <Hero />
+    <Who />
+    <Stats />
+    <Schedule />
+    <Activities />
+    <Why />
+    <Locations />
+    <Testimonials />
+    <Pricing />
+    <Founder />
+    <Partners />
+    <Gallery />
+    <Faq />
+    <PhotoBanner />
+    <LeadCta />
+  </main>
+  <Footer />
+
+  <VideoModal />
+  <Lightbox />
+  <CookieConsent />
+</Base>

@@ -1,0 +1,22 @@
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 5%;height:76px;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:background .6s ease,backdrop-filter .6s ease,box-shadow .5s ease}
+nav.scrolled{background:rgba(10,9,8,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 30px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.06)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-brand-group{display:flex;flex-direction:column;justify-content:center;line-height:1.25}
+.logo-brand-name{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);white-space:nowrap}
+.logo-brand-tagline{font-style:italic;font-size:11px;color:var(--amber-light);letter-spacing:.02em;opacity:.85}
+
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--amber-light)}
+.nav-book{background:var(--amber)!important;color:#fff!important;padding:10px 22px;border-radius:3px;transition:background .2s!important}
+.nav-book:hover{background:var(--amber-dark)!important}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:26px;height:2px;background:#fff}
+.mob-menu{position:fixed;top:76px;left:0;right:0;background:linear-gradient(160deg,#0d0c0b 0%,#141210 50%,#1a1815 100%);padding:16px 20px;display:flex;flex-direction:column;gap:4px;z-index:999;transform:translateY(-8px);opacity:0;pointer-events:none;transition:all .3s}
+.mob-menu.open{transform:none;opacity:1;pointer-events:all}
+.mob-menu a{padding:14px 16px;border-radius:6px;color:rgba(255,255,255,.7);text-decoration:none;font-size:15px;font-weight:700;letter-spacing:.04em;transition:background .15s}
+.mob-menu a:hover{background:rgba(255,255,255,.06)}
+
+.logo-img{height:34px;width:auto;object-fit:contain;display:block;flex-shrink:0}
+.mob-menu a.mob-book{background:var(--amber);color:#fff;margin-top:8px}

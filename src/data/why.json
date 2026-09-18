@@ -1,0 +1,38 @@
+{
+  "columns": ["WHAT MATTERS", "ORDINARY CAMPS", "SIA ARCHAEOLOGY CAMP"],
+  "rows": [
+    {
+      "label": "Purpose",
+      "ordinary": "Childcare and time-filling activities",
+      "sia": "Fun, hands-on learning and discovery"
+    },
+    {
+      "label": "Schedule Options",
+      "ordinary": "Only one schedule",
+      "sia": "Flexible 1, 3, or 5-day options",
+      "highlight": true
+    },
+    {
+      "label": "Staff",
+      "ordinary": "General camp staff",
+      "sia": "<span class=\"hl\">Official Garda-vetted</span> and certified staff"
+    },
+    {
+      "label": "Programme",
+      "ordinary": "Basic activity-based programme",
+      "sia": "Expert-designed by historians with <span class=\"hl\">15+ years experience</span> — fun, learning &amp; growth"
+    },
+    {
+      "label": "Activities",
+      "ordinary": "Standard sports (football, etc.)",
+      "sia": "Unique games designed to immerse children in history and inspire a lifelong love of learning"
+    }
+  ],
+  "mobileCards": [
+    { "icon": "🏺", "label": "Purpose", "text": "Fun, <span class=\"hl\">hands-on learning</span> &amp; discovery" },
+    { "icon": "📅", "label": "Flexibility", "text": "<span class=\"hl\">1, 3 or 5-day</span> options — your choice" },
+    { "icon": "🛡️", "label": "Staff", "text": "<span class=\"hl\">Garda-vetted</span> &amp; fully certified" },
+    { "icon": "⚗️", "label": "Programme", "text": "Designed by historians with <span class=\"hl\">15+ years</span> of experience" },
+    { "icon": "🏆", "label": "Activities", "text": "Unique games that bring <span class=\"hl\">history to life</span>" }
+  ]
+}

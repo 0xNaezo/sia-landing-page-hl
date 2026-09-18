@@ -1,0 +1,376 @@
+/* ══════════════════════════════════════════
+   MOBILE ≤ 480px  —  all new styles below
+   Desktop is untouched above this block
+   ══════════════════════════════════════════ */
+@media(max-width:480px){
+  section[id],div[id]{scroll-margin-top:60px}
+
+  /* ── NAV ── */
+  nav{padding:0 16px;height:56px}
+  .logo-brand-group{display:none}
+  .mob-menu{top:56px;padding:10px 14px}
+  .mob-menu a{padding:11px 12px;font-size:13px}
+
+  /* ── PROMO STRIP ── */
+  
+  
+
+  /* ── HERO: short description on mobile ── */
+  .hero-p-full{display:none}
+  .hero-p-short{display:inline}
+
+  /* ── WHO WE ARE: video first, then text ── */
+  .who-grid{display:flex!important;flex-direction:column!important}
+  .mob-who-video{order:2!important}
+  .mob-who-text{order:1!important}
+
+  /* ── SCHEDULE: hide "A Day at Camp" label ── */
+  .sched-sec-label{display:none}
+
+  /* ── TAP HINT: only the schedule one ── */
+  .mob-tap-hint:not(.mob-tap-hint-sched){display:none!important}
+
+  /* ── MOB GALLERY: dots ── */
+  .mob-gal-dots{
+    display:flex;justify-content:center;gap:6px;margin-top:10px;
+    min-height:14px
+  }
+  .mob-gal-dots:empty{display:none}
+  .mob-gal-dot{
+    width:6px;height:6px;border-radius:50%;
+    background:rgba(255,255,255,.3);border:none;cursor:pointer;padding:0;
+    transition:all .2s
+  }
+  .mob-gal-dot.active{background:#fff;width:18px;border-radius:3px}
+  .hero{min-height:100svh;display:flex;align-items:flex-end}
+  .hero-inner{padding:0 18px 96px;width:100%;justify-content:flex-end}
+  .hero-photo{background-position:80% 25%!important}
+  .hero-overlay{background:linear-gradient(to bottom, rgba(0,0,0,.65) 0%, rgba(0,0,0,.3) 15%, rgba(0,0,0,.15) 35%, rgba(0,0,0,0) 55%),linear-gradient(to top, rgba(0,0,0,.90) 0%, rgba(0,0,0,.70) 30%, rgba(0,0,0,.2) 65%, rgba(0,0,0,0) 100%)!important}
+  
+  .hero-h1{font-size:28px;line-height:1.06;margin-bottom:8px}
+  .hero-sub{font-size:13px}
+  .hero-p{font-size:12px;line-height:1.5;margin-bottom:14px;max-width:100%}
+  .hero-btns{flex-direction:column;align-items:stretch;gap:8px}
+  .hero-btns .btn-amber{text-align:center;justify-content:center;padding:13px 16px;font-size:13px}
+  
+  
+  
+  
+
+  /* ── SECTIONS ── */
+  .sec{padding:26px 16px}
+  .sec-label{font-size:10px;margin-bottom:4px}
+  .sec-title{font-size:20px!important;line-height:1.15!important}
+  .amber-bar{margin:6px 0 12px;width:34px;height:2px}
+  
+
+  /* ── WHO WE ARE ── */
+  .who-grid{grid-template-columns:1fr;gap:16px}
+  .who-vis{order:1}
+  .who-box{aspect-ratio:16/9}
+  .who-float{bottom:-10px;right:-6px;padding:9px 11px;min-width:72px}
+  .who-float .n{font-size:18px}
+  .who-float .l{font-size:8px}
+  .who-text p{font-size:12px;line-height:1.65;margin-bottom:8px}
+  .who-text p:nth-child(n+3){display:none}
+  
+  
+
+  /* ── STATS ── */
+  .stats-grid{grid-template-columns:1fr 1fr;gap:2px}
+  .stat{padding:18px 8px}
+  .stat-num{font-size:30px;margin-bottom:2px}
+  .stat-lbl{font-size:9px}
+  .stat-desc{font-size:8px;margin-top:2px}
+
+  /* ── SCHEDULE TIMELINE — compact accordion with time visible ── */
+  .sched-timeline{max-width:100%;display:flex!important;flex-direction:column;gap:0}
+  .sched-timeline::before{display:none}
+  .stl-item{margin-bottom:4px!important;padding-left:0!important;grid-template-columns:unset!important;border-bottom:none!important;display:block!important}
+  .stl-time{display:none!important}
+  .stl-dot{display:none}
+  .stl-card{padding:8px 12px;border-radius:8px!important;border:1px solid #e8e4dc!important;box-shadow:none!important;gap:10px;cursor:pointer;align-items:flex-start;display:flex!important;flex-wrap:nowrap;margin-bottom:0;transition:background .15s}
+  .stl-card:active{background:#faf6ef}
+  .stl-card::after{content:'▸';color:var(--amber);font-size:12px;flex-shrink:0;margin-top:2px;transition:transform .2s}
+  .stl-card.expanded::after{content:'▾'}
+  .stl-icon{font-size:18px;flex-shrink:0;line-height:1;margin-top:1px}
+  .stl-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .stl-body-row{display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
+  .stl-time-badge{display:none!important}
+  
+  .stl-title{font-size:12px;margin-bottom:0;white-space:normal;overflow:visible;flex:1;line-height:1.2;font-weight:700}
+  .stl-desc{font-size:11px;line-height:1.5;color:var(--text-light);display:none!important;padding-top:6px;border-top:1px solid #ede8e0;margin-top:5px}
+  .stl-card.expanded .stl-desc{display:block!important}
+
+  /* ── ACTIVITIES — tap-to-expand accordion list ── */
+  .act-tabs{width:100%;gap:2px;padding:3px;border-radius:6px;display:flex}
+  .act-tab{flex:1;padding:7px 4px;font-size:9px;letter-spacing:.02em}
+  .act-panel.active{display:flex!important;flex-direction:column!important;gap:0!important;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .acard{padding:10px 12px!important;border-radius:0!important;border:none!important;border-bottom:1px solid var(--border)!important;display:grid!important;grid-template-columns:auto 1fr auto!important;grid-template-rows:auto auto!important;align-items:center!important;gap:0 10px!important;cursor:pointer;transition:background .15s;transform:none!important;box-shadow:none!important}
+  .acard:last-child{border-bottom:none!important}
+  .acard:active{background:var(--cream)}
+  .acard-icon{font-size:20px!important;margin-bottom:0!important;grid-column:1;grid-row:1;align-self:center}
+  .acard h4{font-size:11px!important;margin-bottom:0!important;grid-column:2;grid-row:1;align-self:center;line-height:1.3}
+  .acard::after{content:'›';color:var(--amber);font-size:20px;font-weight:700;line-height:1;grid-column:3;grid-row:1;align-self:center;transition:transform .2s;justify-self:end}
+  .acard.mob-open::after{transform:rotate(90deg)}
+  .acard p{display:none!important;font-size:11px!important;line-height:1.45!important;padding-top:6px!important;border-top:1px solid var(--border)!important;margin-top:6px!important;grid-column:1/-1!important;grid-row:2!important;color:var(--text-light)!important}
+  .acard.mob-open p{display:block!important}
+  .acard-more{display:flex!important;align-items:center!important;gap:10px!important;background:rgba(224,123,26,.08)!important;border:1px dashed rgba(224,123,26,.35)!important;border-radius:0!important;border-left:none!important;border-right:none!important}
+
+  /* ── WHY SIA ── */
+  .why-desktop-table{display:none!important}
+  .why-mobile-cards{display:flex!important}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  /* ── LOCATIONS ── */
+  .loc-layout{grid-template-columns:1fr!important;gap:10px!important}
+  .loc-map{display:none!important}
+
+  /* ── TESTIMONIALS — compact ── */
+  .tcard{padding:12px 12px}
+  .testi-track{align-items:flex-start}
+  .testi-wrap{overflow:hidden!important;padding:4px 0!important;margin:0!important}
+  .tstars{font-size:11px;margin-bottom:5px;letter-spacing:2px}
+  
+  .ttext{font-size:11px;line-height:1.5;margin-bottom:4px;margin-top:0!important}
+  
+  
+  .tcontrols{margin-top:8px;gap:5px}
+  .tbtn{width:26px;height:26px;font-size:11px}
+  .tdot{width:5px;height:5px}
+
+  /* ── PRICING — stacked vertical on mobile ── */
+  #pricing .sec-title{font-size:18px!important}
+  /* ── PRICING mobile ── */
+  .pgrid{display:flex!important;flex-direction:column!important;gap:10px!important;padding:4px 0 4px!important}
+  .pcard{
+    display:grid!important;
+    grid-template-columns:52px minmax(0,40%) 1fr!important;
+    grid-template-rows:auto auto auto auto!important;
+    padding:14px 12px 14px 0!important;
+    border-radius:10px!important;overflow:visible!important;
+    position:relative!important;gap:0!important
+  }
+  .pcard.feat{padding:16px 12px 16px 0!important}
+  .picon{
+    grid-column:1!important;grid-row:1/-1!important;
+    display:flex!important;align-items:center!important;justify-content:center!important;
+    font-size:30px!important;width:56px!important;align-self:center!important;
+    margin:0!important;padding:0 0 20px 0!important
+  }
+  .pwas{grid-column:2!important;grid-row:1!important;display:block!important;font-size:12px!important;font-weight:900!important;text-decoration:line-through!important;text-decoration-color:rgba(255,255,255,.9)!important;text-decoration-style:solid!important;text-decoration-thickness:2px!important;color:rgba(255,255,255,.55)!important;margin:0 0 1px 0!important;line-height:1.2!important;text-align:center!important}
+  .pcard.feat .pwas{color:rgba(0,0,0,.4)!important;text-decoration-color:rgba(0,0,0,.4)!important}
+  .pnow{grid-column:2!important;grid-row:2!important;display:block!important;font-size:30px!important;font-weight:800!important;line-height:1!important;margin:0!important;text-align:center!important;min-width:0!important}
+  .pname{grid-column:2!important;grid-row:3!important;display:block!important;font-size:10px!important;font-weight:700!important;letter-spacing:.06em!important;text-transform:uppercase!important;opacity:.65!important;margin:4px 0 8px!important;text-align:center!important;min-width:0!important}
+  .pcard > a.pcta{grid-column:2!important;grid-row:4!important;display:block!important;padding:9px 6px!important;font-size:10px!important;border-radius:6px!important;text-align:center!important;letter-spacing:.06em!important;margin:0 10px 10px 8px!important;width:calc(100% - 18px)!important;box-sizing:border-box!important}
+  .pfeats{
+    grid-column:3!important;grid-row:1/-1!important;
+    display:flex!important;flex-direction:column!important;
+    gap:8px!important;margin:0!important;
+    padding:10px 10px 10px 14px!important;
+    border-left:1px solid rgba(255,255,255,.15)!important;
+    align-self:stretch!important;justify-content:center!important
+  }
+  .pfeats::before{content:none!important}
+  .pfeats li{font-size:11px!important;gap:6px!important;line-height:1.2!important;display:flex!important;align-items:baseline!important;white-space:nowrap!important;overflow:hidden!important}
+  .pchk{font-size:11px!important;flex-shrink:0!important;color:var(--amber)!important}
+  .pcard.feat .pchk{color:#1a1a1a!important}
+  .pcard.feat .pfeats li{color:#1a1a1a!important}
+  
+  
+  
+  .pbadge{position:absolute!important;top:-14px!important;left:50%!important;transform:translateX(-50%)!important;font-size:10px!important;padding:4px 14px!important;white-space:nowrap!important;z-index:10!important;display:block!important}
+  .pgrid::after{display:none}
+
+  /* ── FOUNDER: full photo with quote overlay ── */
+  .found-grid{grid-template-columns:1fr!important;gap:16px!important}
+  .mob-found-port{aspect-ratio:3/4!important;height:auto!important;min-height:0!important}
+  .mob-found-port img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+    display:block!important;
+    position:absolute!important;
+    top:0;left:0
+  }
+  .mob-found-quote{
+    display:block;
+    position:absolute;bottom:0;left:0;right:0;
+    padding:80px 18px 20px;
+    background:linear-gradient(to top, rgba(0,0,0,.97) 0%, rgba(0,0,0,.88) 45%, rgba(0,0,0,0) 100%)
+  }
+  
+  
+  .mob-found-name{
+    font-size:13px;font-weight:700;letter-spacing:.08em;
+    color:var(--amber);text-transform:uppercase;
+    font-family:var(--font-display)
+  }
+  /* hide the desktop float badges on mobile founder */
+  .mob-found-port .found-lbl{display:none}
+  .mob-found-port .found-yrs{display:none}
+  /* hide text section — photo with overlay only */
+  .found-grid > .reveal.d1{display:none!important}
+
+  /* ── PRICING stacked: fix internal card layout ── */
+
+  /* ── MOB GALLERY ── */
+  .gal-desktop-header{display:none}
+  .gal-mob-header{display:block!important;margin-bottom:14px!important}
+  .gal-grid{grid-template-columns:repeat(2,1fr)!important;gap:3px!important}
+  .gal-item:nth-child(n+5){display:none}
+  
+  .gal-grid.mob-expanded .gal-item{display:block!important}
+  .gal-more-btn{
+    display:flex!important;
+    margin:14px auto 0!important;
+    padding:9px 20px!important;
+    font-size:11px!important;
+    letter-spacing:.06em
+  }
+
+  /* ── FAQ ── */
+  .faq-list{gap:2px}
+  .faq-q{font-size:12px;padding:12px 14px;gap:8px}
+  .faq-a-in{font-size:11px;padding:10px 14px 12px;line-height:1.6}
+  .faq-icon{width:20px;height:20px;font-size:13px;flex-shrink:0}
+
+  /* ── LEAD CTA — mobile: photo top + cream content ── */
+  .lead-cta-bg{display:none!important}
+  /* Photo banner becomes the CTA hero */
+  .photo-banner{
+    display:block!important;
+    height:165px!important;
+    margin-bottom:0!important;
+    border-radius:0!important
+  }
+  
+  /* Gradient from photo into dark CTA content */
+  .photo-banner::after{
+    content:'';
+    position:absolute;bottom:0;left:0;right:0;
+    height:80px;
+    background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(13,12,11,1) 100%);
+    z-index:2
+  }
+  /* CTA section: dark bg with orange brand glows */
+  .lead-cta{
+    background:linear-gradient(160deg,#0d0c0b 0%,#141210 50%,#1a1815 100%)!important
+  }
+  .lead-cta::before{
+    display:none!important
+  }
+  /* Text colors for cream bg */
+  .lead-cta-h2{color:#fff!important;font-size:1.2rem!important}
+  .lead-cta-sub{color:rgba(255,255,255,.7)!important}
+  /* Contact buttons */
+  .lead-cta-contacts a{
+    border-color:rgba(255,255,255,.3)!important;
+    color:#fff!important;
+    background:rgba(255,255,255,.06)!important
+  }
+
+  /* ── LEAD CTA — two separate blocks on mobile ── */
+  .lead-cta{min-height:auto!important;overflow-x:hidden!important;max-width:100vw!important}
+  /* full dark overlay on mobile so both blocks are readable */
+  .lead-cta-overlay{
+    background:transparent!important
+  }
+  .lead-cta-inner{padding:0!important;width:100%!important;flex-direction:column!important;gap:0!important}
+  .lead-cta-spacer{display:none!important}
+  .lead-cta-text{max-width:100%!important;width:100%!important;flex-shrink:1!important;display:flex;flex-direction:column;box-sizing:border-box!important}
+
+  /* Block 1 — Book a Camp */
+  .lead-cta-h2{
+    white-space:normal!important;
+    font-size:1.25rem!important;
+    line-height:1.1!important;
+    margin:0 0 8px!important;
+    padding:24px 18px 0!important;
+    display:block
+  }
+  /* description under headline */
+  .lead-cta-desc{
+    padding:0 18px!important;
+    margin:0 0 14px!important;
+    font-size:.8rem!important;
+    line-height:1.5!important
+  }
+  /* Book button wrapper */
+  .lead-cta-book{
+    padding:0 18px 20px!important;
+    margin:0!important;
+    border-bottom:1px solid rgba(255,255,255,.12)!important
+  }
+  .lead-cta-book a{
+    display:block!important;
+    text-align:center!important;
+    width:100%!important;
+    padding:14px 20px!important;
+    font-size:.8rem!important;
+    border-radius:6px!important;
+    box-sizing:border-box!important
+  }
+
+  /* Block 2 — Still have questions */
+  .lead-cta-sub:last-of-type{
+    display:block!important;
+    padding:16px 18px 6px!important;
+    margin:0!important;
+    font-size:.75rem!important;
+    font-weight:700!important;
+    color:rgba(255,255,255,.75)!important;
+    text-transform:uppercase!important;
+    letter-spacing:.06em!important
+  }
+  /* contact links */
+  .lead-cta-contacts{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:8px!important;
+    padding:4px 18px 24px!important
+  }
+  .lead-cta-contacts a{
+    font-size:.82rem!important;
+    padding:10px 14px!important;
+    border-radius:6px!important;
+    background:rgba(255,255,255,.06)!important;
+    justify-content:flex-start!important
+  }
+
+  /* ── LOCATIONS mobile ── */
+  #locations .sec-title{font-size:18px!important}
+  #locations .loc-name{font-size:12px!important}
+  #locations .loc-sub{font-size:10px!important}
+  #locations .loc-open{font-size:9px!important;letter-spacing:.03em!important}
+  #locations .loc-card{padding:10px 12px!important;gap:10px!important}
+  #locations .loc-pin{ font-size:16px!important }
+  #locations .sec-head{margin-bottom:20px!important}
+  #locations .loc-note{font-size:10px!important}
+
+  /* ── FOOTER ── */
+  footer{padding:24px 16px 60px}
+  .footer-grid{grid-template-columns:1fr!important;gap:20px!important}
+  .footer-grid > div:nth-child(2){display:none}
+  .footer-grid > div:nth-child(3){display:none}
+  
+  .footer-bottom{flex-direction:column!important;align-items:flex-start!important;gap:6px!important}
+
+  /* ── MARQUEE / PARTNERS ── */
+  .mlogo{width:110px!important;height:40px!important;padding:4px 10px!important}
+  #mrow2{display:block}
+  .awards-header{margin-bottom:24px!important}
+  .marquee-row::before,.marquee-row::after{width:30px!important}
+  #mrow2{margin-top:10px!important}
+
+}

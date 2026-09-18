@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Rosemont School",
+    "area": "Sandyford, Dublin",
+    "mapUrl": "https://maps.google.com/?q=Rosemont+School+Sandyford+Dublin"
+  },
+  {
+    "name": "Clonturk Community College",
+    "area": "Dublin 9",
+    "mapUrl": "https://maps.google.com/?q=Clonturk+Community+College+Dublin+9"
+  },
+  {
+    "name": "Harold's Cross NS",
+    "area": "Harold's Cross, Dublin",
+    "mapUrl": "https://maps.google.com/?q=Harold's+Cross+NS+Dublin"
+  },
+  {
+    "name": "Malahide Community School",
+    "area": "Malahide, Co. Dublin",
+    "mapUrl": "https://maps.google.com/?q=Malahide+Community+School+Malahide+Dublin"
+  },
+  {
+    "name": "Tipperary Museum of Hidden History",
+    "area": "Clonmel, Co. Tipperary",
+    "mapUrl": "https://maps.app.goo.gl/78RdZTZXbm16fn5p6?g_st=iw"
+  },
+  {
+    "name": "Monaghan County Museum",
+    "area": "Monaghan",
+    "mapUrl": "https://maps.app.goo.gl/revyKeHVKMDvZHnC8"
+  }
+]

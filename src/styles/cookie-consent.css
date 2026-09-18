@@ -1,0 +1,92 @@
+/* ── COOKIE CONSENT BANNER + PREFERENCES MODAL ──
+   Uses the site dark/amber palette and the same radial "glow" blobs as .sec-dark / .sec-deep.
+   --cc-offset is the distance from the bottom edge (was synced with a sticky bar that no longer exists). */
+:root{--cc-offset:16px}
+
+#cc-banner{position:fixed;left:auto;right:24px;bottom:var(--cc-offset);width:560px;max-width:calc(100vw - 32px);
+  background:linear-gradient(160deg,rgba(10,10,10,.78) 0%,rgba(20,18,16,.78) 55%,rgba(26,24,21,.78) 100%);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden;
+  box-shadow:0 14px 50px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.04);padding:28px 32px;z-index:99998;
+  font-family:var(--font-body),sans-serif;color:#fff;
+  transform:translateY(20px);opacity:0;pointer-events:none;transition:transform .4s ease,opacity .4s ease,bottom .35s ease}
+#cc-banner.show{transform:translateY(0);opacity:1;pointer-events:all}
+#cc-banner::before{content:'';position:absolute;top:-110px;right:-70px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(224,123,26,.18) 0%,rgba(224,123,26,.06) 45%,transparent 70%);
+  pointer-events:none;z-index:0}
+#cc-banner::after{content:'';position:absolute;bottom:-90px;left:-50px;width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(224,123,26,.12) 0%,rgba(224,123,26,.04) 45%,transparent 70%);
+  pointer-events:none;z-index:0}
+#cc-banner>*{position:relative;z-index:1}
+#cc-banner h4{font-family:var(--font-display),sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--amber-light);margin-bottom:10px}
+#cc-banner p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.78);margin-bottom:20px}
+#cc-banner a{color:var(--amber-light);text-decoration:underline}
+.cc-row{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:10px}
+.cc-row>.cc-reject{justify-self:center}
+.cc-row>.cc-manage{justify-self:center}
+.cc-row>.cc-accept{justify-self:center}
+.cc-reject{background:none;border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.29);font-size:12px;font-weight:400;
+  letter-spacing:normal;text-decoration:none;cursor:pointer;padding:13px 22px;
+  border-radius:5px;white-space:nowrap}
+.cc-reject:hover{color:rgba(255,255,255,.5);background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.28)}
+.cc-manage,.cc-accept{text-align:center;border-radius:5px;font-size:13px;font-weight:700;
+  letter-spacing:.03em;cursor:pointer;transition:border-color .2s,background .2s,transform .15s,box-shadow .2s;
+  padding:13px 22px;white-space:nowrap}
+.cc-manage{background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff}
+.cc-manage:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.06)}
+.cc-accept{background:linear-gradient(135deg,var(--amber) 0%,var(--amber-dark) 100%);border:none;color:#fff;
+  text-transform:uppercase;box-shadow:0 4px 18px rgba(224,123,26,.45)}
+.cc-accept:hover{background:linear-gradient(135deg,var(--amber-light) 0%,var(--amber) 100%);transform:translateY(-1px);box-shadow:0 6px 24px rgba(224,123,26,.6)}
+
+#cc-modal{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:100000;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity .25s ease}
+#cc-modal.show{opacity:1;pointer-events:all}
+.cc-modal-box{background:linear-gradient(160deg,#0a0a0a 0%,#141210 55%,#1a1815 100%);
+  border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden;
+  max-width:480px;width:100%;max-height:88vh;overflow-y:auto;padding:28px 26px;color:#fff;
+  font-family:var(--font-body),sans-serif;position:relative}
+.cc-modal-box::before{content:'';position:absolute;top:-100px;right:-70px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(224,123,26,.13) 0%,rgba(224,123,26,.04) 45%,transparent 70%);
+  pointer-events:none;z-index:0}
+.cc-modal-box>*{position:relative;z-index:1}
+.cc-modal-box h2{font-family:var(--font-display),sans-serif;font-size:20px;font-weight:700;
+  letter-spacing:.02em;text-transform:uppercase;color:#fff;margin-bottom:8px}
+.cc-modal-box>p{font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:20px}
+.cc-close{position:absolute;top:18px;right:18px;background:none;border:none;color:rgba(255,255,255,.5);
+  font-size:20px;cursor:pointer;line-height:1;padding:4px;z-index:2}
+.cc-close:hover{color:var(--amber-light)}
+.cc-cat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:9px;
+  padding:15px 16px;margin-bottom:12px;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.cc-cat-txt h3{font-family:var(--font-display),sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--amber-light);margin-bottom:4px}
+.cc-cat-txt p{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.5}
+.cc-switch{position:relative;width:42px;height:24px;flex-shrink:0;margin-top:2px}
+.cc-switch input{opacity:0;width:0;height:0}
+.cc-slider{position:absolute;inset:0;background:rgba(255,255,255,.18);border-radius:24px;
+  cursor:pointer;transition:background .2s}
+.cc-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;
+  background:#fff;border-radius:50%;transition:transform .2s}
+.cc-switch input:checked + .cc-slider{background:linear-gradient(135deg,var(--amber) 0%,var(--amber-dark) 100%)}
+.cc-switch input:checked + .cc-slider::before{transform:translateX(18px)}
+.cc-switch input:disabled + .cc-slider{cursor:not-allowed;opacity:.85}
+.cc-modal-row{display:flex;justify-content:flex-end;gap:10px;margin-top:18px;flex-wrap:wrap}
+
+/* ── Responsive: tablets & phones — banner becomes a full-width bottom sheet,
+   buttons stack for comfortable tapping, always lifted above the sticky
+   booking bar via --cc-offset (set by JS) ── */
+@media(max-width:768px){
+  #cc-banner{right:10px;left:10px;width:auto;max-width:none;bottom:var(--cc-offset);padding:20px 18px 18px}
+  .cc-row{display:flex;justify-content:center;flex-wrap:wrap}
+  .cc-manage,.cc-accept{flex:1 1 calc(50% - 5px);padding:13px 10px;justify-self:auto}
+  .cc-reject{margin-right:0;width:100%;text-align:center;order:3;flex:1 1 100%;justify-self:auto;
+    background:none;border:none;color:rgba(255,255,255,.45);font-weight:400;
+    text-decoration:underline;padding:6px 4px;border-radius:0}
+  .cc-reject:hover{color:rgba(255,255,255,.7);background:none;border-color:transparent}
+}
+@media(max-width:380px){
+  #cc-banner{padding:18px 14px 16px}
+  #cc-banner p{font-size:13px;margin-bottom:16px}
+  .cc-manage,.cc-accept{font-size:12.5px;padding:12px 8px}
+}

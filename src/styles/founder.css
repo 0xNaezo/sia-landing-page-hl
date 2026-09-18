@@ -1,0 +1,18 @@
+/* ── FOUNDER ── */
+.found-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:center}
+.found-vis{position:relative}
+.found-port{width:100%;aspect-ratio:3/4;background:linear-gradient(145deg,#1c1a18,#0d0c0b);border-radius:11px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+
+.found-lbl{position:absolute;top:18px;left:50%;transform:translateX(-50%);background:rgba(224,123,26,.9);color:#fff;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
+.found-yrs{position:absolute;bottom:18px;left:18px;background:rgba(6,14,9,.85);padding:13px 16px;border-radius:7px;text-align:center}
+.found-yrs .n{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--amber);display:block}
+.found-yrs .l{font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.07em;text-transform:uppercase;line-height:1.4}
+
+.found-name{font-family:var(--font-display);font-size:19px;color:var(--amber);letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px}
+.found-q{background:var(--cream);border-left:4px solid var(--amber);padding:24px 26px;border-radius:0 8px 8px 0;margin-bottom:20px}
+.found-q p{font-size:14px;color:var(--text-mid);line-height:1.8;font-style:italic}
+.found-q p+p{margin-top:12px}
+
+.found-photo{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}
+.found-port .found-lbl,.found-port .found-yrs{z-index:2}
+.mob-found-quote p{margin-top:8px;font-size:17.6px;line-height:1.4;color:rgba(255,255,255,.95);font-style:italic;font-family:Georgia,serif}

@@ -1,0 +1,51 @@
+[
+  {
+    "time": "10:00 – 10:30",
+    "icon": "🔨",
+    "title": "The Morning Forge",
+    "desc": "Campers craft their own leather pouch and strike a custom old-style metal coin.",
+    "accent": false
+  },
+  {
+    "time": "10:30 – 11:00",
+    "icon": "⚔️",
+    "title": "Clash of the Warriors",
+    "desc": "Safe soft-sword fighting and precision target-practice archery.",
+    "accent": true
+  },
+  {
+    "time": "11:00 – 11:30",
+    "icon": "🍎",
+    "title": "Recharge & Fuel",
+    "desc": "Snack break — trade stories, swap strategy, and gear up for the big dig.",
+    "accent": false
+  },
+  {
+    "time": "11:30 – 13:00",
+    "icon": "🏺",
+    "title": "The Great Excavation",
+    "desc": "Young archaeologists head to the trenches to unearth genuine artefacts and hidden treasures.",
+    "accent": true
+  },
+  {
+    "time": "13:00 – 13:30",
+    "icon": "🥪",
+    "title": "The Feast",
+    "desc": "Lunch break to relax, recharge, and talk about the morning's epic discoveries.",
+    "accent": false
+  },
+  {
+    "time": "13:30 – 14:15",
+    "icon": "🎨",
+    "title": "Ancient Craft Workshop",
+    "desc": "Viking beads, Ogham pendants, clay lamps, or colourful mosaics — a masterwork to take home.",
+    "accent": true
+  },
+  {
+    "time": "14:15 – 15:00",
+    "icon": "🏆",
+    "title": "The Archaeology Olympics",
+    "desc": "Team games — Tug-of-War, Sea Ship Shore — compete for historic glory!",
+    "accent": false
+  }
+]

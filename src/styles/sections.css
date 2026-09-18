@@ -1,0 +1,16 @@
+/* ── SECTION HELPERS ── */
+.sec{padding:90px 5%}
+.sec-white{background:var(--white)}
+.sec-cream{background:var(--cream)}
+.sec-dark{background:linear-gradient(160deg,#111010 0%,#181614 60%,#1c1a18 100%);position:relative;overflow:hidden}
+.sec-deep{background:linear-gradient(160deg,#090808 0%,#111010 55%,#161412 100%);position:relative;overflow:hidden}
+.container{max-width:1200px;margin:0 auto}
+.sec-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,3.2vw,42px);font-weight:700;letter-spacing:.03em;color:var(--text-dark);line-height:1.12;text-transform:uppercase}
+.sec-title.wh{color:#fff}
+
+.amber-bar{width:54px;height:3px;background:linear-gradient(90deg,var(--amber),var(--amber-light));border-radius:2px;margin:14px 0 22px}
+.amber-bar.c{margin-left:auto;margin-right:auto}
+
+/* centered section heading block (label + title + bar); per-section spacing below */
+.sec-head{text-align:center;margin-bottom:40px}

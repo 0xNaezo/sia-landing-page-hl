@@ -1,0 +1,17 @@
+---
+// Full-screen YouTube player. Opened by any element with
+// data-action="video-open" data-video-src="…" (see src/scripts/modules/video.js).
+---
+
+<div id="vid-overlay" data-action="video-close">
+  <div class="vid-box">
+    <iframe
+      id="vid-frame"
+      allow="autoplay;encrypted-media"
+      allowfullscreen
+      title="School of Irish Archaeology video"></iframe>
+    <button class="vid-close" type="button" data-action="video-close" aria-label="Close video"
+      >✕</button
+    >
+  </div>
+</div>

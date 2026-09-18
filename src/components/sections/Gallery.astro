@@ -1,0 +1,73 @@
+---
+import gallery from '../../data/gallery.json';
+import SectionHead from '../SectionHead.astro';
+---
+
+<section class="sec sec-deep" id="gallery">
+  <div class="container">
+    <SectionHead
+      label="Life at Camp"
+      title="Moments from the Field"
+      light
+      reveal={false}
+      class="gal-desktop-header gal-mob-header"
+    />
+
+    <!-- Mobile slideshow (hidden on desktop) -->
+    <div class="mob-gallery-slide" id="mobGallery">
+      <div class="mob-gal-img" id="mobGalImg"></div>
+      <div class="mob-gal-counter" id="mobGalCounter">1 / {gallery.images.length}</div>
+      <svg class="mob-gal-timer" id="mobGalTimer" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="18" fill="rgba(0,0,0,.4)" stroke="rgba(255,255,255,.2)" stroke-width="2.5"
+        ></circle>
+        <circle
+          id="mobGalProg"
+          cx="22"
+          cy="22"
+          r="18"
+          fill="none"
+          stroke="#ffffff"
+          stroke-width="3"
+          stroke-dasharray="113.1"
+          stroke-dashoffset="113.1"
+          stroke-linecap="butt"
+          transform="rotate(-90 22 22)"></circle>
+      </svg>
+      <div class="mob-gal-dots" id="mobGalDots"></div>
+    </div>
+
+    <div class="gal-grid reveal">
+      {
+        gallery.images.map((src, i) => (
+          <div
+            class:list={['gal-item', { 'gal-hidden': i >= gallery.visibleCount }]}
+            data-action="lb-open"
+            data-index={i}
+            data-src={src}
+            role="button"
+            tabindex="0"
+            aria-label={`Open photo ${i + 1}`}
+          >
+            <div class="gal-img" />
+          </div>
+        ))
+      }
+    </div>
+    <div class="gal-more-wrap">
+      <button class="gal-more-btn" type="button" data-action="gal-more">
+        <span id="gal-more-label">Show More Photos</span>
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg
+        >
+      </button>
+    </div>
+  </div>
+</section>

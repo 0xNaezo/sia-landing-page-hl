@@ -1,0 +1,3 @@
+/* ── GALLERY: section spacing + "show more" wrapper (grid/lightbox rules live in polish.css) ── */
+#gallery .sec-head{margin-bottom:36px}
+.gal-more-wrap{text-align:center;margin-top:10px}

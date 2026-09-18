@@ -1,0 +1,23 @@
+---
+import stats from '../../data/stats.json';
+import SectionHead from '../SectionHead.astro';
+const delays = ['', 'd1', 'd2', 'd3'];
+---
+
+<section class="sec sec-dark" id="stats">
+  <div class="container">
+    <SectionHead title="SIA in Numbers" light bar={false} />
+    <div class="stats-grid">
+      {
+        stats.map((stat, i) => (
+          <div class:list={['stat', 'reveal', delays[i % delays.length]]}>
+            {/* prettier-ignore: the "+" must hug the counter, no whitespace in between */}
+            <div class="stat-num"><span class="counter" data-target={stat.value}>0</span>+</div>
+            <div class="stat-lbl">{stat.label}</div>
+            <div class="stat-desc">{stat.desc}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

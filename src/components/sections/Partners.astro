@@ -1,0 +1,27 @@
+---
+import partners from '../../data/partners.json';
+import SectionHead from '../SectionHead.astro';
+---
+
+<section class="sec sec-cream" id="awards">
+  <div class="container">
+    <SectionHead title="Proudly Working With" class="awards-header" />
+  </div>
+
+  <!-- Marquee rows: JS clones each track once for a seamless loop -->
+  <div class="marquee-wrap reveal">
+    {
+      partners.rows.map((row, i) => (
+        <div class="marquee-row" id={`mrow${i + 1}`}>
+          <div class:list={['marquee-track', { 'marquee-reverse': i % 2 === 1 }]} id={`mtrack${i + 1}`}>
+            {row.map((file) => (
+              <div class="mlogo">
+                <img src={`/assets/images/Logo/${file}`} alt="partner logo" loading="lazy" decoding="async" />
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

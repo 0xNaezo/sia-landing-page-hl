@@ -1,0 +1,41 @@
+{
+  "tabs": [
+    {
+      "id": "dig",
+      "label": "⛏ Dig & Discover",
+      "cards": [
+        { "icon": "🏺", "title": "Big Dig Excavation", "desc": "Dig like young archaeologists and uncover hidden artefacts from real excavation sites." },
+        { "icon": "🔎", "title": "Mini Dig Excavations", "desc": "Discover small sites where children search for finds and clues just like real field archaeologists." },
+        { "icon": "🦴", "title": "Artefact Handling", "desc": "Handle and explore objects to understand what they reveal about people of the past." },
+        { "icon": "🔬", "title": "Microscope Lab", "desc": "Look closely at small objects, materials, and clues from ancient history up close." },
+        { "icon": "🧭", "title": "Treasure Hunt", "desc": "Follow clues, solve simple challenges, and search for hidden artefacts across the camp." },
+        { "icon": "🗿", "title": "And Much More…", "desc": "Bone ID, Geophysical Survey, Flint Knapping & more secrets waiting to be uncovered!", "more": true }
+      ]
+    },
+    {
+      "id": "crafts",
+      "label": "🎨 Crafts & Making",
+      "cards": [
+        { "icon": "🔨", "title": "Viking Coin Striking", "desc": "Strike your own custom old-style metal coin — a real piece of history to take home." },
+        { "icon": "👝", "title": "Medieval Pouch Making", "desc": "Hand-craft a genuine leather belt pouch using traditional medieval techniques." },
+        { "icon": "✍️", "title": "Ogham Runes Pendant", "desc": "Learn the ancient Irish writing system and carve your own Ogham stone pendant." },
+        { "icon": "🏺", "title": "Neolithic Pottery", "desc": "Mould and shape clay vessels using techniques unchanged for thousands of years." },
+        { "icon": "🎨", "title": "Cave Painting", "desc": "Create stunning art using the same techniques as our ancient cave-dwelling ancestors." },
+        { "icon": "🏛️", "title": "Roman Mosaics", "desc": "Design and assemble a colourful mosaic inspired by Roman art and decoration." },
+        { "icon": "🧶", "title": "And Much More…", "desc": "Iron Age weaving, Viking brooches, Celtic knotwork & new crafts every week!", "more": true }
+      ]
+    },
+    {
+      "id": "games",
+      "label": "🏆 Games & Challenges",
+      "cards": [
+        { "icon": "🏆", "title": "Archaeology Olympics", "desc": "Team games, tug of war, the medieval well challenge and fun camp competitions." },
+        { "icon": "🏹", "title": "Archery Targeting", "desc": "Safe target practice with camp-friendly equipment — channel your inner warrior!" },
+        { "icon": "🗡️", "title": "Clash of the Warriors", "desc": "Battle it out in team combat challenges inspired by ancient Irish warrior traditions." },
+        { "icon": "🧩", "title": "Ancient Puzzles", "desc": "Solve riddles and reconstruct broken artefacts — test your problem-solving skills!" },
+        { "icon": "🎭", "title": "History Roleplay", "desc": "Step into the shoes of a Viking, a Celtic warrior or a Roman soldier for the day." },
+        { "icon": "🏰", "title": "And Much More…", "desc": "Medieval Well Challenge, Capture the Flag, Battle of the Clans & surprise events!", "more": true }
+      ]
+    }
+  ]
+}

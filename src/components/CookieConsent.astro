@@ -1,0 +1,67 @@
+---
+import site from '../data/site.json';
+---
+
+<!-- Cookie consent banner + preferences modal (Consent Mode v2). Logic: src/scripts/modules/cookie-consent.js -->
+<div id="cc-banner" role="dialog" aria-label="Cookie consent">
+  <h4>Privacy &amp; Cookies</h4>
+  <p>
+    We use cookies to improve your experience, analyze traffic, and personalize content. You can
+    accept all cookies or manage your preferences.<br />See our <a
+      href={site.legal.cookiePolicy}
+      target="_blank"
+      rel="noopener">Cookie Policy</a
+    > and <a href={site.legal.privacy} target="_blank" rel="noopener">Privacy Policy</a> for details.
+  </p>
+  <div class="cc-row">
+    <button class="cc-reject" type="button" data-action="cc-reject">Reject non-essential</button>
+    <button class="cc-manage" type="button" data-action="cc-manage">Manage preferences</button>
+    <button class="cc-accept" type="button" data-action="cc-accept">Accept all</button>
+  </div>
+</div>
+
+<div id="cc-modal" role="dialog" aria-modal="true" aria-label="Cookie preferences">
+  <div class="cc-modal-box">
+    <button class="cc-close" type="button" data-action="cc-close" aria-label="Close">×</button>
+    <h2>Cookie preferences</h2>
+    <p>
+      Choose which cookies you want to accept. Essential cookies are required for the site to
+      function and cannot be disabled.
+    </p>
+
+    <div class="cc-cat">
+      <div class="cc-cat-txt">
+        <h3>Essential cookies</h3>
+        <p>Required for core site functionality and security. Always active.</p>
+      </div>
+      <label class="cc-switch"
+        ><input type="checkbox" checked disabled /><span class="cc-slider"></span></label
+      >
+    </div>
+
+    <div class="cc-cat">
+      <div class="cc-cat-txt">
+        <h3>Analytics cookies</h3>
+        <p>Help us understand how visitors use our site.</p>
+      </div>
+      <label class="cc-switch"
+        ><input type="checkbox" id="cc-toggle-analytics" /><span class="cc-slider"></span></label
+      >
+    </div>
+
+    <div class="cc-cat">
+      <div class="cc-cat-txt">
+        <h3>Marketing cookies</h3>
+        <p>Used to deliver relevant ads and measure ad campaigns.</p>
+      </div>
+      <label class="cc-switch"
+        ><input type="checkbox" id="cc-toggle-marketing" /><span class="cc-slider"></span></label
+      >
+    </div>
+
+    <div class="cc-modal-row">
+      <button class="cc-manage" type="button" data-action="cc-save">Save preferences</button>
+      <button class="cc-accept" type="button" data-action="cc-accept">Accept all</button>
+    </div>
+  </div>
+</div>

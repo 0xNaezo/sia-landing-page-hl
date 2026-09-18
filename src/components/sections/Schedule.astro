@@ -1,0 +1,35 @@
+---
+import schedule from '../../data/schedule.json';
+import SectionHead from '../SectionHead.astro';
+---
+
+<section class="sec sec-white" id="schedule">
+  <div class="container">
+    <SectionHead
+      label="A Day at Camp"
+      labelClass="sched-sec-label"
+      title="What Does a Camp Day Look Like?"
+    />
+    <div class="sched-timeline reveal">
+      {
+        schedule.map((item) => (
+          <div class="stl-item" data-time={item.time}>
+            <div class="stl-time">{item.time}</div>
+            <div class="stl-dot" />
+            <div class:list={['stl-card', { 'stl-accent': item.accent }]}>
+              <div class="stl-icon">{item.icon}</div>
+              <div class="stl-body">
+                <div class="stl-body-row">
+                  <span class="stl-time-badge">{item.time}</span>
+                  <h4 class="stl-title">{item.title}</h4>
+                </div>
+                <p class="stl-desc">{item.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <p class="mob-tap-hint mob-tap-hint-sched">Tap to see details</p>
+  </div>
+</section>
