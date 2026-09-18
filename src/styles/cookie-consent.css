@@ -5,7 +5,7 @@
 
 #cc-banner{position:fixed;left:auto;right:24px;bottom:var(--cc-offset);width:560px;max-width:calc(100vw - 32px);
   background:linear-gradient(160deg,rgba(10,10,10,.78) 0%,rgba(20,18,16,.78) 55%,rgba(26,24,21,.78) 100%);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden;
   box-shadow:0 14px 50px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.04);padding:28px 32px;z-index:99998;
   font-family:var(--font-body),sans-serif;color:#fff;
