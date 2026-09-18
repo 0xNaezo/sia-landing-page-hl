@@ -9,7 +9,7 @@
     {
       "label": "Schedule Options",
       "ordinary": "Only one schedule",
-      "sia": "Flexible 1, 3, or 5-day options",
+      "sia": "Flexible 1, 3, or 4-day options",
       "highlight": true
     },
     {
@@ -30,7 +30,7 @@
   ],
   "mobileCards": [
     { "icon": "🏺", "label": "Purpose", "text": "Fun, <span class=\"hl\">hands-on learning</span> &amp; discovery" },
-    { "icon": "📅", "label": "Flexibility", "text": "<span class=\"hl\">1, 3 or 5-day</span> options — your choice" },
+    { "icon": "📅", "label": "Flexibility", "text": "<span class=\"hl\">1, 3 or 4-day</span> options — your choice" },
     { "icon": "🛡️", "label": "Staff", "text": "<span class=\"hl\">Garda-vetted</span> &amp; fully certified" },
     { "icon": "⚗️", "label": "Programme", "text": "Designed by historians with <span class=\"hl\">15+ years</span> of experience" },
     { "icon": "🏆", "label": "Activities", "text": "Unique games that bring <span class=\"hl\">history to life</span>" }

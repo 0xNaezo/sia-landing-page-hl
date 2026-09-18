@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8">
+<style>body{font:15px/1.5 monospace;padding:16px;white-space:pre-wrap;margin:0}
+iframe{width:900px;height:200px;border:1px solid #ccc}</style>
+<pre id="o">waiting...</pre>
+<iframe id="f" src="/"></iframe>
+<script type="module">
+const o = document.getElementById('o');
+await new Promise(r => setTimeout(r, 5000));
+try {
+  const fr = document.getElementById('f');
+  const w = fr.contentWindow, d = fr.contentDocument;
+  o.textContent = [
+    'jsRan(reveal-ready) = ' + d.documentElement.classList.contains('reveal-ready'),
+    'reducedMotion       = ' + w.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    'revealVisible       = ' + d.querySelectorAll('.reveal.visible').length + '/' + d.querySelectorAll('.reveal').length,
+    'marqueeCloned       = ' + (d.querySelector('.marquee-track')?.dataset.loopReady ?? 'NO TRACK'),
+    'counterValue        = ' + (d.querySelector('.counter')?.textContent ?? 'NO COUNTER'),
+    'activePanel         = ' + (d.querySelector('.act-panel.active')?.id ?? 'NONE'),
+    'ttrackTransform     = ' + (d.getElementById('ttrack')?.style.transform || '(none yet)'),
+    'ccBannerShown       = ' + !!d.querySelector('#cc-banner.show')
+  ].join('\n');
+} catch (e) { o.textContent = 'PROBE FAILED: ' + e; }
+</script>

@@ -7,13 +7,17 @@
   radial-gradient(ellipse 65% 80% at 18% 65%, rgba(0,0,0,.82) 0%, rgba(0,0,0,.0) 70%),
   linear-gradient(to right, rgba(0,0,0,.6) 0%, rgba(0,0,0,.3) 40%, rgba(0,0,0,.08) 65%, rgba(0,0,0,.0) 85%)}
 .hero-inner{position:relative;z-index:3;width:90%;max-width:1200px;margin:0 auto;padding:160px 0 110px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
-.hero-left{max-width:580px;width:100%}
+/* Wide enough to keep the h1 on two lines at the clamp's 72px cap:
+   "ARCHAEOLOGY CAMP" needs ~645px there. .hero-p keeps its own 480px. */
+.hero-left{max-width:660px;width:100%}
 
 @keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
 .hero-h1{font-family:var(--font-display);font-weight:700;font-size:clamp(44px,4.8vw,72px);line-height:1.0;letter-spacing:.02em;text-transform:uppercase;color:#fff;margin-bottom:22px;max-width:900px;text-shadow:0 2px 40px rgba(0,0,0,.4)}
 .hero-sub{display:block;font-family:var(--font-display);font-size:clamp(18px,2.2vw,28px);font-weight:500;color:var(--amber);text-transform:uppercase;letter-spacing:.04em;margin-top:6px;line-height:1.3}
 
 .hero-p{color:rgba(255,255,255,.75);font-size:16px;line-height:1.75;margin-bottom:36px;max-width:480px}
+/* Short variant is mobile-only; mobile.css (imported later) flips these at <=480px. */
+.hero-p-short{display:none}
 
 .scroll-hint-outer{position:relative;height:0;z-index:20;display:flex;justify-content:center;pointer-events:none}
 .scroll-hint-inner{position:absolute;top:-58px;display:flex;flex-direction:column;align-items:center}

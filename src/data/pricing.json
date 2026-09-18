@@ -14,11 +14,11 @@
   },
   {
     "icon": "⛺",
-    "price": "€160",
-    "name": "5 Days",
-    "save": "SAVE €40",
+    "price": "€140",
+    "name": "4 Days",
+    "save": "SAVE €20",
     "featured": true,
     "badge": "Most Popular",
-    "features": ["All 3-day benefits", "Full week of discovery", "Unique group games", "Full week of crafts"]
+    "features": ["All 3-day benefits", "The full four days of discovery", "Unique group games", "A new craft every day"]
   }
 ]

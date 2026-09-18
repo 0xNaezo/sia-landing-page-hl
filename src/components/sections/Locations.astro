@@ -6,7 +6,7 @@ import SectionHead from '../SectionHead.astro';
 
 <section class="sec sec-cream" id="locations">
   <div class="container">
-    <SectionHead title="OUR LOCATIONS" />
+    <SectionHead title="OUR LOCATIONS &amp; DATES" />
 
     <!-- Mobile map (shown only on small screens) -->
     <div class="mob-locations-map">
@@ -41,6 +41,10 @@ import SectionHead from '../SectionHead.astro';
               <div>
                 <div class="loc-name">{loc.name}</div>
                 <div class="loc-sub">{loc.area}</div>
+                <div class="loc-meta">
+                  <span class="loc-dates">{loc.dates}</span>
+                  <span class="loc-time">{loc.time}</span>
+                </div>
               </div>
               <span class="loc-open">Open Map →</span>
             </a>

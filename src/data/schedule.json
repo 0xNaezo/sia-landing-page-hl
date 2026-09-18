@@ -1,51 +1,44 @@
 [
   {
     "time": "10:00 – 10:30",
-    "icon": "🔨",
-    "title": "The Morning Forge",
-    "desc": "Campers craft their own leather pouch and strike a custom old-style metal coin.",
+    "icon": "🧭",
+    "title": "Registration & Welcome",
+    "desc": "Campers sign in, meet their team and get kitted out for the days ahead.",
     "accent": false
   },
   {
     "time": "10:30 – 11:00",
-    "icon": "⚔️",
-    "title": "Clash of the Warriors",
-    "desc": "Safe soft-sword fighting and precision target-practice archery.",
+    "icon": "🦴",
+    "title": "Introduction to Archaeology",
+    "desc": "Handle real finds from our display collection and learn how archaeologists read the past.",
     "accent": true
   },
   {
-    "time": "11:00 – 11:30",
+    "time": "11:00 – 11:45",
     "icon": "🍎",
-    "title": "Recharge & Fuel",
-    "desc": "Snack break — trade stories, swap strategy, and gear up for the big dig.",
+    "title": "Snack Break",
+    "desc": "Time to refuel, trade stories and gear up for the big dig.",
     "accent": false
   },
   {
-    "time": "11:30 – 13:00",
+    "time": "11:45 – 13:00",
     "icon": "🏺",
-    "title": "The Great Excavation",
-    "desc": "Young archaeologists head to the trenches to unearth genuine artefacts and hidden treasures.",
+    "title": "Big Dig Workshop",
+    "desc": "Into the trenches — young archaeologists excavate genuine artefacts buried beneath the soil.",
     "accent": true
   },
   {
-    "time": "13:00 – 13:30",
+    "time": "13:00 – 13:45",
     "icon": "🥪",
-    "title": "The Feast",
-    "desc": "Lunch break to relax, recharge, and talk about the morning's epic discoveries.",
+    "title": "Lunch Break",
+    "desc": "A proper break to rest and talk through the morning's discoveries.",
     "accent": false
   },
   {
-    "time": "13:30 – 14:15",
+    "time": "13:45 – 15:00",
     "icon": "🎨",
-    "title": "Ancient Craft Workshop",
-    "desc": "Viking beads, Ogham pendants, clay lamps, or colourful mosaics — a masterwork to take home.",
+    "title": "Witches' Cauldron Workshop",
+    "desc": "Shape a clay cauldron by hand using the Neolithic pinch-pot method, inspired by the Cailleach of Irish folklore.",
     "accent": true
-  },
-  {
-    "time": "14:15 – 15:00",
-    "icon": "🏆",
-    "title": "The Archaeology Olympics",
-    "desc": "Team games — Tug-of-War, Sea Ship Shore — compete for historic glory!",
-    "accent": false
   }
 ]

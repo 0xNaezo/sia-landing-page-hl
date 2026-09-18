@@ -12,5 +12,8 @@
 .loc-pin{color:#E53935;font-size:20px}
 .loc-name{font-size:15px;font-weight:700;color:var(--text-dark)}
 .loc-sub{font-size:12px;color:var(--text-light);margin-top:2px}
-.loc-open{margin-left:auto;font-size:11px;color:var(--amber);font-weight:700;letter-spacing:.05em}
+.loc-open{margin-left:auto;font-size:11px;color:var(--amber);font-weight:700;letter-spacing:.05em;white-space:nowrap;flex-shrink:0}
 .loc-note{font-size:12px;color:var(--text-light);margin-top:8px;text-align:center}
+.loc-meta{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:6px}
+.loc-dates{font-size:12px;font-weight:700;color:var(--amber)}
+.loc-time{font-size:12px;color:var(--text-light)}
