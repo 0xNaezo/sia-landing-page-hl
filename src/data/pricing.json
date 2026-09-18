@@ -1,0 +1,24 @@
+[
+  {
+    "icon": "🏆",
+    "price": "€40",
+    "name": "1 Day Camp",
+    "features": ["Hands-on archaeology", "Crafts & games", "Expert supervision", "Take-home craft"]
+  },
+  {
+    "icon": "🏺",
+    "price": "€100",
+    "name": "3 Days",
+    "save": "SAVE €20",
+    "features": ["All 1-day benefits", "Extended activities", "Extra take-home craft", "New activities each day"]
+  },
+  {
+    "icon": "⛺",
+    "price": "€160",
+    "name": "5 Days",
+    "save": "SAVE €40",
+    "featured": true,
+    "badge": "Most Popular",
+    "features": ["All 3-day benefits", "Full week of discovery", "Unique group games", "Full week of crafts"]
+  }
+]

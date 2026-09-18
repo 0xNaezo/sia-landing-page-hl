@@ -1,0 +1,29 @@
+---
+import site from '../data/site.json';
+import nav from '../data/nav.json';
+---
+
+<nav id="nav">
+  <a href="#" class="logo">
+    <img src="/assets/images/logo-mark.webp" alt="SIA Logo" class="logo-img" />
+    <div class="logo-brand-group">
+      <span class="logo-brand-name">{site.name}</span>
+      <span class="logo-brand-tagline">{site.tagline}</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    {nav.links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+    <li>
+      <a href={site.bookingUrl} class="nav-book" target="_blank" rel="noopener">Book a Camp</a>
+    </li>
+  </ul>
+  <div class="nav-toggle" data-action="nav-toggle" role="button" tabindex="0" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mob-menu" id="mobmenu">
+  {nav.links.map((link) => <a href={link.href} data-action="nav-close">{link.label}</a>)}
+  <a href={site.bookingUrl} class="mob-book" data-action="nav-close" target="_blank" rel="noopener"
+    >Book a Camp</a
+  >
+</div>

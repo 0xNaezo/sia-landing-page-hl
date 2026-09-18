@@ -1,0 +1,12 @@
+/* ── FAQ ── */
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:3px}
+.faq-item{background:var(--white);border-radius:7px;overflow:hidden;border:1px solid var(--border)}
+.faq-q{width:100%;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;background:transparent;border:none;filter:drop-shadow(0 0 0 transparent);cursor:pointer;text-align:left;font-size:14px;font-weight:700;color:var(--text-dark);transition:background .15s}
+.faq-q:hover{background:var(--cream)}
+.faq-icon{width:26px;height:26px;border-radius:50%;background:var(--cream-dark);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:17px;color:var(--text-light);transition:transform .3s,background .2s}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--amber);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a-in{padding:0 24px 18px;font-size:13px;color:var(--text-mid);line-height:1.75;border-top:1px solid var(--border);padding-top:14px}
+.faq-item.open .faq-a{max-height:400px}
+
+#faq .sec-head{margin-bottom:42px}

@@ -1,0 +1,17 @@
+/* ── WHO WE ARE ── */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.who-vis{position:relative}
+.who-box{width:100%;aspect-ratio:4/3;background:linear-gradient(140deg,#1c1a18,#0d0c0b);border-radius:10px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+
+.who-float{position:absolute;bottom:-18px;right:-18px;background:var(--amber);color:#fff;padding:16px 20px;border-radius:7px;text-align:center;min-width:110px;box-shadow:0 8px 24px rgba(224,123,26,.35)}
+.who-float .n{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:.04em;display:block}
+.who-float .l{font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+.who-text p{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:14px}
+
+/* video thumbnail ("Watch our story") */
+.who-video{cursor:pointer}
+.who-box .who-video-img{width:100%;height:100%;object-fit:cover;display:block;border-radius:10px;transition:transform .3s ease}
+.who-video-shade{position:absolute;inset:0;background:rgba(0,0,0,.35);border-radius:10px;transition:background .3s}
+.who-video-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.who-video-btn{width:72px;height:72px;background:rgba(255,255,255,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,.35);transition:transform .2s,background .2s}
+.who-video-label{color:#fff;font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.5)}

@@ -1,0 +1,84 @@
+---
+import site from '../data/site.json';
+import '../styles/main.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = site.title, description = site.description } = Astro.props;
+const gtmId = site.gtmId;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Cinzel:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      Consent Mode v2 defaults + Google Tag Manager loader.
+      Must stay inline and synchronous: the consent default has to be pushed
+      BEFORE gtm.js is requested. Everything else lives in src/scripts.
+    -->
+    <script is:inline define:vars={{ gtmId }}>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+
+      // 1. Read any previously saved consent choice (same key as src/scripts/modules/cookie-consent.js)
+      var savedConsent = null;
+      try {
+        savedConsent = JSON.parse(localStorage.getItem('cookie_consent_v1'));
+      } catch (e) {}
+
+      // 2. Consent Mode v2 defaults. functionality_storage and security_storage are
+      //    strictly necessary and always granted; everything else is denied until the
+      //    user actively agrees.
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 500,
+      });
+
+      // 3. Re-apply a choice made on a previous visit immediately.
+      if (savedConsent) gtag('consent', 'update', savedConsent);
+
+      // 4. Google Tag Manager
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', gtmId);
+    </script>
+  </head>
+  <body>
+    <noscript
+      ><iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <slot />
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>

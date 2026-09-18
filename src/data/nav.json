@@ -1,0 +1,9 @@
+{
+  "links": [
+    { "href": "#who", "label": "About Us" },
+    { "href": "#schedule", "label": "Camp Day" },
+    { "href": "#locations", "label": "Locations" },
+    { "href": "#awards", "label": "Trusted By" },
+    { "href": "#faq", "label": "FAQ" }
+  ]
+}

@@ -1,0 +1,22 @@
+/* ── LEAD CTA (dark photo section before the footer) ── */
+.lead-cta{position:relative;overflow:hidden;min-height:520px;display:flex;align-items:stretch;background-color:#0a160e}
+/* Background photo, positioned right so faces show; bg-color prevents artifact lines at edges */
+.lead-cta-bg{position:absolute;inset:0;background-color:#0a160e;background-image:url('/assets/images/lead-cta-photo.webp');background-repeat:no-repeat;background-position:10% center;background-size:cover;z-index:0}
+/* Dark gradient on the left where the text sits, fading to transparent on the right */
+.lead-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(10,22,14,0.97) 0%, rgba(10,22,14,0.92) 35%, rgba(10,22,14,0.55) 58%, rgba(10,22,14,0.0) 80%);z-index:1}
+.lead-cta-inner{position:relative;z-index:2;max-width:1200px;width:100%;margin:0 auto;padding:90px 5%;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.lead-cta-text{max-width:560px;flex-shrink:0}
+.lead-cta-spacer{flex:1;min-width:0}
+.lead-cta-h2{font-family:var(--font-display);font-size:clamp(2.4rem,3.6vw,3.4rem);font-weight:900;color:#fff;line-height:1.1;margin:0 0 20px;text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap}
+.lead-cta-h2 span{color:var(--amber)}
+.lead-cta-desc{color:rgba(255,255,255,.75);font-size:1rem;line-height:1.7;margin:0 0 36px;max-width:420px}
+.lead-cta-book{margin-bottom:32px}
+.lead-cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#fff;font-family:var(--font-display);font-weight:800;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 32px;border-radius:4px;text-decoration:none;transition:background .2s}
+.lead-cta-btn:hover{background:var(--amber-dark)}
+.lead-cta-q{color:rgba(255,255,255,.5);font-size:.85rem;margin:0 0 14px}
+.lead-cta-contacts{display:flex;gap:12px;flex-wrap:wrap}
+.lead-cta-contact{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);color:#fff;font-size:.85rem;padding:10px 20px;border-radius:4px;text-decoration:none;transition:border-color .2s}
+.lead-cta-contact:hover{border-color:var(--amber)}
+
+/* photo strip above the CTA (visible on mobile only, see mobile.css) */
+.photo-banner-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;transform:scale(1.24)}

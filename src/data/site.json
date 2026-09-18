@@ -1,0 +1,38 @@
+{
+  "name": "The School of Irish Archaeology",
+  "shortName": "SIA",
+  "tagline": "Exploring the Past with our Future",
+  "title": "SIA — School of Irish Archaeology | Summer Camps for Curious Children",
+  "description": "Hands-on archaeology summer camps for children aged 7–12 across Ireland. Dig, discover artefacts, make ancient crafts and build confidence with the School of Irish Archaeology.",
+  "url": "https://camps.sia.ie",
+  "bookingUrl": "https://sia.ie/summer-camps-for-children-in-ireland/",
+  "phone": {
+    "display": "+353 87 755 6808",
+    "href": "tel:+353877556808"
+  },
+  "email": "bookings@sia.ie",
+  "social": {
+    "facebook": "https://www.facebook.com/TheSchoolofIrishArchaeology/",
+    "instagram": "https://www.instagram.com/schoolofirisharchaeology/"
+  },
+  "gtmId": "GTM-WLD63DV5",
+  "videoEmbedUrl": "https://www.youtube.com/embed/zys3TYUMz54?autoplay=1&rel=0",
+  "mapEmbedUrl": "https://www.google.com/maps/d/u/0/embed?mid=1f--GN3CaxX7VmRWB9fhAPGMHntBkcsE&ehbc=2E312F",
+  "reviewsUrl": "https://maps.app.goo.gl/18af55hYsDyJ82TQ9",
+  "legal": {
+    "privacy": "https://sia.ie/privacy-statement-eu/?cmplz_region_redirect=true&cmplz-region=eu",
+    "terms": "https://sia.ie/terms-conditions/",
+    "cookiePolicy": "https://sia.ie/cookie-policy-eu/?cmplz_region_redirect=true"
+  },
+  "copyright": "© 2026 School of Irish Archaeology. All rights reserved.",
+  "credit": {
+    "label": "Miros",
+    "url": "https://www.linkedin.com/in/miroslav-boyko/"
+  },
+  "quickLinks": [
+    { "href": "#who", "label": "About Us" },
+    { "href": "#schedule", "label": "Camp Day" },
+    { "href": "#locations", "label": "Locations" },
+    { "href": "#faq", "label": "FAQ" }
+  ]
+}

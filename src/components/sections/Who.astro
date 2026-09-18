@@ -1,0 +1,55 @@
+---
+import site from '../../data/site.json';
+---
+
+<section class="sec sec-white" id="who">
+  <div class="container">
+    <div class="who-grid">
+      <div class="who-vis reveal mob-who-video">
+        <div
+          class="who-box who-video"
+          data-action="video-open"
+          data-video-src={site.videoEmbedUrl}
+          role="button"
+          tabindex="0"
+          aria-label="Watch our story"
+        >
+          <img
+            src="/assets/images/team-photo.webp"
+            alt="SIA Team"
+            class="who-video-img"
+            width="3839"
+            height="2159"
+          />
+          <div class="who-video-shade"></div>
+          <div class="who-video-play">
+            <div class="who-video-btn">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="#C8751A" aria-hidden="true"
+                ><polygon points="6,3 20,12 6,21"></polygon></svg
+              >
+            </div>
+            <span class="who-video-label">Watch Our Story</span>
+          </div>
+        </div>
+        <div class="who-float"><span class="n">2011</span><span class="l">Founded</span></div>
+      </div>
+      <div class="reveal d1 mob-who-text">
+        <div class="sec-label">Who We Are</div>
+        <h2 class="sec-title">Ireland's First<br />Archaeology School</h2>
+        <div class="amber-bar"></div>
+        <div class="who-text">
+          <p>
+            Imagine your child spending the day as a young archaeologist — digging, uncovering
+            clues, making ancient crafts, and exploring Ireland's past. That is what SIA camps are
+            all about: active, hands-on learning that feels like a real adventure.
+          </p>
+          <p>
+            Here, children don't just pass the time — they spend their days laughing, discovering,
+            and bringing history to life through ancient technology and crafts. It is an experience
+            filled with creativity and discovery, giving children a summer they won't forget.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

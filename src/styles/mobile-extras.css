@@ -1,0 +1,138 @@
+
+/* ── TAP HINTS (mobile only) ── */
+.mob-tap-hint{display:none}
+
+@media(max-width:480px){
+  .mob-tap-hint{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:10px;color:var(--amber);font-weight:600;
+    letter-spacing:.04em;margin-top:8px;
+    opacity:.85
+  }
+  .mob-tap-hint::before{content:'👆';font-size:11px}
+  
+  /* Bigger, more visible arrow on schedule cards */
+  .stl-card::after{
+    content:'›';
+    color:var(--amber);
+    font-size:20px;
+    font-weight:700;
+    flex-shrink:0;
+    margin-top:-2px;
+    line-height:1;
+    transition:transform .2s
+  }
+  .stl-card.expanded::after{
+    content:'›';
+    transform:rotate(90deg)
+  }
+  /* Activity cards — visible tap indicator */
+  .acard::after{
+    content:'›';
+    color:var(--amber);
+    font-size:20px;
+    font-weight:700;
+    margin-left:auto;
+    flex-shrink:0;
+    line-height:1;
+    transition:transform .2s
+  }
+  .acard.mob-open::after{
+    content:'›';
+    transform:rotate(90deg)
+  }
+}
+
+@media(max-width:480px){
+/* ── MOB GALLERY SLIDESHOW — mobile only ── */
+html body .mob-gallery-slide{visibility:hidden;height:0;overflow:hidden;margin:0;padding:0}
+html body .mob-gal-dots{visibility:hidden;height:0;overflow:hidden;margin:0;padding:0}
+@media(max-width:480px){
+  html body .mob-gallery-slide{visibility:visible;height:auto;overflow:visible}
+  html body .mob-gal-dots{visibility:visible;height:auto;overflow:visible;padding:0}
+  html body #mobGalDots{display:flex!important;justify-content:center;gap:6px;margin-top:10px}
+  html body #mobGalDots:empty{display:none!important}
+}
+  .gal-grid{display:none!important}
+  .mob-tap-hint,.gal-more-wrap{display:none!important}
+  .gal-more-btn{display:none!important}
+  .mob-gallery-slide{
+    display:block;
+    position:relative;
+    width:100%;
+    aspect-ratio:4/3;
+    border-radius:10px;
+    overflow:hidden;
+    background:#111
+  }
+  .mob-gal-img{
+    width:100%;height:100%;
+    background-size:cover;
+    background-position:center;
+    transition:opacity .4s ease
+  }
+  .mob-gal-img.fade{opacity:0}
+  /* circular countdown timer — bottom right */
+  .mob-gal-timer{
+    position:absolute;bottom:30px;right:7px;
+    width:36px;height:36px
+  }
+  
+  
+  .mob-gal-counter{display:none!important}
+  /* ── MOB LOCATIONS MAP ── */
+  .mob-locations-map{
+    display:block;
+    width:100%;height:200px;
+    border-radius:10px;overflow:hidden;
+    margin-bottom:16px;
+    box-shadow:0 4px 16px rgba(0,0,0,.12)
+  }
+}
+@media(min-width:481px){
+  .mob-gallery-slide{display:none}
+  .mob-locations-map{display:none}
+}
+
+/* ── TESTIMONIAL READ-MORE — removed */
+
+  /* ── SCHEDULE: time label ABOVE card ── */
+  
+  @media(max-width:480px){
+    
+    /* time badge inside card, shown above title */
+    .stl-time-badge{
+      display:block!important;
+      font-size:9px;font-weight:700;letter-spacing:.07em;
+      color:var(--amber);font-family:var(--font-display);
+      margin-bottom:2px;white-space:nowrap;
+      background:none;padding:0;border-radius:0
+    }
+    /* stack time above title */
+    .stl-body-row{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+  }
+
+/* ── PHOTO BANNER — mobile only ── */
+.photo-banner{
+  display:none;
+  position:relative;
+  width:100%;height:60px;
+  overflow:hidden;
+  background:#111;
+}
+@media(max-width:300px){
+  .photo-banner{display:block}
+}
+
+.photo-banner-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.27) 0%, rgba(0,0,0,.46) 100%);
+  display:block
+}
+.photo-banner-overlay span{display:none}
+.photo-banner-overlay::after{display:none}
+@media(max-width:100px){
+  .photo-banner{height:10px!important}
+  .photo-banner-overlay span{font-size:.85rem;padding:0 20px}
+}
+

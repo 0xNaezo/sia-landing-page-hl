@@ -1,0 +1,47 @@
+/*
+ * Global stylesheet entry. Vite inlines these @imports at build time into one bundle.
+ *
+ * ORDER MATTERS. The files are split from the original single <style> block in the
+ * order they appeared, and several later files (mobile*, polish) override earlier ones
+ * with equal-specificity selectors. Do not reorder without a visual diff.
+ */
+
+/* foundations */
+@import './tokens.css';
+@import './base.css';
+
+/* layout & shared components */
+@import './nav.css';
+@import './hero.css';
+@import './sections.css';
+
+/* page sections (desktop first) */
+@import './who.css';
+@import './stats.css';
+@import './schedule.css';
+@import './activities.css';
+@import './why.css';
+@import './testimonials.css';
+@import './pricing.css';
+@import './founder.css';
+@import './locations.css';
+@import './partners.css';
+@import './faq.css';
+@import './lead-cta.css';
+@import './footer.css';
+
+/* motion */
+@import './animations.css';
+
+/* responsive overrides (≤960px, ≤600px, then the big ≤480px mobile block) */
+@import './responsive.css';
+@import './mobile.css';
+@import './mobile-extras.css';
+
+/* late-added desktop polish that overrides section rules above */
+@import './polish.css';
+@import './gallery.css';
+
+/* overlays */
+@import './video-modal.css';
+@import './cookie-consent.css';

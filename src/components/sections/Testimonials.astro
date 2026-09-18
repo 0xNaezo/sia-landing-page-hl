@@ -1,0 +1,45 @@
+---
+import site from '../../data/site.json';
+import testimonials from '../../data/testimonials.json';
+import SectionHead from '../SectionHead.astro';
+---
+
+<section class="sec sec-white" id="testimonials">
+  <div class="container">
+    <SectionHead label="What Parents Say" title="Real Experiences, Real Stories" />
+    <div class="testi-wrap reveal">
+      <div class="testi-track" id="ttrack">
+        {
+          testimonials.map((t) => (
+            <div class="tcard">
+              <div class="tstars">★★★★★</div>
+              <p class="ttext">{t.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="tcontrols">
+      <button class="tbtn" type="button" data-action="testi-prev" aria-label="Previous review"
+        >&#8592;</button
+      >
+      {
+        testimonials.map((_, i) => (
+          <button
+            class:list={['tdot', { active: i === 0 }]}
+            type="button"
+            data-action="testi-go"
+            data-index={i}
+            aria-label={`Review ${i + 1}`}
+          />
+        ))
+      }
+      <button class="tbtn" type="button" data-action="testi-next" aria-label="Next review"
+        >&#8594;</button
+      >
+    </div>
+    <div class="testi-more">
+      <a href={site.reviewsUrl} target="_blank" rel="noopener">⭐ More Reviews on Google</a>
+    </div>
+  </div>
+</section>

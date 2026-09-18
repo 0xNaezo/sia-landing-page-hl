@@ -1,0 +1,53 @@
+---
+import site from '../../data/site.json';
+import locations from '../../data/locations.json';
+import SectionHead from '../SectionHead.astro';
+---
+
+<section class="sec sec-cream" id="locations">
+  <div class="container">
+    <SectionHead title="OUR LOCATIONS" />
+
+    <!-- Mobile map (shown only on small screens) -->
+    <div class="mob-locations-map">
+      <div class="mob-locations-map-inner">
+        <iframe
+          src={site.mapEmbedUrl}
+          width="100%"
+          height="145%"
+          class="loc-map-frame"
+          allowfullscreen
+          loading="lazy"
+          title="SIA Camp Locations"></iframe>
+      </div>
+    </div>
+
+    <div class="loc-layout reveal">
+      <div class="loc-map">
+        <iframe
+          src={site.mapEmbedUrl}
+          width="100%"
+          height="125%"
+          class="loc-map-frame"
+          allowfullscreen
+          loading="lazy"
+          title="SIA Camp Locations Dublin"></iframe>
+      </div>
+      <div class="loc-list">
+        {
+          locations.map((loc) => (
+            <a class="loc-card" href={loc.mapUrl} target="_blank" rel="noopener">
+              <span class="loc-pin">📍</span>
+              <div>
+                <div class="loc-name">{loc.name}</div>
+                <div class="loc-sub">{loc.area}</div>
+              </div>
+              <span class="loc-open">Open Map →</span>
+            </a>
+          ))
+        }
+        <p class="loc-note">Click any location to open Google Maps</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+/* ── LOCATIONS ── */
+
+#locations .sec-head{margin-bottom:44px}
+#locations .sec-title{letter-spacing:.06em}
+.mob-locations-map-inner{position:relative;width:100%;height:100%;overflow:hidden;border-radius:10px}
+.loc-map-frame{border:0;position:absolute;top:-80px;left:0}
+.loc-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.loc-map{border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12);height:500px;position:relative}
+.loc-list{display:flex;flex-direction:column;gap:10px}
+.loc-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e8e4dc;border-radius:9px;padding:16px 20px;cursor:pointer;color:inherit;text-decoration:none;transition:box-shadow .2s,transform .2s}
+.loc-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateX(4px)}
+.loc-pin{color:#E53935;font-size:20px}
+.loc-name{font-size:15px;font-weight:700;color:var(--text-dark)}
+.loc-sub{font-size:12px;color:var(--text-light);margin-top:2px}
+.loc-open{margin-left:auto;font-size:11px;color:var(--amber);font-weight:700;letter-spacing:.05em}
+.loc-note{font-size:12px;color:var(--text-light);margin-top:8px;text-align:center}

@@ -1,0 +1,30 @@
+---
+import site from '../../data/site.json';
+import pricing from '../../data/pricing.json';
+import SectionHead from '../SectionHead.astro';
+---
+
+<section class="sec sec-deep" id="pricing">
+  <div class="container">
+    <SectionHead label="Choose Your Camp" title="Flexible Options for Every Family" light />
+    <div class="pgrid reveal" id="pgrid">
+      {
+        pricing.map((plan) => (
+          <div class:list={['pcard', { feat: plan.featured }]}>
+            {plan.badge && <div class="pbadge">{plan.badge}</div>}
+            <div class="picon">{plan.icon}</div>
+            <div class="pnow">{plan.price}</div>
+            <div class="pwas">{plan.was}</div>
+            <div class="pname">{plan.name}</div>
+            <ul class="pfeats">
+              {plan.features.map((feature) => (
+                <li><span class="pchk">✓</span>{feature}</li>
+              ))}
+            </ul>
+            <a href={site.bookingUrl} class="pcta" target="_blank" rel="noopener">Book Now</a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

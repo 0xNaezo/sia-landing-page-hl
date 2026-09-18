@@ -1,0 +1,30 @@
+---
+/**
+ * Centered section heading: optional eyebrow label, title, optional amber bar.
+ * Per-section spacing lives in CSS (`#schedule .sec-head { … }` etc.).
+ */
+interface Props {
+  title: string;
+  label?: string;
+  labelClass?: string;
+  light?: boolean;
+  bar?: boolean;
+  reveal?: boolean;
+  class?: string;
+}
+const {
+  title,
+  label,
+  labelClass,
+  light = false,
+  bar = true,
+  reveal = true,
+  class: className,
+} = Astro.props;
+---
+
+<div class:list={['sec-head', { reveal }, className]}>
+  {label && <div class:list={['sec-label', labelClass]}>{label}</div>}
+  <h2 class:list={['sec-title', { wh: light }]} set:html={title} />
+  {bar && <div class="amber-bar c"></div>}
+</div>

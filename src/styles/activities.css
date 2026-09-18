@@ -1,0 +1,14 @@
+/* ── ACTIVITIES ── */
+.act-tabs{display:flex;gap:4px;background:var(--cream-dark);padding:4px;border-radius:7px;margin-bottom:34px;width:fit-content;margin-left:auto;margin-right:auto}
+.act-tab{padding:10px 22px;border-radius:5px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-light);background:transparent;border:none;filter:drop-shadow(0 0 0 transparent);cursor:pointer;transition:all .2s}
+.act-tab.active{background:linear-gradient(135deg,var(--amber),var(--amber-dark));color:#fff;box-shadow:0 4px 14px rgba(224,123,26,.35)}
+.act-tab:hover:not(.active){color:var(--text-dark)}
+.act-panel{display:none}
+.act-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;justify-items:center}
+.acard{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:24px 20px;transition:transform .2s,box-shadow .2s}
+.acard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.acard-icon{font-size:32px;margin-bottom:12px}
+.acard h4{font-family:var(--font-display);font-size:14px;letter-spacing:.04em;color:var(--text-dark);margin-bottom:7px;text-transform:uppercase}
+.acard p{font-size:13px;color:var(--text-light);line-height:1.6}
+
+#activities .sec-head{margin-bottom:38px}

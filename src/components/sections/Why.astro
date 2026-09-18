@@ -1,0 +1,43 @@
+---
+import why from '../../data/why.json';
+import SectionHead from '../SectionHead.astro';
+---
+
+<section class="sec sec-dark" id="why">
+  <div class="container">
+    <SectionHead title="Why Parents Choose SIA" light />
+
+    <!-- Desktop comparison table -->
+    <div class="why-table why-desktop-table reveal d1">
+      <div class="why-row why-head">
+        <div class="why-th">{why.columns[0]}</div>
+        <div class="why-th c">{why.columns[1]}</div>
+        <div class="why-th sia">{why.columns[2]}</div>
+      </div>
+      {
+        why.rows.map((row) => (
+          <div class="why-row">
+            <div class="why-td label">{row.label}</div>
+            <div class="why-td ord">{row.ordinary}</div>
+            <div class:list={['why-td', 'sia', { hl: row.highlight }]} set:html={row.sia} />
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Mobile cards (hidden on desktop) -->
+    <div class="why-mobile-cards reveal d1">
+      {
+        why.mobileCards.map((card) => (
+          <div class="why-mcard">
+            <span class="why-mcard-icon">{card.icon}</span>
+            <div>
+              <div class="why-mcard-lbl">{card.label}</div>
+              <div class="why-mcard-txt" set:html={card.text} />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
