@@ -6,7 +6,7 @@
 .pcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:11px;padding:32px 24px;text-align:center;position:relative;transition:transform .25s,border-color .25s,box-shadow .25s;display:flex;flex-direction:column;align-items:center}
 .pcard:hover{transform:translateY(-6px);border-color:rgba(224,123,26,.4);box-shadow:0 20px 50px rgba(0,0,0,.25)}
 .acard{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:24px 20px;transition:transform .25s,box-shadow .25s,border-color .25s}
-.acard:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.1);border-color:rgba(224,123,26,.3)}
+.acard:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(224,123,26,.35)}
 
 /* ── MARQUEE LOGOS ── */
 .marquee-wrap{overflow:hidden;padding:0 0 8px}
