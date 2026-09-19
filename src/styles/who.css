@@ -25,10 +25,3 @@
 .who-video-btn{width:72px;height:72px;background:rgba(255,255,255,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,.35);transition:transform .2s,background .2s}
 .who-video-label{color:#fff;font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.5)}
 
-
-/* divider into #stats: the dark section reaches up under this one and masks its own top edge
-   (stats.css); all that is left here is the warm topsoil band, the same silhouette sitting 3px
-   higher, so a strip of it rims the cut. */
-.who-divider{position:absolute;left:0;right:0;bottom:3px;height:56px;background:#4a3526;pointer-events:none;
-  -webkit-mask:var(--strata-cut) repeat-x left top/300px 56px;mask:var(--strata-cut) repeat-x left top/300px 56px}
-@media(max-width:600px){.who-divider{display:none}}
