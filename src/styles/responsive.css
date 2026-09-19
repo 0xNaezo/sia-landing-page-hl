@@ -8,7 +8,7 @@
   .who-grid,.found-grid{grid-template-columns:1fr;gap:44px}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .pgrid{grid-template-columns:1fr;max-width:400px}
-  .sched-timeline::before{left:85px}.stl-item{grid-template-columns:78px 20px 1fr;gap:0 10px}.stl-time{font-size:10px}
+  .stl-item{grid-template-columns:78px 20px 1fr;gap:0 10px}.stl-time{font-size:10px}
   
 }
 @media(max-width:600px){
