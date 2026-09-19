@@ -40,12 +40,5 @@
     "title": "Witches' Cauldron Workshop",
     "desc": "Shape a clay cauldron by hand using the Neolithic pinch-pot method, inspired by the Cailleach of Irish folklore.",
     "accent": true
-  },
-  {
-    "time": "15:00",
-    "icon": "🧹",
-    "title": "Pick-up",
-    "desc": "Parents collect their young archaeologists and hear about the day's discoveries.",
-    "accent": false
   }
 ]

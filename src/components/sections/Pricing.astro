@@ -2,15 +2,54 @@
 import site from '../../data/site.json';
 import pricing from '../../data/pricing.json';
 import SectionHead from '../SectionHead.astro';
+import CornerWeb from '../CornerWeb.astro';
+import { cornerWeb } from '../../lib/corner-web';
+
+// Card 3 web, generated at build time: a fan in the top-right corner (mirrored in the markup).
+// Spoke lengths are set by hand so the top one ends under the rounded right end of the
+// "Most Popular" badge (~75px from the card edge) and the others grow towards the right edge,
+// clear of the icon and the price.
+const fan3 = cornerWeb({ spokes: 6, rings: 5, seed: 23, lengths: [79, 92, 112, 125, 160, 176] });
 ---
 
 <section class="sec sec-deep" id="pricing">
+  <!-- decor (desktop only): two jack-o'-lanterns cut off by the bottom edge, anchored to the
+       content container, with their own glow; a web in the purple top-left corner. The lantern
+       shapes are the <symbol>s defined in Schedule.astro. Web goes last so
+       .price-pumpkin:nth-of-type(n) counts lanterns only. -->
+  <span class="price-decor" aria-hidden="true">
+    <span class="price-glow"></span>
+    <svg class="price-pumpkin"><use href="#stl-pumpkin-b" /></svg>
+    <svg class="price-pumpkin"><use href="#stl-pumpkin-a" /></svg>
+    <CornerWeb class="price-web" />
+  </span>
   <div class="container">
     <SectionHead label="Choose Your Camp" title="Flexible Options for Every Family" light />
     <div class="pgrid reveal" id="pgrid">
       {
-        pricing.map((plan) => (
+        pricing.map((plan, i) => (
           <div class:list={['pcard', { feat: plan.featured }]}>
+            {/* Per-card decor (desktop only), placed before the badge so the badge paints on top.
+                Card 1 is left bare on purpose. Card 2: a spider on a thread that drops lower when
+                the card is hovered. Card 3: fan strung between the badge and the top-right corner,
+                in a layer clipped to the card's rounded corners. */}
+            {i === 1 && (
+              <svg class="pdecor pcard-spider" width="24" height="68" aria-hidden="true">
+                <path class="pcard-spider-thread" d="M12 0V200" />
+                <g>
+                  <path d="M8.6 5.7l-4.4-3.4-2.6-4.2M8 8.2l-5.4-1.2-2.2-3.4M8 11l-5.6.8-2 3.6M8.6 13.6l-4.2 3.2-1.6 4.6M15.4 5.7l4.4-3.4 2.6-4.2M16 8.2l5.4-1.2 2.2-3.4M16 11l5.6.8 2 3.6M15.4 13.6l4.2 3.2 1.6 4.6" />
+                  <circle cx="12" cy="3.2" r="2.6" />
+                  <ellipse cx="12" cy="10.7" rx="4.2" ry="5.4" />
+                </g>
+              </svg>
+            )}
+            {i === 2 && (
+              <span class="pdecor pcard-clip" aria-hidden="true">
+                <svg class="pcard-fan" viewBox="0 0 190 190">
+                  <g transform="translate(190 0) scale(-1 1)"><path d={fan3} vector-effect="non-scaling-stroke" /></g>
+                </svg>
+              </span>
+            )}
             {plan.badge && <div class="pbadge">{plan.badge}</div>}
             <div class="picon">{plan.icon}</div>
             <div class="pnow">{plan.price}</div>

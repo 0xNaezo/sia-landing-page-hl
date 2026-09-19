@@ -2,7 +2,7 @@
 .sec{padding:90px 5%}
 .sec-white{background:var(--white)}
 .sec-cream{background:var(--cream)}
-.sec-parchment{background:#FBF5EA}
+.sec-parchment{background:var(--parchment)}
 .sec-dark{background:linear-gradient(160deg,#111010 0%,#181614 60%,#1c1a18 100%);position:relative;overflow:hidden}
 .sec-deep{background:linear-gradient(160deg,#090808 0%,#111010 55%,#161412 100%);position:relative;overflow:hidden}
 .container{max-width:1200px;margin:0 auto}

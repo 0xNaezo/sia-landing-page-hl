@@ -1,10 +1,44 @@
 /* ── PRICING (dark) ── */
+/* deep base with a muted purple glow falling from the top edge (stats has it rising from the bottom) */
+#pricing{background:
+  radial-gradient(ellipse 75% 50% at 45% 0%,rgba(74,32,128,.55) 0%,rgba(42,18,69,.3) 45%,transparent 75%),
+  linear-gradient(160deg,#090808 0%,#111010 55%,#161412 100%)}
+/* polish.css paints amber blobs on every .sec-deep: the top-right one would muddy the purple,
+   the bottom-left one is replaced by the lanterns' own glow (.price-glow), which follows the container */
+#pricing::before,#pricing::after{display:none}
+
+/* section decor (desktop only). Lanterns sit on the container's left edge (max(5% padding, centred 1200px)),
+   cut off by the section's bottom edge by roughly a tenth, over a pulsing warm glow. */
+.price-web{position:absolute;top:0;left:0;width:240px;height:240px;fill:none;stroke:#fff;stroke-width:1.2;opacity:.11;pointer-events:none}
+.price-glow{position:absolute;left:calc(max(5%,50% - 600px) - 110px);bottom:-165px;width:420px;height:330px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(255,150,40,.34),rgba(224,123,26,.12) 50%,transparent);animation:pumpkinGlow 3.4s ease-in-out infinite}
+.price-pumpkin{position:absolute;pointer-events:none;filter:drop-shadow(0 0 6px rgba(255,220,120,.6)) drop-shadow(0 0 24px rgba(255,170,60,.85))}
+.price-pumpkin:nth-of-type(1){left:calc(max(5%,50% - 600px) + 16px);bottom:-13px;width:104px;height:104px;transform:rotate(-6deg)}
+.price-pumpkin:nth-of-type(2){left:calc(max(5%,50% - 600px) + 104px);bottom:-10px;width:72px;height:72px;transform:rotate(7deg)}
+@media(prefers-reduced-motion:reduce){.price-glow{animation:none}}
+
+/* card 3: dark-brown fan generated in lib/corner-web.ts, in a layer clipped to the card's rounded corners */
+.pcard-clip{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none}
+.pcard-fan{position:absolute;top:0;right:0;width:190px;height:190px;overflow:visible;fill:none;stroke:rgba(70,30,0,.4);stroke-width:1.25;stroke-linecap:round;
+  -webkit-mask:radial-gradient(circle 200px at 100% 0,#000 50%,rgba(0,0,0,.35) 100%);mask:radial-gradient(circle 200px at 100% 0,#000 50%,rgba(0,0,0,.35) 100%)}
+/* card 2: spider in the top 70px, swaying from the thread's anchor; on hover the svg grows and the body drops,
+   the thread is drawn long and simply gets uncovered */
+.pcard-spider{position:absolute;top:0;right:34px;width:24px;height:68px;fill:rgba(255,255,255,.35);stroke:rgba(255,255,255,.35);stroke-width:1.1;stroke-linecap:round;pointer-events:none;
+  transform-origin:50% 0;animation:spiderSway 5s ease-in-out infinite alternate;transition:height 1.4s ease-in-out}
+.pcard-spider path{fill:none}
+.pcard-spider-thread{stroke:rgba(255,255,255,.25);stroke-width:.8}
+.pcard-spider g{transform:translateY(44px);transition:transform 1.4s ease-in-out}
+.pcard:hover .pcard-spider{height:132px}
+.pcard:hover .pcard-spider g{transform:translateY(106px)}
+@keyframes spiderSway{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+@media(prefers-reduced-motion:reduce){.pcard-spider{animation:none}}
+@media(max-width:960px){.price-decor,.pdecor{display:none}}
 
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:860px;margin:0 auto}
 .pcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:11px;padding:32px 24px;text-align:center;position:relative;transition:transform .2s,border-color .2s;display:flex;flex-direction:column;align-items:center}
 .pcard:hover{transform:translateY(-5px);border-color:rgba(224,123,26,.3)}
 .pcard.feat{background:linear-gradient(145deg,var(--amber) 0%,var(--amber-dark) 100%);border-color:var(--amber-dark);box-shadow:0 4px 24px rgba(224,123,26,.25),inset 0 1px 0 rgba(255,255,255,.15)}
-.pbadge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
+.pbadge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#5b2f9c;color:#fff;box-shadow:0 4px 14px rgba(40,10,80,.45);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
 .picon{font-size:32px;margin-bottom:12px;height:48px;display:flex;align-items:center;justify-content:center}
 .pnow{font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--amber);letter-spacing:.03em;line-height:1;margin-bottom:3px}
 .pcard.feat .pnow{color:#fff}
