@@ -1,6 +1,12 @@
 /* ── ACTIVITIES (dark, Halloween) ── */
 /* Dark section: remap the light-palette tokens used by the rules below and in polish/mobile. */
 #activities{--white:rgba(255,255,255,.04);--cream:rgba(255,255,255,.06);--cream-dark:rgba(255,255,255,.05);--border:rgba(255,255,255,.09);--text-dark:#fff;--text-mid:rgba(255,255,255,.6);--text-light:rgba(255,255,255,.55);--shadow:0 10px 30px rgba(0,0,0,.35)}
+/* vertical gradient (not the shared 160deg tilt) so the bottom edge is one flat
+   colour across the full width and #why can butt onto it seamlessly */
+#activities{background:linear-gradient(180deg,#090808 0%,#111010 55%,#161412 100%)}
+/* the shared .sec-deep bottom-left glow gets clipped flat by overflow:hidden,
+   leaving a hard edge at the #why seam; #why's own glow covers this area now */
+#activities::after{display:none}
 .act-web{position:absolute;top:0;left:0;width:262px;height:262px;fill:none;stroke:#fff;stroke-width:1.2;opacity:.18;pointer-events:none;z-index:0}
 @media(max-width:480px){.act-web{width:140px;height:140px}}
 .act-tabs{display:flex;gap:4px;background:var(--cream-dark);border:1px solid var(--border);padding:4px;border-radius:7px;margin-bottom:34px;width:fit-content;margin-left:auto;margin-right:auto}

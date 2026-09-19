@@ -354,7 +354,7 @@
   #locations .loc-sub{font-size:10px!important}
   #locations .loc-open{font-size:9px!important;letter-spacing:.03em!important}
   #locations .loc-card{padding:10px 12px!important;gap:10px!important}
-  #locations .loc-pin{ font-size:16px!important }
+  #locations .loc-pin{width:22px!important;height:22px!important}
   #locations .sec-head{margin-bottom:20px!important}
   #locations .loc-note{font-size:10px!important}
 

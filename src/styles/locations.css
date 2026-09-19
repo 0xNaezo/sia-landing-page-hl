@@ -1,15 +1,45 @@
 /* ── LOCATIONS ── */
 
+#locations{position:relative}
+
+/* a big moon rising at the section's right edge: 560px across, centred 50px in from the viewport edge
+   (body is overflow-x:hidden, so the overhang never scrolls) and on the seam with Testimonials, so
+   half of it hangs into the next section. Both sections are .sec-cream, so it crosses the seam
+   without one showing. z-index:1 lifts it over the next section's background while staying under
+   #testimonials .container (same level, later in the DOM), so the review card sits on top of it.
+   Craters are radial-gradients, the glow is two box-shadow rings. */
+.loc-decor{position:absolute;inset:0;pointer-events:none}
+.loc-moon{position:absolute;z-index:1;bottom:-280px;right:-230px;width:560px;height:560px;border-radius:50%;
+  background:
+    radial-gradient(circle at calc(50% + 5px) calc(50% - 142px),#f1cfa2 43px,transparent 44px),
+    radial-gradient(circle at calc(50% - 138px) calc(50% + 100px),#f1cfa2 36px,transparent 37px),
+    radial-gradient(circle at calc(50% - 81px) calc(50% + 152px),#f1cfa2 14px,transparent 15px),
+    radial-gradient(circle at calc(50% - 180px) calc(50% + 48px),#f1cfa2 10px,transparent 11px),
+    #f7ddbb;
+  box-shadow:0 0 0 56px rgba(244,211,168,.28),0 0 0 112px rgba(244,211,168,.15)}
+/* the flock: a diagonal from the gap under the cards (big, near, pale) down-right into the moon
+   (small, far). Offsets are measured from the moon's centre (right:50px, bottom:0). */
+.loc-bat{position:absolute;z-index:1;fill:#5e2f0a}
+.loc-bat:nth-of-type(1){bottom:145px;right:427px;width:140px;height:70px;opacity:.22;transform:rotate(-14deg)}
+.loc-bat:nth-of-type(2){bottom:157px;right:264px;width:114px;height:57px;opacity:.36;transform:rotate(4deg)}
+.loc-bat:nth-of-type(3){bottom:118px;right:172px;width:80px;height:40px;opacity:.34;transform:rotate(-10deg)}
+.loc-bat:nth-of-type(4){bottom:42px;right:115px;width:70px;height:35px;opacity:.32;transform:rotate(6deg)}
+.loc-bat:nth-of-type(5){bottom:-12px;right:54px;width:48px;height:24px;opacity:.3;transform:rotate(-6deg)}
+.loc-bat:nth-of-type(6){bottom:-50px;right:7px;width:38px;height:19px;opacity:.28;transform:rotate(8deg)}
+@media(max-width:960px){.loc-decor{display:none}}
+
 #locations .sec-head{margin-bottom:44px}
 #locations .sec-title{letter-spacing:.06em}
 .mob-locations-map-inner{position:relative;width:100%;height:100%;overflow:hidden;border-radius:10px}
 .loc-map-frame{border:0;position:absolute;top:-80px;left:0}
-.loc-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.loc-layout{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
 .loc-map{border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12);height:500px;position:relative}
 .loc-list{display:flex;flex-direction:column;gap:10px}
-.loc-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e8e4dc;border-radius:9px;padding:16px 20px;cursor:pointer;color:inherit;text-decoration:none;transition:box-shadow .2s,transform .2s}
-.loc-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateX(4px)}
-.loc-pin{color:#E53935;font-size:20px}
+.loc-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e8e4dc;border-radius:9px;padding:16px 20px;cursor:pointer;color:inherit;text-decoration:none;transition:box-shadow .2s,transform .2s,border-color .2s}
+.loc-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateX(4px);border-color:var(--amber)}
+/* pin: the schedule lantern, lit up on hover */
+.loc-pin{width:30px;height:30px;flex-shrink:0;transition:filter .2s}
+.loc-card:hover .loc-pin{filter:drop-shadow(0 0 4px rgba(255,220,120,.9)) drop-shadow(0 0 12px rgba(224,123,26,.75))}
 .loc-name{font-size:15px;font-weight:700;color:var(--text-dark)}
 .loc-sub{font-size:12px;color:var(--text-light);margin-top:2px}
 .loc-open{margin-left:auto;font-size:11px;color:var(--amber);font-weight:700;letter-spacing:.05em;white-space:nowrap;flex-shrink:0}

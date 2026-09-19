@@ -1,6 +1,14 @@
 /* ── WHY SIA (dark) ── */
 
-#why{border-top:2px solid rgba(224,123,26,.25)}
+/* no divider line; left glow hoisted above the section edge so it spills into #activities */
+/* same black depth as .sec-deep (#activities): reuses its #090808..#161412 range,
+   but runs it in reverse so the top edge matches where #activities ends — no seam */
+#why{overflow:visible;background:linear-gradient(180deg,#161412 0%,#111010 45%,#0a0908 100%)}
+#why::after{
+  top:-260px;bottom:auto;left:-140px;
+  width:560px;height:560px;
+  background:radial-gradient(circle,rgba(224,123,26,.14) 0%,rgba(224,123,26,.05) 45%,transparent 70%)
+}
 #why .sec-title{font-size:clamp(32px,5vw,58px);line-height:1.05}
 /* desktop comparison table */
 .why-table{max-width:860px;margin:0 auto;background:rgba(0,0,0,.18);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}

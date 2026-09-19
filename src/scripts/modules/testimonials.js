@@ -13,7 +13,7 @@ export function initTestimonials() {
   let slide = 0;
 
   function update() {
-    const w = cards[0].offsetWidth;
+    const w = cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : 0;
     track.style.transform = `translateX(-${slide * w}px)`;
     dots.forEach((d, i) => d.classList.toggle('active', i === slide));
   }
