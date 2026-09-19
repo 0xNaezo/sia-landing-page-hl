@@ -2,6 +2,8 @@
 import site from '../../data/site.json';
 import locations from '../../data/locations.json';
 import SectionHead from '../SectionHead.astro';
+import Bat from '../Bat.astro';
+const pins = ['a', 'b', 'c'];
 ---
 
 <section class="sec sec-cream" id="locations">
@@ -35,9 +37,9 @@ import SectionHead from '../SectionHead.astro';
       </div>
       <div class="loc-list">
         {
-          locations.map((loc) => (
+          locations.map((loc, i) => (
             <a class="loc-card" href={loc.mapUrl} target="_blank" rel="noopener">
-              <span class="loc-pin">📍</span>
+              <svg class="loc-pin" aria-hidden="true"><use href={`#stl-pumpkin-${pins[i % pins.length]}`} /></svg>
               <div>
                 <div class="loc-name">{loc.name}</div>
                 <div class="loc-sub">{loc.area}</div>
@@ -54,4 +56,15 @@ import SectionHead from '../SectionHead.astro';
       </div>
     </div>
   </div>
+  <!-- decor (desktop only): a big moon rising at the section's right edge, centred on the seam with
+       Testimonials, and a flock of 6 bats flying into it from under the cards (big/near first). -->
+  <span class="loc-decor" aria-hidden="true">
+    <span class="loc-moon"></span>
+    <Bat class="loc-bat" />
+    <Bat class="loc-bat" />
+    <Bat class="loc-bat" />
+    <Bat class="loc-bat" />
+    <Bat class="loc-bat" />
+    <Bat class="loc-bat" />
+  </span>
 </section>
