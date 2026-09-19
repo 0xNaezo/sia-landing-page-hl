@@ -1,8 +1,21 @@
 /* ── STATS (dark) ── */
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.08);border-radius:10px;overflow:hidden}
-.stat{background:rgba(255,255,255,.04);padding:48px 24px;text-align:center}
-.stat-num{font-family:var(--font-display);font-size:56px;font-weight:700;background:linear-gradient(135deg,var(--amber-light),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.03em;line-height:1;margin-bottom:6px}
-.stat-lbl{font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.07em;text-transform:uppercase;font-weight:700}
-.stat-desc{font-size:11px;color:rgba(255,255,255,.3);margin-top:5px;line-height:1.5}
+/* isolation: the screened glow below must blend with this section's ink only */
+#stats{padding:70px 5%;background:var(--ink);isolation:isolate}
+/* polish.css paints amber blobs on every .sec-dark; #stats has its own glow elements */
+#stats::before{display:none}
+/* grain over the gradients so they don't band */
+#stats::after{content:'';position:absolute;inset:0;width:auto;height:auto;border-radius:0;opacity:.03;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/200px 200px}
 
-#stats{padding:70px 5%;border-top:2px solid rgba(224,123,26,.25)}
+/* one big soft purple ellipse in the bottom-left corner, screened onto the ink; the section's overflow clips what runs off the corner */
+.stats-glow{position:absolute;left:-23%;top:60%;width:70%;height:70%;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(closest-side,rgba(120,60,200,.4),rgba(70,30,130,.18) 45%,transparent 75%)}
+/* warm spot tucked into the top-right corner: oversized element and an early transparent stop, so no edge ever shows; clear of the purple */
+.stats-spot{position:absolute;top:-260px;right:-220px;width:640px;height:640px;pointer-events:none;background:radial-gradient(closest-side,rgba(224,123,26,.28),rgba(224,123,26,.08) 40%,transparent 68%)}
+
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+/* translucent so the glow tints them; the under-glow ties them to it */
+.stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:48px 24px;text-align:center;box-shadow:0 30px 80px -20px rgba(120,60,200,.25)}
+/* gradient text is transparent-filled, so text-shadow would show through the glyphs; drop-shadow glows the rendered shape instead */
+.stat-num{font-family:var(--font-display);font-size:56px;font-weight:700;background:linear-gradient(135deg,var(--amber-light),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.03em;line-height:1;margin-bottom:6px;filter:drop-shadow(0 0 14px rgba(240,160,64,.4))}
+.stat-lbl{font-size:12px;color:rgba(255,255,255,.8);letter-spacing:.07em;text-transform:uppercase;font-weight:700}
+.stat-desc{font-size:11px;color:rgba(255,255,255,.45);margin-top:5px;line-height:1.5}

@@ -116,8 +116,6 @@
 }
 .sec-dark .container,.sec-deep .container{position:relative;z-index:1}
 
-/* Stats: subtle warm card bg */
-.stats-grid .stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px}
 .stat-num{background:linear-gradient(135deg,#f5c47a,var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* Mobile founder quote — desktop hidden */
