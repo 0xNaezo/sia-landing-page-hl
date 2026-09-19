@@ -85,7 +85,7 @@
 
   /* ── SCHEDULE TIMELINE — compact accordion with time visible ── */
   .sched-timeline{max-width:100%;display:flex!important;flex-direction:column;gap:0}
-  .sched-timeline::before{display:none}
+  .stl-vine,.sched-decor{display:none}
   .stl-item{margin-bottom:4px!important;padding-left:0!important;grid-template-columns:unset!important;border-bottom:none!important;display:block!important}
   .stl-time{display:none!important}
   .stl-dot{display:none}

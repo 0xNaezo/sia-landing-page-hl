@@ -1,5 +1,29 @@
 /* ── SCHEDULE ── */
 
-#schedule .sec-head{margin-bottom:44px}
+#schedule{position:relative;overflow:clip} /* clip, not hidden: hidden would make the section the scroller for the vine's view-timeline */
+#schedule .sec-head{margin-bottom:44px;position:relative;z-index:1}
 .stl-time-badge{display:none}
 .mob-tap-hint{text-align:center;margin-top:10px}
+
+/* decor: one web in the corner, a flock of 4 bats flying out of it, away from the heading (desktop only) */
+.sched-web{position:absolute;top:0;right:0;width:240px;height:240px;fill:none;stroke:#3a2a12;stroke-width:1.2;opacity:.13;transform:scaleX(-1);pointer-events:none}
+.sched-bat{position:absolute;fill:#111;pointer-events:none}
+.sched-bat:nth-of-type(1){top:72px;right:236px;width:40px;height:20px;opacity:.22;transform:rotate(-10deg)}
+.sched-bat:nth-of-type(2){top:46px;right:306px;width:32px;height:16px;opacity:.2;transform:rotate(-18deg)}
+.sched-bat:nth-of-type(3){top:100px;right:352px;width:26px;height:13px;opacity:.17;transform:rotate(6deg)}
+.sched-bat:nth-of-type(4){top:60px;right:420px;width:20px;height:10px;opacity:.15;transform:rotate(-8deg)}
+@media(max-width:960px){.sched-decor{display:none}}
+
+/* vine: olive stem with leaves and spiral tendrils, drawn through the pumpkin centres
+   by scripts/modules/schedule.js; grows with scroll via a view-timeline */
+.sched-timeline{view-timeline:--vine block}
+.stl-vine{position:absolute;left:124px;top:23px;width:22px;height:0;overflow:visible;z-index:0;pointer-events:none}
+.stl-vine-line{fill:none;stroke:#5b6b2e;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.stl-vine-leaf{fill:#5b6b2e;fill-opacity:.32}
+@supports (animation-timeline:view()){
+  .stl-vine-line{stroke-dasharray:1;stroke-dashoffset:1;animation:vineGrow linear both;animation-timeline:--vine;animation-range:entry 0% entry 85%}
+  .stl-vine-leaf{clip-path:inset(0 0 100% 0);animation:vineLeaf linear both;animation-timeline:--vine;animation-range:entry 0% entry 85%}
+}
+@keyframes vineGrow{to{stroke-dashoffset:0}}
+@keyframes vineLeaf{to{clip-path:inset(0 0 0 0)}}
+@media(prefers-reduced-motion:reduce){.stl-vine path{animation:none;stroke-dashoffset:0;clip-path:none}}

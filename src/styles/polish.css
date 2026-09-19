@@ -41,14 +41,16 @@
 
 /* ── SCHEDULE TIMELINE ── */
 .sched-timeline{display:flex;flex-direction:column;gap:0;max-width:680px;margin:0 auto;position:relative}
-.sched-timeline::before{content:'';position:absolute;left:130px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,rgba(212,135,42,0) 0%,var(--amber) 8%,var(--amber-dark) 50%,rgba(212,135,42,.3) 100%);z-index:0}
 .stl-item{display:grid;grid-template-columns:110px 22px 1fr;align-items:flex-start;gap:0 14px;margin-bottom:14px}
 .stl-time{font-size:12px;font-weight:700;color:var(--text-light);letter-spacing:.04em;padding-top:16px;text-align:right;line-height:1.3}
-.stl-dot{width:14px;height:14px;background:linear-gradient(135deg,var(--amber-light),var(--amber-dark));border-radius:50%;margin-top:16px;flex-shrink:0;position:relative;z-index:2;box-shadow:0 0 0 3px rgba(224,123,26,.25),0 0 0 6px rgba(224,123,26,.08);animation:dotPulse 2.4s ease-in-out infinite}
-@keyframes dotPulse{0%,100%{box-shadow:0 0 0 3px rgba(224,123,26,.25),0 0 0 6px rgba(224,123,26,.08)}50%{box-shadow:0 0 0 4px rgba(224,123,26,.4),0 0 0 9px rgba(224,123,26,.12)}}
-.stl-card{background:#fff;border:1px solid #e8e4dc;border-radius:10px;padding:14px 18px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow .2s,transform .2s}
-.stl-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.08);transform:translateX(4px)}
-.stl-card.stl-accent{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.12)}
+.stl-dot{width:32px;height:32px;margin:7px 0 0 -5px;flex-shrink:0;position:relative;z-index:2;transform:rotate(var(--tilt,0deg))}
+.stl-dot::before{content:'';position:absolute;inset:-9px;border-radius:50%;z-index:-1;background:radial-gradient(circle,rgba(240,160,64,.5) 0%,rgba(240,160,64,.18) 45%,rgba(240,160,64,0) 70%);animation:pumpkinGlow 2.6s ease-in-out infinite}
+@keyframes pumpkinGlow{0%,100%{opacity:.7;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
+@media(prefers-reduced-motion:reduce){.stl-dot::before{animation:none}}
+.stl-dot svg{display:block;width:100%;height:100%}
+.stl-card{background:#fff;border:1px solid #e8e4dc;border-radius:10px;padding:14px 18px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow .2s,transform .2s,border-color .2s}
+.stl-card.stl-accent{background:#FFF1DF;border-color:rgba(224,123,26,.22)}
+.stl-card:hover{box-shadow:0 8px 22px rgba(184,95,16,.14);transform:translateY(-3px);border-color:var(--amber)}
 
 .stl-card.stl-accent .stl-desc{color:var(--text-mid)}
 .stl-card.stl-accent .stl-title{color:var(--text-dark)}
