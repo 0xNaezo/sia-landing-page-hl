@@ -1,10 +1,22 @@
 ---
 import faq from '../../data/faq.json';
 import SectionHead from '../SectionHead.astro';
+import CornerWeb from '../CornerWeb.astro';
+import Spider from '../Spider.astro';
 const delays = ['', 'd1', 'd2'];
 ---
 
 <section class="sec sec-cream" id="faq">
+  <!-- decor (desktop only): a corner web top-right (as on the schedule) and a spider on a
+       thread from the top edge, in the empty margin right of the list. scripts/modules/faq.js
+       lowers it down the thread once it scrolls into view. -->
+  <div class="faq-web" aria-hidden="true">
+    <CornerWeb class="faq-web-svg" />
+    <div class="faq-line">
+      <span class="faq-thread"></span>
+      <div class="faq-spider"><Spider class="faq-spider-svg" /></div>
+    </div>
+  </div>
   <div class="container">
     <SectionHead label="FAQ" title="Quick Answers Parents Actually Care About" />
     <div class="faq-list">

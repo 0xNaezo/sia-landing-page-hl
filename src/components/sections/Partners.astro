@@ -16,7 +16,7 @@ import { asset } from '../../lib/asset';
         <div class="marquee-row" id={`mrow${i + 1}`}>
           <div class:list={['marquee-track', { 'marquee-reverse': i % 2 === 1 }]} id={`mtrack${i + 1}`}>
             {row.map((file) => (
-              <div class="mlogo">
+              <div class="mlogo" style={`--logo:url("${asset(`/assets/images/Logo/${file}`)}")`}>
                 <img src={asset(`/assets/images/Logo/${file}`)} alt="partner logo" loading="lazy" decoding="async" />
               </div>
             ))}

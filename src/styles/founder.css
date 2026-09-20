@@ -1,6 +1,30 @@
 /* ── FOUNDER ── */
+/* Old paper: stains (#founder::before) under three layers of light, grain on top (#founder::after,
+   under .container). The stains are one low-frequency noise image, tea-coloured, stretched over the
+   whole section (viewBox + preserveAspectRatio=none, no tiling) and masked out towards the bottom
+   edge, so the seam with the plain cream of Partners stays invisible. Light, top to bottom:
+   1. the Pricing lanterns' glow spilling over the seam. They sit at the container's left edge
+      (pricing.css), so the spot is centred on the cluster, x = container-left + 96px, and goes
+      away with them below 960px, where the decor is hidden;
+   2. a warm halo behind the portrait (.found-vis::before, so it follows the photo column);
+   3. a vignette anchored at the bottom centre: it shades the top corners and the sides and is
+      fully transparent along the bottom edge, so nothing marks the seam with Partners — the two
+      sections share the background and are set apart by the half padding and the next H2. */
+#founder{position:relative;overflow:hidden;padding-bottom:45px;
+  --lantern-light:radial-gradient(ellipse 560px 320px at calc(max(5%,50% - 600px) + 96px) 0,rgba(255,150,40,.22),rgba(224,123,26,.07) 45%,transparent 70%);
+  background:var(--lantern-light),radial-gradient(ellipse 100% 130% at 50% 100%,transparent 55%,rgba(60,40,10,.07)),var(--cream)}
+@media(max-width:960px){#founder{--lantern-light:none}}
+#founder::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.2;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 600' preserveAspectRatio='none'%3E%3Cfilter id='s' color-interpolation-filters='sRGB' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0035 .005' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .51 0 0 0 0 .33 0 0 0 0 .12 0 0 0 2.4 -.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;
+  -webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+/* grain: the noise tile is re-centred on the cream (feColorMatrix, alpha 1) so it only adds texture
+   and does not darken the fill. Strength is the opacity alone; .14 is a grain you can see, not a haze. */
+#founder::after{content:'';position:absolute;inset:0;opacity:.14;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1.35 0 0 0 .288 1.35 0 0 0 .288 1.35 0 0 0 .288 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/200px 200px}
+#founder .container{position:relative;z-index:1}
 .found-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:center}
 .found-vis{position:relative}
+.found-vis::before{content:'';position:absolute;inset:-22% -30%;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(240,160,64,.3),rgba(224,123,26,.1) 50%,transparent)}
 .found-port{width:100%;aspect-ratio:3/4;background:linear-gradient(145deg,#1c1a18,#0d0c0b);border-radius:11px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 
 .found-lbl{position:absolute;top:18px;left:50%;transform:translateX(-50%);background:rgba(224,123,26,.9);color:#fff;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
@@ -9,8 +33,12 @@
 .found-yrs .l{font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.07em;text-transform:uppercase;line-height:1.4}
 
 .found-name{font-family:var(--font-display);font-size:19px;color:var(--amber);letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px}
-.found-q{background:var(--cream);border-left:4px solid var(--amber);padding:24px 26px;border-radius:0 8px 8px 0;margin-bottom:20px}
-.found-q p{font-size:14px;color:var(--text-mid);line-height:1.8;font-style:italic}
+/* parchment card: the amber rule is an inset shadow so it follows the rounded corners inside the
+   warm border; the radial layer darkens the paper towards its edges. Lato italic 400 is loaded for
+   it in layouts/Base.astro — the 300 italic used elsewhere loses contrast on the beige. */
+.found-q{background:radial-gradient(ellipse at 50% 50%,rgba(60,40,10,0) 55%,rgba(60,40,10,.08)) #F2E8D8;border:1px solid rgba(120,70,20,.16);border-radius:8px;padding:24px 26px 24px 30px;margin-bottom:20px;
+  box-shadow:inset 4px 0 0 var(--amber),0 1px 2px rgba(60,40,10,.05),0 14px 36px rgba(60,40,10,.1)}
+.found-q p{font-size:14px;color:#3A3128;font-weight:400;line-height:1.8;font-style:italic}
 .found-q p+p{margin-top:12px}
 
 .found-photo{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}

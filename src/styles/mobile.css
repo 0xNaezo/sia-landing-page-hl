@@ -240,7 +240,7 @@
   }
 
   /* ── FAQ ── */
-  .faq-list{gap:2px}
+  .faq-list{gap:8px}
   .faq-q{font-size:12px;padding:12px 14px;gap:8px}
   .faq-a-in{font-size:11px;padding:10px 14px 12px;line-height:1.6}
   .faq-icon{width:20px;height:20px;font-size:13px;flex-shrink:0}

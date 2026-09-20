@@ -29,8 +29,12 @@
   flex-shrink:0;
   box-sizing:border-box;
 }
-.mlogo:hover img{filter:grayscale(0%);opacity:1}
-.mlogo img{display:block;width:100%;height:100%;object-fit:contain;transition:filter .25s,opacity .25s;mix-blend-mode:multiply;background:transparent}
+.mlogo img{display:block;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .25s;mix-blend-mode:multiply;background:transparent}
+/* dark-brown tint: logo silhouette masked over a brown fill; hover swaps back to the original artwork */
+.mlogo::after{content:'';position:absolute;inset:0;padding:inherit;box-sizing:border-box;background:var(--logo-tint);opacity:.65;transition:opacity .25s;pointer-events:none;
+  -webkit-mask:var(--logo) center/contain no-repeat content-box;mask:var(--logo) center/contain no-repeat content-box}
+.mlogo:hover::after{opacity:0}
+.mlogo:hover img{opacity:1}
 
 /* JS Tooltip */
 

@@ -1,0 +1,26 @@
+---
+/**
+ * Spider silhouette, hanging: abdomen up, so a thread attaches at the top edge of the
+ * box (x = 50). Same flat style as Bat.astro. Position/size/colour via `class`
+ * (`color` drives fill and legs). Each side's legs sit in a `.spider-legs` group so a
+ * stylesheet can animate them; the body centre is (50, 50) in viewBox units.
+ */
+interface Props { class: string }
+const { class: className } = Astro.props;
+// Four legs of the left side, each bent at the knee; the right side is the mirror.
+const legs =
+  'M44 45Q33 34 25 22Q19 14 9 6M41 49Q28 40 18 39Q9 38 2 46M41 54Q28 52 19 58Q11 63 5 74M43 58Q34 64 27 72Q21 80 15 92';
+---
+
+<svg class={className} viewBox="0 0 100 96" aria-hidden="true">
+  <g class="spider-legs">
+    <path d={legs} fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+  </g>
+  <g transform="matrix(-1 0 0 1 100 0)">
+    <g class="spider-legs">
+      <path d={legs} fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+    </g>
+  </g>
+  <ellipse cx="50" cy="21" rx="16" ry="19" fill="currentColor" />
+  <ellipse cx="50" cy="50" rx="12.5" ry="11.5" fill="currentColor" />
+</svg>
