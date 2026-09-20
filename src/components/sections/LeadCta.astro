@@ -1,7 +1,11 @@
 ---
 import site from '../../data/site.json';
+import { cornerWeb } from '../../lib/corner-web';
 import IconPhone from '../icons/IconPhone.astro';
 import IconMail from '../icons/IconMail.astro';
+
+// Same small corner fan as the hero button, strung into the top-left corner here.
+const btnFan = cornerWeb({ r: 44, spokes: 5, rings: 4, sag: 0.2, seed: 7 });
 ---
 
 <section class="lead-cta" id="book">
@@ -16,7 +20,10 @@ import IconMail from '../icons/IconMail.astro';
         Give your child an unforgettable four days of discovery, friendship and fun they'll never forget!
       </p>
       <div class="lead-cta-book">
-        <a href={site.bookingUrl} class="lead-cta-btn" target="_blank" rel="noopener">BOOK A CAMP</a>
+        <a href={site.bookingUrl} class="lead-cta-btn" target="_blank" rel="noopener"
+          ><svg class="btn-web btn-web-left" viewBox="0 0 48 48" aria-hidden="true"><path d={btnFan} /></svg>
+          BOOK A CAMP</a
+        >
       </div>
       <p class="lead-cta-sub lead-cta-q">Still have questions? We&rsquo;re here to help!</p>
       <div class="lead-cta-contacts">

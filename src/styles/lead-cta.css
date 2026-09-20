@@ -11,8 +11,9 @@
 .lead-cta-h2 span{color:var(--amber)}
 .lead-cta-desc{color:rgba(255,255,255,.75);font-size:1rem;line-height:1.7;margin:0 0 36px;max-width:420px}
 .lead-cta-book{margin-bottom:32px}
-.lead-cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#fff;font-family:var(--font-display);font-weight:800;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 32px;border-radius:4px;text-decoration:none;transition:background .2s}
+.lead-cta-btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#fff;font-family:var(--font-display);font-weight:800;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 32px;border-radius:4px;text-decoration:none;transition:background .2s}
 .lead-cta-btn:hover{background:var(--amber-dark)}
+.btn-web-left{right:auto;left:0}
 .lead-cta-q{color:rgba(255,255,255,.5);font-size:.85rem;margin:0 0 14px}
 .lead-cta-contacts{display:flex;gap:12px;flex-wrap:wrap}
 .lead-cta-contact{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.3);color:#fff;font-size:.85rem;padding:10px 20px;border-radius:4px;text-decoration:none;transition:border-color .2s}
