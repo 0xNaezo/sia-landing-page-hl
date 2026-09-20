@@ -43,3 +43,24 @@ behind a `.reveal-ready` class that `src/scripts/modules/reveal.js` sets on
 back onto a bare `.reveal` selector: that makes invisible the default state of
 ~50 content blocks, so any load where the bundle fails or the viewport never
 scrolls (print, full-page screenshot, crawler) renders a blank page.
+
+### Emoji icons
+
+There are no raw emoji in `src/`. Every one is an SVG `<symbol>` in a sprite that
+`src/components/Sprite.astro` inlines once in `<body>`, referenced through
+`<Emoji name="pumpkin" />`; `src/data/*.json` carries the icon name, not the glyph.
+The artwork is Noto Color Emoji (`src/icons/emoji/`, Apache 2.0) plus two monochrome
+marks of our own (`src/icons/ui/`) for `★` and `✓`, which the stylesheets colour
+themselves and so have to follow `currentColor`.
+
+`.emoji` is sized in `em`, so the `font-size` rules that used to size the emoji —
+`.acard-icon`, `.stl-icon`, `.picon`, `.why-mcard-icon` and their mobile overrides —
+still control it. Keep it that way: switching those to `width`/`height` in `px` means
+re-deriving every breakpoint.
+
+Two guards, both wired into `npm run check` or the build: `scripts/check-no-emoji.mjs`
+fails on a literal emoji anywhere in `src/` (`✕` in `VideoModal.astro` is the one
+allowed text symbol), and an unknown `name` throws at build time rather than rendering
+an empty `<use>`. Adding a glyph: see `src/icons/emoji/README.md` — the `prefixIds`
+step is required, Noto reuses ids like `SVGID_1_` across files and they collide once
+inlined into one sprite document.

@@ -3,6 +3,7 @@ import site from '../../data/site.json';
 import pricing from '../../data/pricing.json';
 import SectionHead from '../SectionHead.astro';
 import CornerWeb from '../CornerWeb.astro';
+import Emoji from '../Emoji.astro';
 import { cornerWeb } from '../../lib/corner-web';
 
 // Card 3 web, generated at build time: a fan in the top-right corner (mirrored in the markup).
@@ -15,7 +16,7 @@ const fan3 = cornerWeb({ spokes: 6, rings: 5, seed: 23, lengths: [79, 92, 112, 1
 <section class="sec sec-deep" id="pricing">
   <!-- decor (desktop only): two jack-o'-lanterns cut off by the bottom edge, anchored to the
        content container, with their own glow; a web in the purple top-left corner. The lantern
-       shapes are the <symbol>s defined in Schedule.astro. Web goes last so
+       shapes are the <symbol>s in components/Sprite.astro. Web goes last so
        .price-pumpkin:nth-of-type(n) counts lanterns only. -->
   <span class="price-decor" aria-hidden="true">
     <span class="price-glow"></span>
@@ -51,7 +52,7 @@ const fan3 = cornerWeb({ spokes: 6, rings: 5, seed: 23, lengths: [79, 92, 112, 1
               </span>
             )}
             {plan.badge && <div class="pbadge">{plan.badge}</div>}
-            <div class="picon">{plan.icon}</div>
+            <div class="picon"><Emoji name={plan.icon} /></div>
             <div class="pnow">{plan.price}</div>
             {/* Reserved slot for a struck-through "was" price. `pricing.json` carries no
                 such field today, so it renders empty — the box still holds its place in
@@ -60,7 +61,7 @@ const fan3 = cornerWeb({ spokes: 6, rings: 5, seed: 23, lengths: [79, 92, 112, 1
             <div class="pname">{plan.name}</div>
             <ul class="pfeats">
               {plan.features.map((feature) => (
-                <li><span class="pchk">✓</span>{feature}</li>
+                <li><span class="pchk"><Emoji name="check" /></span>{feature}</li>
               ))}
             </ul>
             <a href={site.bookingUrl} class="pcta" target="_blank" rel="noopener">Book Now</a>

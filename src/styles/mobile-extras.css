@@ -9,7 +9,7 @@
     letter-spacing:.04em;margin-top:8px;
     opacity:.85
   }
-  .mob-tap-hint::before{content:'👆';font-size:11px}
+  .mob-tap-hint .emoji{font-size:11px}
   
   /* Bigger, more visible arrow on schedule cards */
   .stl-card::after{

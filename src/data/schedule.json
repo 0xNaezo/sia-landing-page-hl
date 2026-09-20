@@ -1,42 +1,42 @@
 [
   {
     "time": "10:00 – 10:30",
-    "icon": "👻",
+    "icon": "ghost",
     "title": "Registration & Welcome",
     "desc": "Campers sign in, meet their team and get kitted out for the days ahead.",
     "accent": false
   },
   {
     "time": "10:30 – 11:00",
-    "icon": "💀",
+    "icon": "skull",
     "title": "Introduction to Archaeology",
     "desc": "Handle real finds from our display collection and learn how archaeologists read the past.",
     "accent": true
   },
   {
     "time": "11:00 – 11:45",
-    "icon": "🍬",
+    "icon": "candy",
     "title": "Snack Break",
     "desc": "Time to refuel, trade stories and gear up for the big dig.",
     "accent": false
   },
   {
     "time": "11:45 – 13:00",
-    "icon": "🪦",
+    "icon": "headstone",
     "title": "Big Dig Workshop",
     "desc": "Into the trenches — young archaeologists excavate genuine artefacts buried beneath the soil.",
     "accent": true
   },
   {
     "time": "13:00 – 13:45",
-    "icon": "🍖",
+    "icon": "meat",
     "title": "Lunch Break",
     "desc": "A proper break to rest and talk through the morning's discoveries.",
     "accent": false
   },
   {
     "time": "13:45 – 15:00",
-    "icon": "🧙",
+    "icon": "mage",
     "title": "Witches' Cauldron Workshop",
     "desc": "Shape a clay cauldron by hand using the Neolithic pinch-pot method, inspired by the Cailleach of Irish folklore.",
     "accent": true

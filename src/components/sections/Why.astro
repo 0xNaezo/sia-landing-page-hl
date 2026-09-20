@@ -1,6 +1,7 @@
 ---
 import why from '../../data/why.json';
 import SectionHead from '../SectionHead.astro';
+import Emoji from '../Emoji.astro';
 ---
 
 <section class="sec sec-dark" id="why">
@@ -30,7 +31,7 @@ import SectionHead from '../SectionHead.astro';
       {
         why.mobileCards.map((card) => (
           <div class="why-mcard">
-            <span class="why-mcard-icon">{card.icon}</span>
+            <span class="why-mcard-icon"><Emoji name={card.icon} /></span>
             <div>
               <div class="why-mcard-lbl">{card.label}</div>
               <div class="why-mcard-txt" set:html={card.text} />

@@ -13,6 +13,7 @@ npm install
 npm run dev       # http://localhost:4321 with hot reload
 npm run build     # static output in dist/
 npm run preview   # serve dist/ locally
+npm run check     # astro check + the no-raw-emoji guard
 ```
 
 Node 22 or newer.
@@ -50,9 +51,14 @@ src/
   components/
     Nav.astro, Footer.astro, SectionHead.astro
     VideoModal.astro, Lightbox.astro, CookieConsent.astro
+    Emoji.astro         one icon from the sprite: <Emoji name="pumpkin" />
+    Sprite.astro        every <symbol> the page uses, inlined once in <body>
     icons/              small inline SVG icons
     sections/           one component per page section, top to bottom
   data/                 content as JSON (see table above)
+  icons/
+    emoji/              Noto Color Emoji SVGs (Apache 2.0) — see its README
+    ui/                 hand-drawn monochrome marks that follow currentColor
   styles/
     main.css            import manifest; ORDER MATTERS (see comment inside)
     tokens.css          colour/font variables
@@ -63,6 +69,8 @@ src/
     main.js             entry point, calls each module's init()
     lib/actions.js      `data-action` click delegation helper
     modules/            one file per feature (nav, gallery, cookie consent, …)
+scripts/check-no-emoji.mjs     build-time guard: no raw emoji in src/ (see Conventions)
+svgo.config.mjs               settings the sprite SVGs were optimised with
 .github/workflows/deploy.yml   builds and publishes to GitHub Pages on push to main
 ```
 
@@ -77,6 +85,11 @@ src/
 - **CSS order.** `src/styles/main.css` imports files in the order the rules originally
   appeared. Later files (`mobile*.css`, `polish.css`) override earlier ones with
   equal-specificity selectors, so reordering changes the rendering.
+- **No raw emoji.** Every emoji is an SVG in the sprite, so a glyph looks the same on
+  Windows, macOS and Android instead of being drawn by the visitor's OS emoji font.
+  `src/data/*.json` carries a name (`"icon": "pumpkin"`), markup uses
+  `<Emoji name="pumpkin" />`, and `npm run check` fails on a literal emoji pasted into
+  `src/`. Sizing is in `em`, so the existing `font-size` rules still control icon size.
 - **Images** live in `public/assets/images/` and are referenced by absolute path
   (`/assets/images/...`) from both markup and CSS.
 

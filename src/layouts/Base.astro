@@ -1,5 +1,6 @@
 ---
 import site from '../data/site.json';
+import Sprite from '../components/Sprite.astro';
 import '../styles/main.css';
 
 interface Props {
@@ -79,6 +80,7 @@ import { asset } from '../lib/asset';
         width="0"
         style="display:none;visibility:hidden"></iframe></noscript
     >
+    <Sprite />
     <slot />
     <script src="../scripts/main.js"></script>
   </body>
