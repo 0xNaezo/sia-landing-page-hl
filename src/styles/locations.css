@@ -26,7 +26,31 @@
 .loc-bat:nth-of-type(4){bottom:42px;right:115px;width:70px;height:35px;opacity:.32;transform:rotate(6deg)}
 .loc-bat:nth-of-type(5){bottom:-12px;right:54px;width:48px;height:24px;opacity:.3;transform:rotate(-6deg)}
 .loc-bat:nth-of-type(6){bottom:-50px;right:7px;width:38px;height:19px;opacity:.28;transform:rotate(8deg)}
-@media(max-width:960px){.loc-decor{display:none}}
+/* phone: the moon stays, the flock does not — six bats over a 360px column is noise.
+   Halved with a transform anchored to its own bottom-right corner rather than by re-deriving
+   every crater offset; bottom/right are halved too, so the centre still lands on the seam. */
+@media(max-width:960px){.loc-bat{display:none}
+  /* z-index:0 instead of 1: there is no column beside the cards at this width, so the moon is
+     pure background — it still paints over both sections' own backgrounds (they are in flow,
+     the moon is positioned) but never over anything in them. */
+  .loc-moon{z-index:0;bottom:-170px;right:-150px;transform:scale(.5);transform-origin:100% 100%}
+  /* the decor and its content are siblings in one stacking context, and in-flow content paints
+     below a positioned z-index:0 box — so both sections' content needs a layer of its own. */
+  #locations .container,#testimonials .container{position:relative;z-index:2}}
+/* phone: four of the six bats come back, flying down-right into the moon across the band between
+   the last location card and the testimonials label — the one strip there with nothing in it.
+   They sit above the moon (z-index:1 against its 0) and below both containers, so they pass
+   behind the cards rather than over them. Slow drift, each on its own period so the four never
+   move in step; --r carries the per-bat tilt into the keyframe, which owns `transform`. */
+@media(max-width:480px){
+  .loc-bat{display:block;opacity:.3;animation:locBatDrift 16s ease-in-out infinite alternate}
+  .loc-bat:nth-of-type(1){--r:-14deg;right:150px;bottom:26px;width:34px;height:17px;opacity:.3;animation-duration:15s}
+  .loc-bat:nth-of-type(2){--r:5deg;right:98px;bottom:2px;width:28px;height:14px;opacity:.28;animation-duration:19s;animation-delay:-4s}
+  .loc-bat:nth-of-type(3){--r:-9deg;right:56px;bottom:-22px;width:22px;height:11px;opacity:.26;animation-duration:23s;animation-delay:-9s}
+  .loc-bat:nth-of-type(4){--r:7deg;right:18px;bottom:-44px;width:17px;height:9px;opacity:.24;animation-duration:27s;animation-delay:-2s}
+  .loc-bat:nth-of-type(5),.loc-bat:nth-of-type(6){display:none}}
+@keyframes locBatDrift{from{transform:rotate(var(--r))}to{transform:rotate(var(--r)) translate(-15px,-9px)}}
+@media(prefers-reduced-motion:reduce){.loc-bat{animation:none}}
 
 #locations .sec-head{margin-bottom:44px}
 #locations .sec-title{letter-spacing:.06em}

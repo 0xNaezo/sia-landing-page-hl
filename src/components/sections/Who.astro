@@ -31,11 +31,24 @@ import { asset } from '../../lib/asset';
           <use href="#who-ghost" width="34" height="47" transform="translate(244 336) rotate(-10)" />
         </g>
       </pattern>
+      <!-- phone tile: the same ghost at about a third the size and only three per tile. On a
+           phone the pattern shows in a couple of small pockets instead of two full margins,
+           so desktop-sized ghosts would read as one blob per pocket. -->
+      <pattern id="who-ghosts-sm" width="140" height="140" patternUnits="userSpaceOnUse">
+        <g fill="#3a2a12" fill-opacity=".07">
+          <use href="#who-ghost" width="30" height="41" transform="translate(8 10) rotate(-7)" />
+          <use href="#who-ghost" width="22" height="30" transform="translate(88 30) scale(-1 1) rotate(9)" />
+          <use href="#who-ghost" width="26" height="36" transform="translate(50 62) rotate(5)" />
+          <use href="#who-ghost" width="19" height="26" transform="translate(126 86) scale(-1 1) rotate(-12)" />
+          <use href="#who-ghost" width="24" height="33" transform="translate(16 100) rotate(11)" />
+        </g>
+      </pattern>
     </defs>
-    <rect width="100%" height="100%" fill="url(#who-ghosts)" />
+    <rect class="who-rect" width="100%" height="100%" fill="url(#who-ghosts)" />
+    <rect class="who-rect-sm" width="100%" height="100%" fill="url(#who-ghosts-sm)" />
     <!-- one ghost parked over the word "First" in the heading: the copy column is inside the
          1200px container, so "First" sits a constant 305px right of centre at desktop widths -->
-    <svg x="50%" y="0" overflow="visible" aria-hidden="true">
+    <svg class="who-extra" x="50%" y="0" overflow="visible" aria-hidden="true">
       <g fill="#3a2a12" fill-opacity=".07">
         <use href="#who-ghost" width="40" height="55" transform="translate(285 24) rotate(-8)" />
       </g>
@@ -43,7 +56,7 @@ import { asset } from '../../lib/asset';
     <!-- the tile alone is symmetric, so at wide viewports both margins get the same count.
          These extras are pinned to the right edge (nested svg at x=100%, children at negative x)
          to make the right margin read a little busier than the left. -->
-    <svg x="100%" y="0" overflow="visible" aria-hidden="true">
+    <svg class="who-extra" x="100%" y="0" overflow="visible" aria-hidden="true">
       <g fill="#3a2a12" fill-opacity=".07">
         <use href="#who-ghost" width="36" height="50" transform="translate(-52 132) scale(-1 1) rotate(8)" />
         <use href="#who-ghost" width="28" height="39" transform="translate(-160 210) scale(-1 1) rotate(14)" />

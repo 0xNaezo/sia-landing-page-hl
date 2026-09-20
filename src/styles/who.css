@@ -6,7 +6,19 @@
 .who-pattern{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
   -webkit-mask-image:linear-gradient(#000 24px,transparent 84px,transparent calc(100% - 84px),#000 calc(100% - 24px)),linear-gradient(to right,#000,transparent max(5%,(100% - 1200px)/2),transparent calc(100% - max(5%,(100% - 1200px)/2)),#000);
   mask-image:linear-gradient(#000 24px,transparent 84px,transparent calc(100% - 84px),#000 calc(100% - 24px)),linear-gradient(to right,#000,transparent max(5%,(100% - 1200px)/2),transparent calc(100% - max(5%,(100% - 1200px)/2)),#000)}
+.who-rect-sm{display:none}
 @media(max-width:960px){.who-pattern{display:none}} /* single column: copy reaches into the top/bottom bands */
+/* phone: there are no side margins to hide in, so the pattern shows through two soft pockets
+   instead — the corner beside the two short heading lines, and the strip of top padding on the
+   left. Radial layers (they union) keep it to those pockets without a second composite mode.
+   The desktop tile and the two pinned groups are all sized off the 1200px container, so the
+   phone swaps in the small tile and drops them. */
+@media(max-width:480px){
+  .who-pattern{display:block;
+    -webkit-mask-image:radial-gradient(205px 140px at 100% 46px,#000 52%,transparent 100%),radial-gradient(125px 62px at 6% 10px,#000 45%,transparent 100%);
+    mask-image:radial-gradient(205px 140px at 100% 46px,#000 52%,transparent 100%),radial-gradient(125px 62px at 6% 10px,#000 45%,transparent 100%)}
+  .who-rect,.who-extra{display:none}
+  .who-rect-sm{display:block}}
 
 .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .who-vis{position:relative}

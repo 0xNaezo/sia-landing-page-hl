@@ -63,3 +63,26 @@
 @media(prefers-reduced-motion:reduce){.faq-line,.faq-line *{animation:none!important}}
 @media(max-width:1200px){.faq-web{--web:280px}}
 @media(max-width:960px){.faq-web{display:none}}
+
+/* ── phone ─────────────────────────────────────────────────────────────────────────────────
+   .faq-web is gone at this width (a 380px corner and a 360px thread have nowhere to go), so the
+   composition is rebuilt small in the empty strip right of the centred "FAQ" label: quarter web
+   in the corner, spider on a short thread that stops level with the label and clear of the
+   heading's first line. The extra top padding is what makes that strip tall enough to hold it. */
+.faq-web-m{display:none}
+@media(max-width:480px){
+  #faq{padding-top:44px;overflow:clip}
+  .faq-web-m{display:block;position:absolute;inset:0;pointer-events:none}
+  .faq-web-m-svg{position:absolute;top:0;right:0;width:84px;height:84px;transform:scaleX(-1);fill:none;stroke:rgba(120,70,20,.2);stroke-width:1.2px;
+    -webkit-mask-image:radial-gradient(circle 88px at 0 0,#000 45%,transparent 100%);mask-image:radial-gradient(circle 88px at 0 0,#000 45%,transparent 100%)}
+  .faq-web-m-svg path{vector-effect:non-scaling-stroke}
+  /* thread and spider swing as one unit, pivoting where the thread leaves the web. The drop is
+     only on .visible: without JS the class never lands and the spider is simply at rest. */
+  .faq-hang-m{position:absolute;top:0;right:clamp(20px,8vw,40px);width:32px;height:65px;transform-origin:top center}
+  .faq-hang-m.visible{animation:faqDropM 1.2s cubic-bezier(.34,1.3,.64,1) both,faqSwayM 4s ease-in-out 1.2s infinite}
+  .faq-thread-m{position:absolute;top:0;left:50%;width:1px;height:34px;background:rgba(120,70,20,.25)}
+  .faq-spider-m{position:absolute;top:34px;left:0;display:block;width:32px;height:31px;color:#2A2118}
+}
+@keyframes faqDropM{from{transform:translateY(-100%)}to{transform:none}}
+@keyframes faqSwayM{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+@media(prefers-reduced-motion:reduce){.faq-hang-m,.faq-hang-m.visible{animation:none}}

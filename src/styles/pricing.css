@@ -28,6 +28,20 @@
 @keyframes spiderSway{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
 @media(prefers-reduced-motion:reduce){.pcard-spider{animation:none}}
 @media(max-width:960px){.price-decor,.pdecor{display:none}}
+/* phone: the section web stays gone (no margin beside the cards), but the per-card decor comes
+   back — it lives inside the card and takes no layout. The fan is sized for the short mobile row
+   and dropped under the feature list, which has to be lifted out of flow to get above it. */
+@media(max-width:480px){
+  .pdecor{display:block}
+  .pcard-clip{z-index:0}
+  .pfeats{position:relative;z-index:1}
+  .pcard-fan{width:120px;height:120px;opacity:.45;
+    -webkit-mask:radial-gradient(circle 130px at 100% 0,#000 50%,rgba(0,0,0,.35) 100%);mask:radial-gradient(circle 130px at 100% 0,#000 50%,rgba(0,0,0,.35) 100%)}
+  /* no viewBox on the spider (the hover drop works by uncovering a long thread), so it is moved,
+     not scaled. It hangs just right of the icon column, in the strip before the price: column 3
+     is filled top to bottom by the feature text, and the divider at 170 put it in the gutter
+     between the two. */
+  .pcard-spider{right:auto;left:42px}}
 
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:860px;margin:0 auto}
 .pcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:11px;padding:32px 24px;text-align:center;position:relative;transition:transform .2s,border-color .2s;display:flex;flex-direction:column;align-items:center}

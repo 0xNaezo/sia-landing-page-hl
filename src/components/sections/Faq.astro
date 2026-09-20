@@ -17,6 +17,17 @@ const delays = ['', 'd1', 'd2'];
       <div class="faq-spider"><Spider class="faq-spider-svg" /></div>
     </div>
   </div>
+  <!-- phone (faq.css): the same pair shrunk into the strip right of the centred "FAQ" label.
+       The desktop one wants a 380px corner and a 360px thread, and its scroll-driven crawl has
+       no room to read that small, so this one is plain CSS — .reveal's `visible` starts the
+       drop, then it swings. -->
+  <div class="faq-web-m" aria-hidden="true">
+    <CornerWeb class="faq-web-m-svg" />
+    <div class="faq-hang-m reveal">
+      <span class="faq-thread-m"></span>
+      <Spider class="faq-spider-m" />
+    </div>
+  </div>
   <div class="container">
     <SectionHead label="FAQ" title="Quick Answers Parents Actually Care About" />
     <div class="faq-list">

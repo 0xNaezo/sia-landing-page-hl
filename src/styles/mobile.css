@@ -85,11 +85,18 @@
 
   /* ── SCHEDULE TIMELINE — compact accordion with time visible ── */
   .sched-timeline{max-width:100%;display:flex!important;flex-direction:column;gap:0}
-  .stl-vine,.sched-decor{display:none}
-  .stl-item{margin-bottom:4px!important;padding-left:0!important;grid-template-columns:unset!important;border-bottom:none!important;display:block!important}
+  .sched-decor{display:none}
+  /* vine kept: schedule.js draws it through the pumpkin centres, so it only needs its left
+     edge over the pumpkin column. The row starts at the timeline's own left edge here (the
+     desktop time column is gone), so that is 0 — 16px put the stem in the gap beside the
+     pumpkins instead of through them. z-index over the cards so the leaves are not clipped. */
+  .stl-vine{left:0;z-index:1}
+  .stl-item{margin-bottom:4px!important;padding-left:0!important;grid-template-columns:unset!important;border-bottom:none!important;display:flex!important;align-items:center;gap:8px}
   .stl-time{display:none!important}
-  .stl-dot{display:none}
-  .stl-card{padding:8px 12px;border-radius:8px!important;border:1px solid #e8e4dc!important;box-shadow:none!important;gap:10px;cursor:pointer;align-items:flex-start;display:flex!important;flex-wrap:nowrap;margin-bottom:0;transition:background .15s}
+  /* pumpkin node kept from desktop, 22px instead of 32px so the card still fits the row */
+  .stl-dot{display:block;width:22px;height:22px;margin:0;flex-shrink:0}
+  .stl-dot::before{inset:-6px}
+  .stl-card{flex:1;min-width:0;padding:8px 12px;border-radius:8px!important;border:1px solid #e8e4dc!important;box-shadow:none!important;gap:10px;cursor:pointer;align-items:flex-start;display:flex!important;flex-wrap:nowrap;margin-bottom:0;transition:background .15s}
   .stl-card:active{background:#faf6ef}
   .stl-card::after{content:'▸';color:var(--amber);font-size:12px;flex-shrink:0;margin-top:2px;transition:transform .2s}
   .stl-card.expanded::after{content:'▾'}
@@ -154,24 +161,29 @@
   .pgrid{display:flex!important;flex-direction:column!important;gap:10px!important;padding:4px 0 4px!important}
   .pcard{
     display:grid!important;
-    grid-template-columns:52px minmax(0,40%) 1fr!important;
+    /* fixed tracks, not minmax(0,40%): a percentage track still sizes to its content, so the
+       price column — and with it the divider before the feature list — landed on a different x
+       in every card */
+    grid-template-columns:40px 130px 1fr!important;
     grid-template-rows:auto auto auto auto!important;
     padding:14px 12px 14px 0!important;
     border-radius:10px!important;overflow:visible!important;
     position:relative!important;gap:0!important
   }
-  .pcard.feat{padding:16px 12px 16px 0!important}
+  /* the badge sticks 14px out of the top and is ~20px tall; half of it plus the 10px grid gap
+     is the clearance it needs from the card above */
+  .pcard.feat{padding:16px 12px 16px 0!important;margin-top:20px!important}
   .picon{
     grid-column:1!important;grid-row:1/-1!important;
     display:flex!important;align-items:center!important;justify-content:center!important;
-    font-size:30px!important;width:56px!important;align-self:center!important;
+    font-size:30px!important;width:40px!important;align-self:center!important;
     margin:0!important;padding:0 0 20px 0!important
   }
   .pwas{grid-column:2!important;grid-row:1!important;display:block!important;font-size:12px!important;font-weight:900!important;text-decoration:line-through!important;text-decoration-color:rgba(255,255,255,.9)!important;text-decoration-style:solid!important;text-decoration-thickness:2px!important;color:rgba(255,255,255,.55)!important;margin:0 0 1px 0!important;line-height:1.2!important;text-align:center!important}
   .pcard.feat .pwas{color:rgba(0,0,0,.4)!important;text-decoration-color:rgba(0,0,0,.4)!important}
   .pnow{grid-column:2!important;grid-row:2!important;display:block!important;font-size:30px!important;font-weight:800!important;line-height:1!important;margin:0!important;text-align:center!important;min-width:0!important}
   .pname{grid-column:2!important;grid-row:3!important;display:block!important;font-size:10px!important;font-weight:700!important;letter-spacing:.06em!important;text-transform:uppercase!important;opacity:.65!important;margin:4px 0 8px!important;text-align:center!important;min-width:0!important}
-  .pcard > a.pcta{grid-column:2!important;grid-row:4!important;display:block!important;padding:9px 6px!important;font-size:10px!important;border-radius:6px!important;text-align:center!important;letter-spacing:.06em!important;margin:0 10px 10px 8px!important;width:calc(100% - 18px)!important;box-sizing:border-box!important}
+  .pcard > a.pcta{grid-column:2!important;grid-row:4!important;display:block!important;padding:9px 6px!important;font-size:10px!important;border-radius:6px!important;text-align:center!important;letter-spacing:.06em!important;margin:0 10px 10px 8px!important;width:calc(100% - 18px)!important;box-sizing:border-box!important;white-space:nowrap!important}
   .pfeats{
     grid-column:3!important;grid-row:1/-1!important;
     display:flex!important;flex-direction:column!important;
@@ -181,7 +193,9 @@
     align-self:stretch!important;justify-content:center!important
   }
   .pfeats::before{content:none!important}
-  .pfeats li{font-size:11px!important;gap:6px!important;line-height:1.2!important;display:flex!important;align-items:baseline!important;white-space:nowrap!important;overflow:hidden!important}
+  /* wrap, do not clip: the longest feature is wider than column 3 at any phone width, and
+     nowrap + overflow:hidden cut it mid-word at the card edge */
+  .pfeats li{font-size:11px!important;gap:6px!important;line-height:1.3!important;display:flex!important;align-items:baseline!important}
   .pchk{font-size:11px!important;flex-shrink:0!important;color:var(--amber)!important}
   .pcard.feat .pchk{color:#1a1a1a!important}
   .pcard.feat .pfeats li{color:#1a1a1a!important}
