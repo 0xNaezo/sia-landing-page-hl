@@ -139,7 +139,7 @@
   .tcard{padding:12px 12px}
   .testi-track{align-items:flex-start}
   .testi-wrap{overflow:hidden!important;padding:4px 0!important;margin:0!important}
-  .tstars{font-size:11px;margin-bottom:5px;letter-spacing:2px}
+  .tstars{font-size:11px;margin-bottom:5px;gap:2px}
   
   .ttext{font-size:11px;line-height:1.5;margin-bottom:4px;margin-top:0!important}
   

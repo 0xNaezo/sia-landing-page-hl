@@ -3,3 +3,9 @@ html{scroll-behavior:smooth}
 section[id],div[id]{scroll-margin-top:80px}
 body{padding-bottom:0;font-family:var(--font-body);background:var(--white);color:var(--text-dark);overflow-x:hidden}
 
+/* Emoji icons (components/Emoji.astro). Sized in em on purpose: these replace text
+   glyphs, so every font-size rule that used to size an emoji — .acard-icon,
+   .stl-icon, .picon, .why-mcard-icon and their mobile overrides — keeps working
+   untouched. inline-block + the baseline nudge keep the line box the same height
+   as the glyph did, so nothing shifts in the containers that hold only an icon. */
+.emoji{display:inline-block;width:1em;height:1em;vertical-align:-.125em;flex-shrink:0}

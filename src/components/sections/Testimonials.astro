@@ -2,6 +2,7 @@
 import site from '../../data/site.json';
 import testimonials from '../../data/testimonials.json';
 import SectionHead from '../SectionHead.astro';
+import Emoji from '../Emoji.astro';
 ---
 
 <section class="sec sec-cream" id="testimonials">
@@ -12,7 +13,11 @@ import SectionHead from '../SectionHead.astro';
         {
           testimonials.map((t) => (
             <div class="tcard">
-              <div class="tstars">★★★★★</div>
+              <div class="tstars">
+                {Array.from({ length: 5 }, () => (
+                  <Emoji name="star-solid" />
+                ))}
+              </div>
               <p class="ttext">{t.text}</p>
             </div>
           ))
@@ -39,7 +44,7 @@ import SectionHead from '../SectionHead.astro';
       >
     </div>
     <div class="testi-more">
-      <a href={site.reviewsUrl} target="_blank" rel="noopener">⭐ More Reviews on Google</a>
+      <a href={site.reviewsUrl} target="_blank" rel="noopener"><Emoji name="star" />More Reviews on Google</a>
     </div>
   </div>
 </section>

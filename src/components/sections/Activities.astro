@@ -2,6 +2,7 @@
 import data from '../../data/activities.json';
 import SectionHead from '../SectionHead.astro';
 import CornerWeb from '../CornerWeb.astro';
+import Emoji from '../Emoji.astro';
 const delays = ['', 'd1', 'd2', 'd3'];
 ---
 
@@ -18,7 +19,7 @@ const delays = ['', 'd1', 'd2', 'd3'];
             data-action="act-tab"
             data-tab={tab.id}
           >
-            {tab.label}
+            <Emoji name={tab.icon} /> {tab.label}
           </button>
         ))
       }
@@ -36,7 +37,7 @@ const delays = ['', 'd1', 'd2', 'd3'];
                 delays[j % delays.length],
               ]}
             >
-              <div class="acard-icon">{card.icon}</div>
+              <div class="acard-icon"><Emoji name={card.icon} /></div>
               <h4>{card.title}</h4>
               <p>{card.desc}</p>
             </div>
@@ -44,6 +45,6 @@ const delays = ['', 'd1', 'd2', 'd3'];
         </div>
       ))
     }
-    <p class="mob-tap-hint">Tap each activity to see details</p>
+    <p class="mob-tap-hint"><Emoji name="point-up" />Tap each activity to see details</p>
   </div>
 </section>

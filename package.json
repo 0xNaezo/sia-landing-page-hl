@@ -8,7 +8,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check && node scripts/check-no-emoji.mjs"
   },
   "dependencies": {
     "astro": "^7.3.3"

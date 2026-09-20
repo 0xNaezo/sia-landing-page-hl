@@ -1,0 +1,21 @@
+---
+/**
+ * One icon from the sprite in Sprite.astro.
+ *
+ * Sized in `em` (see `.emoji` in base.css), so the `font-size` rules that used to
+ * size the emoji this replaces still control it at every breakpoint. Decorative
+ * throughout: every icon on the page sits next to its own text label, so it is
+ * hidden from screen readers rather than duplicating that label.
+ */
+import { symbolHref } from '../lib/emoji';
+
+interface Props {
+  /** File name without `.svg` under src/icons/emoji or src/icons/ui. */
+  name: string;
+  class?: string;
+}
+const { name, class: className } = Astro.props;
+const href = symbolHref(name);
+---
+
+<svg class:list={['emoji', className]} aria-hidden="true"><use href={href} /></svg>
