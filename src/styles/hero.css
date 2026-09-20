@@ -6,6 +6,33 @@
   linear-gradient(to bottom, rgba(0,0,0,.85) 0%, rgba(0,0,0,.4) 20%, rgba(0,0,0,.05) 35%),
   radial-gradient(ellipse 65% 80% at 18% 65%, rgba(0,0,0,.82) 0%, rgba(0,0,0,.0) 70%),
   linear-gradient(to right, rgba(0,0,0,.6) 0%, rgba(0,0,0,.3) 40%, rgba(0,0,0,.08) 65%, rgba(0,0,0,.0) 85%)}
+/* decor: the generated corner web (Hero.astro), above the overlay, under the fixed nav.
+   Two masks intersect: one fades the whole thing out from 30% of its radius so the threads
+   dissolve over a long ramp rather than stopping, the other punches a hole over the logo + wordmark (nav padding is 5%,
+   the lockup is ~338px wide, so its centre sits at 5vw + 169px) so no thread crosses it. */
+.hero-web{position:absolute;top:0;left:0;z-index:2;width:clamp(170px,17vw,280px);aspect-ratio:400/440;
+  color:rgba(240,235,225,.38);pointer-events:none;filter:drop-shadow(0 0 3px rgba(240,235,225,.2));
+  -webkit-mask-image:radial-gradient(ellipse at 0 0,#000 30%,transparent 100%),radial-gradient(ellipse 213px 33px at calc(5vw + 169px) 36px,transparent 85%,#000 100%);
+  mask-image:radial-gradient(ellipse at 0 0,#000 30%,transparent 100%),radial-gradient(ellipse 213px 33px at calc(5vw + 169px) 36px,transparent 85%,#000 100%);
+  -webkit-mask-composite:source-in;mask-composite:intersect}
+/* mobile: the left corner is the logo's and the hole would swallow a web this small, so
+   flip it into the right corner, hung from the very top, and drop the hole. The burger sits
+   over it and keeps its own z-index. The mask lives in the element's own box, so the mirror
+   carries it along. */
+/* the photo behind it is bright here, not the dark left gutter of the desktop hero, so the
+   same alpha reads as scratches — lift it enough to keep the mesh legible. */
+@media(max-width:480px){.hero-web{width:170px;left:auto;right:0;transform:scaleX(-1);color:rgba(240,235,225,.5);
+  -webkit-mask-image:radial-gradient(ellipse at 0 0,#000 30%,transparent 100%);
+  mask-image:radial-gradient(ellipse at 0 0,#000 30%,transparent 100%)}}
+/* drawn once on load; the undrawn state only exists inside the media query, so with motion
+   reduced (or if the animation never runs) the web is simply there. */
+@keyframes webDraw{to{stroke-dashoffset:0}}
+@keyframes webDew{to{opacity:1}}
+@media(prefers-reduced-motion:no-preference){
+  .hero-web path{stroke-dasharray:1;stroke-dashoffset:1;animation:webDraw 1.4s ease-out forwards}
+  .hero-web .spiral path{animation-delay:.5s}
+  .hero-web .dew circle{opacity:0;animation:webDew .8s ease-out 1.6s forwards}
+}
 .hero-inner{position:relative;z-index:3;width:90%;max-width:1200px;margin:0 auto;padding:160px 0 110px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
 /* Wide enough to keep the h1 on two lines at the clamp's 72px cap:
    "ARCHAEOLOGY CAMP" needs ~645px there. .hero-p keeps its own 480px. */
@@ -26,7 +53,9 @@
 .scroll-wheel{width:6px;height:10px;background:var(--amber);border-radius:3px;animation:scrollDown 2s ease infinite}
 @keyframes scrollDown{0%{transform:translateY(0);opacity:1}60%{transform:translateY(14px);opacity:0}61%{transform:translateY(0);opacity:0}100%{transform:translateY(0);opacity:1}}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
-.btn-amber{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,var(--amber) 0%,var(--amber-dark) 100%);color:#fff;padding:16px 34px;border-radius:3px;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(224,123,26,.4)}
+.btn-amber{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,var(--amber) 0%,var(--amber-dark) 100%);color:#fff;padding:16px 34px;border-radius:3px;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(224,123,26,.4)}
+/* small web in the button's top-right corner, painted between the gradient and the label */
+.btn-web{position:absolute;top:0;right:0;z-index:-1;width:48px;height:48px;fill:none;stroke:#fff;stroke-width:1;stroke-linecap:round;opacity:.38;pointer-events:none}
 .btn-amber:hover{background:linear-gradient(135deg,var(--amber-light) 0%,var(--amber) 100%);transform:translateY(-2px);box-shadow:0 8px 30px rgba(224,123,26,.55)}
 
 .hero-line{display:block}
