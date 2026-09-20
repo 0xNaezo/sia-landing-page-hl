@@ -2,25 +2,50 @@
 /**
  * Spider silhouette, hanging: abdomen up, so a thread attaches at the top edge of the
  * box (x = 50). Same flat style as Bat.astro. Position/size/colour via `class`
- * (`color` drives fill and legs). Each side's legs sit in a `.spider-legs` group so a
- * stylesheet can animate them; the body centre is (50, 50) in viewBox units.
+ * (`color` drives fill and legs).
+ *
+ * Built to be animated from a stylesheet: each side's legs sit in a `.spider-legs`
+ * group (body centre is (50, 50) in viewBox units); every leg is its own `.spider-leg`
+ * path pivoting at its attachment to the body (`transform-origin` inline), numbered
+ * `.spider-leg-1` (front pair) to `-4`, and `.spider-gait-a`/`-b` mark the two phases
+ * of a diagonal gait; `--s` is +1 on the left and -1 on the right, so one
+ * keyframe can rotate both sides symmetrically.
  */
 interface Props { class: string }
 const { class: className } = Astro.props;
-// Four legs of the left side, each bent at the knee; the right side is the mirror.
-const legs =
-  'M44 45Q33 34 25 22Q19 14 9 6M41 49Q28 40 18 39Q9 38 2 46M41 54Q28 52 19 58Q11 63 5 74M43 58Q34 64 27 72Q21 80 15 92';
+// Left legs, front to back, each bent at the knee. The first pair is the attachment.
+const legs = [
+  'M44 45Q33 34 25 22Q19 14 9 6',
+  'M41 49Q28 40 18 39Q9 38 2 46',
+  'M41 54Q28 52 19 58Q11 63 5 74',
+  'M43 58Q34 64 27 72Q21 80 15 92',
+];
+const mirror = (d: string) => d.replace(/(\d+) (\d+)/g, (_, x, y) => `${100 - Number(x)} ${y}`);
+const origin = (d: string) => `${d.slice(1, d.indexOf('Q')).replace(' ', 'px ')}px`;
+const sides = [
+  { s: 1, paths: legs },
+  { s: -1, paths: legs.map(mirror) },
+];
 ---
 
 <svg class={className} viewBox="0 0 100 96" aria-hidden="true">
-  <g class="spider-legs">
-    <path d={legs} fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-  </g>
-  <g transform="matrix(-1 0 0 1 100 0)">
-    <g class="spider-legs">
-      <path d={legs} fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-    </g>
-  </g>
+  {
+    sides.map(({ s, paths }) => (
+      <g class="spider-legs" style={`--s:${s}`}>
+        {paths.map((d, i) => (
+          <path
+            class:list={['spider-leg', `spider-leg-${i + 1}`, `spider-gait-${(i + (s > 0 ? 0 : 1)) % 2 ? 'b' : 'a'}`]}
+            d={d}
+            style={`transform-origin:${origin(d)}`}
+            fill="none"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+        ))}
+      </g>
+    ))
+  }
   <ellipse cx="50" cy="21" rx="16" ry="19" fill="currentColor" />
   <ellipse cx="50" cy="50" rx="12.5" ry="11.5" fill="currentColor" />
 </svg>

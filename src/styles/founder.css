@@ -1,44 +1,67 @@
-/* ── FOUNDER ── */
-/* Old paper: stains (#founder::before) under three layers of light, grain on top (#founder::after,
-   under .container). The stains are one low-frequency noise image, tea-coloured, stretched over the
-   whole section (viewBox + preserveAspectRatio=none, no tiling) and masked out towards the bottom
-   edge, so the seam with the plain cream of Partners stays invisible. Light, top to bottom:
-   1. the Pricing lanterns' glow spilling over the seam. They sit at the container's left edge
-      (pricing.css), so the spot is centred on the cluster, x = container-left + 96px, and goes
-      away with them below 960px, where the decor is hidden;
-   2. a warm halo behind the portrait (.found-vis::before, so it follows the photo column);
-   3. a vignette anchored at the bottom centre: it shades the top corners and the sides and is
-      fully transparent along the bottom edge, so nothing marks the seam with Partners — the two
-      sections share the background and are set apart by the half padding and the next H2. */
-#founder{position:relative;overflow:hidden;padding-bottom:45px;
-  --lantern-light:radial-gradient(ellipse 560px 320px at calc(max(5%,50% - 600px) + 96px) 0,rgba(255,150,40,.22),rgba(224,123,26,.07) 45%,transparent 70%);
-  background:var(--lantern-light),radial-gradient(ellipse 100% 130% at 50% 100%,transparent 55%,rgba(60,40,10,.07)),var(--cream)}
-@media(max-width:960px){#founder{--lantern-light:none}}
-#founder::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.2;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 600' preserveAspectRatio='none'%3E%3Cfilter id='s' color-interpolation-filters='sRGB' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0035 .005' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .51 0 0 0 0 .33 0 0 0 0 .12 0 0 0 2.4 -.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;
-  -webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
-/* grain: the noise tile is re-centred on the cream (feColorMatrix, alpha 1) so it only adds texture
-   and does not darken the fill. Strength is the opacity alone; .14 is a grain you can see, not a haze. */
-#founder::after{content:'';position:absolute;inset:0;opacity:.14;pointer-events:none;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1.35 0 0 0 .288 1.35 0 0 0 .288 1.35 0 0 0 .288 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/200px 200px}
+/* ── FOUNDER (dark) ── */
+/* Flat #161412: the colour #pricing's (vertical) gradient ends on, so the two dark sections meet
+   without a seam. Two light sources on a diagonal: the storm lantern top-left (.found-lamp) on the
+   portrait, the jack-o'-lanterns bottom-right on the quote card. Nothing purple here, that is #pricing's.
+   overflow:hidden keeps the pumpkin glow off the cream of #awards and trims the pumpkins' shells at the
+   bottom edge. Extra top padding: room under the pricing cards for the lantern. */
+#founder{position:relative;overflow:hidden;padding:120px 5% 110px;background:#161412}
 #founder .container{position:relative;z-index:1}
+/* pumpkin light in the section background; its own period so it never pulses in step with the lantern */
+#founder::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 32% 45% at 74% 100%,rgba(224,123,26,.20),transparent 70%);animation:lampFlicker 5.7s ease-in-out infinite}
+
+/* lantern assembly: a zero-height block on the seam (see Founder.astro). Not a stacking context itself, so
+   .found-light screens onto the page rather than onto its own empty group. --hook-x is where the lantern
+   hangs: ~12% of the viewport, in the gap between the pricing cards and the photo, but never left of the
+   portrait's top-left corner on wide screens (the container is centred at 1200px, so its edge is 50% - 600px). */
+.found-lamp,.found-port{--hook-x:max(11.7vw,50vw - 570px)}
+.found-lamp{position:relative;height:0;pointer-events:none}
+.found-lamp>*{position:absolute;z-index:2}
+.found-branch,.found-rim{left:calc(var(--hook-x) - 450px);top:-90px;width:520px;height:80px}
+/* rim-light dies with distance from the hook (x=450 of the box) */
+.found-rim{-webkit-mask:radial-gradient(circle 260px at 450px 100%,#000,rgba(0,0,0,.35) 45%,transparent);mask:radial-gradient(circle 260px at 450px 100%,#000,rgba(0,0,0,.35) 45%,transparent)}
+.found-lantern{left:calc(var(--hook-x) - 33px);top:-47px;width:66px;height:138px;overflow:visible}
+/* centred on the globe. Weak core and a gentle, near-exponential falloff: a steep first step reads as a disc
+   with an edge. ::after lays grain over it, masked to the same shape, so the 8-bit gradient does not band. */
+.found-light{left:var(--hook-x);top:24px;width:1000px;height:1100px;transform:translate(-50%,-42%);mix-blend-mode:screen;
+  background:radial-gradient(ellipse 50% 50% at 50% 42%,rgba(255,200,120,.30) 0%,rgba(255,175,80,.20) 10%,rgba(250,150,60,.12) 24%,rgba(240,135,40,.06) 42%,rgba(224,123,26,.025) 62%,rgba(224,123,26,.008) 82%,transparent 100%);
+  animation:lampFlicker 4.3s ease-in-out infinite}
+.found-light::after{content:'';position:absolute;inset:0;background:var(--grain) 0 0/200px 200px;opacity:.06;
+  -webkit-mask:radial-gradient(ellipse 50% 50% at 50% 42%,#000,transparent 80%);mask:radial-gradient(ellipse 50% 50% at 50% 42%,#000,transparent 80%)}
+/* ±6%: any more and the lantern looks faulty. No sway, the FAQ spider already does that. */
+@keyframes lampFlicker{0%,100%{opacity:1}18%{opacity:.955}37%{opacity:.985}58%{opacity:.94}79%{opacity:.97}}
+@media(prefers-reduced-motion:reduce){.found-light,#founder::before{animation:none}}
+
+/* each pumpkin sinks ~12% of its height below the edge, so it reads as standing on it, not floating */
+.found-pumpkins{position:absolute;left:72%;bottom:0;width:240px;height:150px;pointer-events:none}
+.found-pumpkin{position:absolute;filter:drop-shadow(0 0 6px rgba(255,220,120,.6)) drop-shadow(0 0 24px rgba(255,170,60,.85))}
+.found-pumpkin:nth-of-type(1){left:0;bottom:-18px;width:146px;height:146px;transform:rotate(-6deg)}
+.found-pumpkin:nth-of-type(2){left:124px;bottom:-12px;width:100px;height:100px;transform:rotate(7deg)}
+
+@media(max-width:1024px){
+  .found-branch,.found-rim,.found-lantern{display:none} /* the light stays */
+  .found-pumpkins{left:50%;transform:translateX(-50%) scale(.7);transform-origin:50% 100%}
+}
+
 .found-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:center}
 .found-vis{position:relative}
-.found-vis::before{content:'';position:absolute;inset:-22% -30%;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(240,160,64,.3),rgba(224,123,26,.1) 50%,transparent)}
-.found-port{width:100%;aspect-ratio:3/4;background:linear-gradient(145deg,#1c1a18,#0d0c0b);border-radius:11px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.found-port{width:100%;aspect-ratio:3/4;background:linear-gradient(145deg,#1c1a18,#0d0c0b);border-radius:11px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+/* the lantern's light on the photo: a warm soft-light wash centred where the lantern hangs, i.e. --hook-x
+   minus the container's left edge, with the glass ~96px above the portrait's top edge */
+.found-port::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;
+  background:radial-gradient(circle 460px at calc(var(--hook-x) - max(5vw,50vw - 600px)) -96px,rgba(255,190,90,.95),rgba(255,160,60,.5) 40%,transparent 72%)}
 
 .found-lbl{position:absolute;top:18px;left:50%;transform:translateX(-50%);background:rgba(224,123,26,.9);color:#fff;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
 .found-yrs{position:absolute;bottom:18px;left:18px;background:rgba(6,14,9,.85);padding:13px 16px;border-radius:7px;text-align:center}
 .found-yrs .n{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--amber);display:block}
 .found-yrs .l{font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.07em;text-transform:uppercase;line-height:1.4}
 
-.found-name{font-family:var(--font-display);font-size:19px;color:var(--amber);letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px}
-/* parchment card: the amber rule is an inset shadow so it follows the rounded corners inside the
-   warm border; the radial layer darkens the paper towards its edges. Lato italic 400 is loaded for
-   it in layouts/Base.astro — the 300 italic used elsewhere loses contrast on the beige. */
-.found-q{background:radial-gradient(ellipse at 50% 50%,rgba(60,40,10,0) 55%,rgba(60,40,10,.08)) #F2E8D8;border:1px solid rgba(120,70,20,.16);border-radius:8px;padding:24px 26px 24px 30px;margin-bottom:20px;
-  box-shadow:inset 4px 0 0 var(--amber),0 1px 2px rgba(60,40,10,.05),0 14px 36px rgba(60,40,10,.1)}
-.found-q p{font-size:14px;color:#3A3128;font-weight:400;line-height:1.8;font-style:italic}
+/* amber reads brighter on black, so the subtitle is smaller and set further from the name */
+.found-name{font-family:var(--font-display);font-size:16px;color:var(--amber);letter-spacing:.05em;text-transform:uppercase;margin:10px 0 22px}
+/* translucent card: the amber rule is an inset shadow; no radius on the left so it stays a straight bar. Lato italic 400
+   is loaded for it in layouts/Base.astro — a thin italic loses on dark, so weight 400 and a larger size. */
+.found-q{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:0 12px 12px 0;padding:24px 26px 24px 30px;margin-bottom:20px;box-shadow:inset 4px 0 0 var(--amber)}
+.found-q p{font-size:15px;color:rgba(255,255,255,.8);font-weight:400;line-height:1.8;font-style:italic}
 .found-q p+p{margin-top:12px}
 
 .found-photo{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}

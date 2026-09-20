@@ -1,21 +1,16 @@
 /* ── PRICING (dark) ── */
-/* deep base with a muted purple glow falling from the top edge (stats has it rising from the bottom) */
+/* deep base with a muted purple glow falling from the top edge (stats has it rising from the bottom).
+   The base runs vertically (not the shared 160deg tilt) so the bottom edge is one flat colour, #161412,
+   that #founder picks up as its background: no seam between the two dark sections. */
 #pricing{background:
   radial-gradient(ellipse 75% 50% at 45% 0%,rgba(74,32,128,.55) 0%,rgba(42,18,69,.3) 45%,transparent 75%),
-  linear-gradient(160deg,#090808 0%,#111010 55%,#161412 100%)}
+  linear-gradient(180deg,#090808 0%,#111010 55%,#161412 100%)}
 /* polish.css paints amber blobs on every .sec-deep: the top-right one would muddy the purple,
-   the bottom-left one is replaced by the lanterns' own glow (.price-glow), which follows the container */
+   the bottom-left one is where #founder's storm lantern spills its light up across the seam */
 #pricing::before,#pricing::after{display:none}
 
-/* section decor (desktop only). Lanterns sit on the container's left edge (max(5% padding, centred 1200px)),
-   cut off by the section's bottom edge by roughly a tenth, over a pulsing warm glow. */
+/* section decor (desktop only): a web in the purple top-left corner */
 .price-web{position:absolute;top:0;left:0;width:240px;height:240px;fill:none;stroke:#fff;stroke-width:1.2;opacity:.11;pointer-events:none}
-.price-glow{position:absolute;left:calc(max(5%,50% - 600px) - 110px);bottom:-165px;width:420px;height:330px;border-radius:50%;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(255,150,40,.34),rgba(224,123,26,.12) 50%,transparent);animation:pumpkinGlow 3.4s ease-in-out infinite}
-.price-pumpkin{position:absolute;pointer-events:none;filter:drop-shadow(0 0 6px rgba(255,220,120,.6)) drop-shadow(0 0 24px rgba(255,170,60,.85))}
-.price-pumpkin:nth-of-type(1){left:calc(max(5%,50% - 600px) + 16px);bottom:-13px;width:104px;height:104px;transform:rotate(-6deg)}
-.price-pumpkin:nth-of-type(2){left:calc(max(5%,50% - 600px) + 104px);bottom:-10px;width:72px;height:72px;transform:rotate(7deg)}
-@media(prefers-reduced-motion:reduce){.price-glow{animation:none}}
 
 /* card 3: dark-brown fan generated in lib/corner-web.ts, in a layer clipped to the card's rounded corners */
 .pcard-clip{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none}

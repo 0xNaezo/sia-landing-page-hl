@@ -3,7 +3,78 @@
 import { asset } from '../../lib/asset';
 ---
 
-<section class="sec sec-cream" id="founder">
+<!-- Storm lantern on a bare branch, straddling the #pricing/#founder seam. A zero-height sibling of the
+     section rather than a child: #founder clips its overflow, and the light has to spill up into #pricing.
+     The branch is drawn at its natural size and anchored by its hook (x=450 of 520): on narrow viewports its
+     base runs off the left edge, on wide ones the whole bough shows. -->
+<div class="found-lamp" aria-hidden="true">
+  <span class="found-light"></span>
+  <svg class="found-branch" viewBox="0 0 520 80">
+    <g fill="#1E1A16">
+      <!-- twigs first, the stem covers their bases -->
+      <path d="M56 31C60 23 66 17 78 12C68 20 64 26 62 35Z" />
+      <path d="M146 50C150 58 156 64 168 70C156 62 150 58 142 52Z" />
+      <path d="M342 34C350 24 358 14 372 6C362 17 358 26 354 35Z" />
+      <path d="M360 16C366 13 372 10 382 11C372 13 367 16 362 19Z" />
+      <path d="M292 44C298 52 304 60 318 68C304 60 298 54 288 46Z" />
+      <path d="M444 37C448 30 454 26 462 24C456 30 452 34 450 39Z" />
+      <path d="M398 43C402 49 408 53 416 55C408 53 403 49 396 46Z" />
+      <path d="M0 29C40 26 70 31 100 30C130 28 160 33 200 31C222 29 238 33 258 32C272 30 280 28 292 30C320 33 340 29 365 32C385 34 400 31 422 33C450 35 482 36 506 37L518 39C500 41.5 480 43.5 456 43C432 43 414 46 396 45C376 44 360 48 338 47C316 46 304 49 288 48C270 47 254 52 238 51C224 50 212 53 200 51C170 53 130 50 100 52C70 54 40 52 0 51Z" />
+    </g>
+  </svg>
+  <!-- the stem's underside stroked amber: the lantern hangs below it. Same box as the branch; the CSS mask
+       fades it with distance from the hook -->
+  <svg class="found-rim" viewBox="0 0 520 80">
+    <path d="M518 39C500 41.5 480 43.5 456 43C432 43 414 46 396 45C376 44 360 48 338 47C316 46 304 49 288 48C270 47 254 52 238 51C224 50 212 53 200 51C170 53 130 50 100 52C70 54 40 52 0 51" fill="none" stroke="#E07B1A" stroke-width="1.6" stroke-linecap="round" />
+  </svg>
+  <!-- hurricane lantern, top to bottom: hook, bail, chimney cap, two air tubes, glass globe with the flame,
+       burner collar, fuel tank, foot. Metal #2B241D; the edges that face the flame carry an amber rim. -->
+  <svg class="found-lantern" viewBox="0 0 44 92">
+    <defs>
+      <radialGradient id="fl-glass" cx=".5" cy=".5" r=".65">
+        <stop offset="0" stop-color="#FFE2A8" /><stop offset=".5" stop-color="#FFB347" /><stop offset="1" stop-color="#E07B1A" />
+      </radialGradient>
+      <radialGradient id="fl-halo">
+        <stop offset="0" stop-color="#FFB347" stop-opacity=".55" /><stop offset="1" stop-color="#FFB347" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <ellipse cx="22" cy="47" rx="20" ry="22" fill="url(#fl-halo)" />
+    <g fill="none" stroke="#2B241D" stroke-width="1.6" stroke-linecap="round">
+      <path d="M22 0V6.6" />
+      <circle cx="22" cy="9" r="2.4" />
+      <path d="M13 26C13 4 31 4 31 26" />
+    </g>
+    <g fill="#2B241D">
+      <rect x="19.5" y="22" width="5" height="4" rx="1" />
+      <path d="M12 30c0-5 20-5 20 0z" />
+      <path d="M9 30h26l-2.5 4.5h-21z" />
+      <rect x="7.5" y="33" width="3.6" height="35" rx="1.8" />
+      <rect x="32.9" y="33" width="3.6" height="35" rx="1.8" />
+    </g>
+    <path d="M14.5 34.5C10.5 42 10.5 56 14.5 63.5h15C33.5 56 33.5 42 29.5 34.5z" fill="url(#fl-glass)" />
+    <path d="M16.5 39C14.8 45 14.8 53 16.5 59" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.4" stroke-linecap="round" />
+    <path d="M22 41c3.2 5 4 8 0 12.5-4-4.5-3.2-7.5 0-12.5z" fill="#FFF3D6" />
+    <g fill="#2B241D">
+      <path d="M13 63.5h18l1.5 3.5h-21z" />
+      <path d="M8 67h28c2.2 0 4 1.8 4 4v4.5c0 4-3.5 7.5-8 7.5H12c-4.5 0-8-3.5-8-7.5V71c0-2.2 1.8-4 4-4z" />
+      <rect x="13" y="83" width="18" height="3.5" rx="1.2" />
+    </g>
+    <g fill="none" stroke="#E07B1A" stroke-opacity=".6" stroke-width="1.2">
+      <path d="M11.5 34.5h21" />
+      <path d="M11 36v29M33 36v29" stroke-width="1" />
+      <path d="M13.5 64h17" />
+      <path d="M9.5 68h25" />
+    </g>
+  </svg>
+</div>
+
+<section class="sec" id="founder">
+  <!-- jack-o'-lanterns (the <symbol>s in components/Sprite.astro) standing on the section's bottom edge,
+       the bit of shell below their body clipped by the section; their glow is #founder::before -->
+  <span class="found-pumpkins" aria-hidden="true">
+    <svg class="found-pumpkin"><use href="#stl-pumpkin-b" /></svg>
+    <svg class="found-pumpkin"><use href="#stl-pumpkin-a" /></svg>
+  </span>
   <div class="container">
     <div class="found-grid">
       <div class="found-vis reveal">
@@ -24,7 +95,7 @@ import { asset } from '../../lib/asset';
         </div>
       </div>
       <div class="reveal d1 found-copy">
-        <h2 class="sec-title">Mark Kelly</h2>
+        <h2 class="sec-title wh">Mark Kelly</h2>
         <div class="found-name">Founder &amp; Director, School of Irish Archaeology</div>
         <div class="found-q">
           <p>
