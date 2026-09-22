@@ -1,6 +1,6 @@
 ---
-import site from '../../data/site.json';
-import { asset } from '../../lib/asset';
+import site from "../../data/site.json";
+import { asset } from "../../lib/asset";
 ---
 
 <section class="sec sec-parchment" id="who">
@@ -12,56 +12,147 @@ import { asset } from '../../lib/asset';
         <path
           fill-rule="evenodd"
           d="M29 3C16 3 8 14 8 30v42q7-9 14 0q7-9 14 0q7-9 14 0V30C50 14 42 3 29 3zM19 25q5.5 4 5 13q-5.5-4-5-13zM39 25q-5.5 4-5 13q5.5-4 5-13z"
-        />
+        ></path>
       </symbol>
       <!-- no patternTransform: a tile-wide rotation drifts rows upward as x grows and shears the
            right-hand ghosts out of the top band. Each ghost carries its own tilt instead. -->
-      <pattern id="who-ghosts" width="400" height="400" patternUnits="userSpaceOnUse">
-        <g fill="#3a2a12" fill-opacity=".07">
+      <pattern
+        id="who-ghosts"
+        width="400"
+        height="400"
+        patternUnits="userSpaceOnUse"
+      >
+        <g fill="#3a2a12" fill-opacity=".095">
           <!-- scale(-1 1) mirrors about the translate point, so those ghosts grow leftwards from x -->
           <!-- top row starts at y=46 so nothing is sliced by the section's top edge -->
-          <use href="#who-ghost" width="50" height="69" transform="translate(28 46) rotate(-6)" />
-          <use href="#who-ghost" width="34" height="47" transform="translate(148 64) rotate(-4)" />
-          <use href="#who-ghost" width="32" height="44" transform="translate(392 58) scale(-1 1) rotate(7)" />
-          <use href="#who-ghost" width="38" height="52" transform="translate(268 96) scale(-1 1) rotate(-17)" />
-          <use href="#who-ghost" width="36" height="50" transform="translate(300 196) rotate(9)" />
-          <use href="#who-ghost" width="44" height="61" transform="translate(112 214) rotate(13)" />
-          <use href="#who-ghost" width="30" height="41" transform="translate(374 292) scale(-1 1) rotate(3)" />
-          <use href="#who-ghost" width="40" height="55" transform="translate(56 330) scale(-1 1) rotate(-13)" />
-          <use href="#who-ghost" width="34" height="47" transform="translate(244 336) rotate(-10)" />
+          <use
+            href="#who-ghost"
+            width="50"
+            height="69"
+            transform="translate(28 46) rotate(-6)"></use>
+          <use
+            href="#who-ghost"
+            width="34"
+            height="47"
+            transform="translate(148 64) rotate(-4)"></use>
+          <use
+            href="#who-ghost"
+            width="32"
+            height="44"
+            transform="translate(392 58) scale(-1 1) rotate(7)"></use>
+          <use
+            href="#who-ghost"
+            width="38"
+            height="52"
+            transform="translate(268 96) scale(-1 1) rotate(-17)"></use>
+          <use
+            href="#who-ghost"
+            width="36"
+            height="50"
+            transform="translate(300 196) rotate(9)"></use>
+          <use
+            href="#who-ghost"
+            width="44"
+            height="61"
+            transform="translate(112 214) rotate(13)"></use>
+          <use
+            href="#who-ghost"
+            width="30"
+            height="41"
+            transform="translate(374 292) scale(-1 1) rotate(3)"></use>
+          <use
+            href="#who-ghost"
+            width="40"
+            height="55"
+            transform="translate(56 330) scale(-1 1) rotate(-13)"></use>
+          <use
+            href="#who-ghost"
+            width="34"
+            height="47"
+            transform="translate(244 336) rotate(-10)"></use>
         </g>
       </pattern>
       <!-- phone tile: the same ghost at about a third the size and only three per tile. On a
            phone the pattern shows in a couple of small pockets instead of two full margins,
            so desktop-sized ghosts would read as one blob per pocket. -->
-      <pattern id="who-ghosts-sm" width="140" height="140" patternUnits="userSpaceOnUse">
-        <g fill="#3a2a12" fill-opacity=".07">
-          <use href="#who-ghost" width="30" height="41" transform="translate(8 10) rotate(-7)" />
-          <use href="#who-ghost" width="22" height="30" transform="translate(88 30) scale(-1 1) rotate(9)" />
-          <use href="#who-ghost" width="26" height="36" transform="translate(50 62) rotate(5)" />
-          <use href="#who-ghost" width="19" height="26" transform="translate(126 86) scale(-1 1) rotate(-12)" />
-          <use href="#who-ghost" width="24" height="33" transform="translate(16 100) rotate(11)" />
+      <pattern
+        id="who-ghosts-sm"
+        width="140"
+        height="140"
+        patternUnits="userSpaceOnUse"
+      >
+        <g fill="#3a2a12" fill-opacity=".091">
+          <use
+            href="#who-ghost"
+            width="30"
+            height="41"
+            transform="translate(8 10) rotate(-7)"></use>
+          <use
+            href="#who-ghost"
+            width="22"
+            height="30"
+            transform="translate(88 30) scale(-1 1) rotate(9)"></use>
+          <use
+            href="#who-ghost"
+            width="26"
+            height="36"
+            transform="translate(50 62) rotate(5)"></use>
+          <use
+            href="#who-ghost"
+            width="19"
+            height="26"
+            transform="translate(126 86) scale(-1 1) rotate(-12)"></use>
+          <use
+            href="#who-ghost"
+            width="24"
+            height="33"
+            transform="translate(16 100) rotate(11)"></use>
         </g>
       </pattern>
     </defs>
-    <rect class="who-rect" width="100%" height="100%" fill="url(#who-ghosts)" />
-    <rect class="who-rect-sm" width="100%" height="100%" fill="url(#who-ghosts-sm)" />
+    <rect class="who-rect" width="100%" height="100%" fill="url(#who-ghosts)"
+    ></rect>
+    <rect
+      class="who-rect-sm"
+      width="100%"
+      height="100%"
+      fill="url(#who-ghosts-sm)"></rect>
     <!-- one ghost parked over the word "First" in the heading: the copy column is inside the
          1200px container, so "First" sits a constant 305px right of centre at desktop widths -->
     <svg class="who-extra" x="50%" y="0" overflow="visible" aria-hidden="true">
-      <g fill="#3a2a12" fill-opacity=".07">
-        <use href="#who-ghost" width="40" height="55" transform="translate(285 24) rotate(-8)" />
+      <g fill="#3a2a12" fill-opacity=".091">
+        <use
+          href="#who-ghost"
+          width="40"
+          height="55"
+          transform="translate(285 24) rotate(-8)"></use>
       </g>
     </svg>
     <!-- the tile alone is symmetric, so at wide viewports both margins get the same count.
          These extras are pinned to the right edge (nested svg at x=100%, children at negative x)
          to make the right margin read a little busier than the left. -->
     <svg class="who-extra" x="100%" y="0" overflow="visible" aria-hidden="true">
-      <g fill="#3a2a12" fill-opacity=".07">
-        <use href="#who-ghost" width="36" height="50" transform="translate(-52 132) scale(-1 1) rotate(8)" />
-        <use href="#who-ghost" width="28" height="39" transform="translate(-160 210) scale(-1 1) rotate(14)" />
-        <use href="#who-ghost" width="30" height="41" transform="translate(-100 300) rotate(-11)" />
-        <use href="#who-ghost" width="42" height="58" transform="translate(-46 430) scale(-1 1) rotate(-5)" />
+      <g fill="#3a2a12" fill-opacity=".091">
+        <use
+          href="#who-ghost"
+          width="36"
+          height="50"
+          transform="translate(-52 132) scale(-1 1) rotate(8)"></use>
+        <use
+          href="#who-ghost"
+          width="28"
+          height="39"
+          transform="translate(-160 210) scale(-1 1) rotate(14)"></use>
+        <use
+          href="#who-ghost"
+          width="30"
+          height="41"
+          transform="translate(-100 300) rotate(-11)"></use>
+        <use
+          href="#who-ghost"
+          width="42"
+          height="58"
+          transform="translate(-46 430) scale(-1 1) rotate(-5)"></use>
       </g>
     </svg>
   </svg>
@@ -87,14 +178,21 @@ import { asset } from '../../lib/asset';
           <div class="who-video-shade"></div>
           <div class="who-video-play">
             <div class="who-video-btn">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="#C8751A" aria-hidden="true"
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="#C8751A"
+                aria-hidden="true"
                 ><polygon points="6,3 20,12 6,21"></polygon></svg
               >
             </div>
             <span class="who-video-label">Watch Our Story</span>
           </div>
         </div>
-        <div class="who-float"><span class="n">2011</span><span class="l">Founded</span></div>
+        <div class="who-float">
+          <span class="n">2011</span><span class="l">Founded</span>
+        </div>
       </div>
       <div class="reveal d1 mob-who-text">
         <div class="sec-label">Who We Are</div>
@@ -102,19 +200,20 @@ import { asset } from '../../lib/asset';
         <div class="amber-bar"></div>
         <div class="who-text">
           <p>
-            Imagine your child spending mid-term as a young archaeologist — trowel in hand, brushing
-            soil from a real artefact, then shaping a witch's cauldron out of clay. That is what the
-            SIA Halloween Camp is: active, hands-on learning that feels like a real adventure.
+            Imagine your child spending mid-term as a young archaeologist —
+            trowel in hand, brushing soil from a real artefact, then shaping a
+            witch's cauldron out of clay. That is what the SIA Halloween Camp
+            is: active, hands-on learning that feels like a real adventure.
           </p>
           <p>
-            Long before pumpkins and plastic costumes, Halloween was Samhain — and Ireland has been
-            marking it for three thousand years. Over four days children dig, craft and step into
-            that older story: the Cailleach, mummers' masks, Viking spears and lantern-lit folklore.
+            Long before pumpkins and plastic costumes, Halloween was Samhain —
+            and Ireland has been marking it for three thousand years. Over four
+            days children dig, craft and step into that older story: the
+            Cailleach, mummers' masks, Viking spears and lantern-lit folklore.
             Real history, real skills, and a mid-term they won't forget.
           </p>
         </div>
       </div>
     </div>
   </div>
-
 </section>

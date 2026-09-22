@@ -1,9 +1,9 @@
 /* ── LEAD CTA (dark photo section before the footer) ── */
-.lead-cta{position:relative;overflow:hidden;min-height:520px;display:flex;align-items:stretch;background-color:#0a160e}
+.lead-cta{position:relative;overflow:hidden;min-height:520px;display:flex;align-items:stretch;background-color:#000000}
 /* Background photo, positioned right so faces show; bg-color prevents artifact lines at edges */
-.lead-cta-bg{position:absolute;inset:0;background-color:#0a160e;background-image:url('/assets/images/lead-cta-photo.webp');background-repeat:no-repeat;background-position:10% center;background-size:cover;z-index:0}
+.lead-cta-bg{position:absolute;inset:0;background-color:#000000;background-image:url('/assets/images/photo-three-kids.webp');background-repeat:no-repeat;background-position:10% center;background-size:cover;z-index:0}
 /* Dark gradient on the left where the text sits, fading to transparent on the right */
-.lead-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(10,22,14,0.97) 0%, rgba(10,22,14,0.92) 35%, rgba(10,22,14,0.55) 58%, rgba(10,22,14,0.0) 80%);z-index:1}
+.lead-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.92) 35%, rgba(0,0,0,0.55) 58%, rgba(0,0,0,0.0) 80%);z-index:1}
 .lead-cta-inner{position:relative;z-index:2;max-width:1200px;width:100%;margin:0 auto;padding:90px 5%;display:flex;align-items:center;justify-content:space-between;gap:40px}
 .lead-cta-text{max-width:560px;flex-shrink:0}
 .lead-cta-spacer{flex:1;min-width:0}
@@ -20,4 +20,4 @@
 .lead-cta-contact:hover{border-color:var(--amber)}
 
 /* photo strip above the CTA (visible on mobile only, see mobile.css) */
-.photo-banner-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;transform:scale(1.24)}
+.photo-banner-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;transform:scale(1.15)}
