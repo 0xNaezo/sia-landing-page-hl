@@ -49,9 +49,9 @@ scrolls (print, full-page screenshot, crawler) renders a blank page.
 There are no raw emoji in `src/`. Every one is an SVG `<symbol>` in a sprite that
 `src/components/Sprite.astro` inlines once in `<body>`, referenced through
 `<Emoji name="pumpkin" />`; `src/data/*.json` carries the icon name, not the glyph.
-The artwork is Noto Color Emoji (`src/icons/emoji/`, Apache 2.0) plus two monochrome
-marks of our own (`src/icons/ui/`) for `★` and `✓`, which the stylesheets colour
-themselves and so have to follow `currentColor`.
+The artwork is Noto Color Emoji (`src/icons/emoji/`, Apache 2.0) plus monochrome
+marks of our own (`src/icons/ui/`: `★`, `✓` and the Why table's `line-*` icons), which
+the stylesheets colour themselves and so have to follow `currentColor`.
 
 `.emoji` is sized in `em`, so the `font-size` rules that used to size the emoji —
 `.acard-icon`, `.stl-icon`, `.picon`, `.why-mcard-icon` and their mobile overrides —

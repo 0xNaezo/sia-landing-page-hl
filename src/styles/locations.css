@@ -27,14 +27,17 @@
 .loc-bat:nth-of-type(3){right:113em;bottom:79em;width:16em;height:8em;opacity:.3;transform:rotate(-3deg)}
 .loc-bat:nth-of-type(4){right:149em;bottom:99em;width:22em;height:11em;opacity:.26;transform:rotate(-14deg)}
 @media(max-width:960px){.loc-decor{font-size:1.6px}}
-/* phone: one column, no map. The moon shrinks to 50px and hugs the right edge just under the last
-   card, a third of it cropped by the viewport; the layout grows 40px at the bottom to hold it, so
-   it stays clear of the section's edge. The flock stays home — there is no room for it. */
+/* phone: one column, no map, and no extra room for decor — the section keeps its height. The moon,
+   100px and unscaled, sits in the corner under the last card, its top half tucked behind it
+   (.loc-list is lifted over the decor), its centre 10px in from the viewport's edge, its bottom
+   2px clear of the seam (the divider's line ends well short of it); the lower craters show below the card. Two small bats fly off it
+   up-left: one beside the note, the other into the gap under the card, just slipping behind it. */
 @media(max-width:480px){
-  .loc-layout{padding-bottom:40px}
-  .loc-decor{left:0;font-size:.64px}
-  .loc-moon{right:-38px}
-  .loc-bat{display:none}}
+  .loc-decor{left:0}
+  .loc-moon{transform:none;font-size:1px;right:-56px;bottom:-24px}
+  .loc-bat{display:none}
+  .loc-bat:nth-of-type(1){display:block;right:44px;bottom:-4px;width:16px;height:8px;opacity:.32;transform:rotate(-10deg)}
+  .loc-bat:nth-of-type(2){display:block;right:86px;bottom:22px;width:21px;height:10.5px;opacity:.26;transform:rotate(8deg)}}
 
 #locations .sec-head{margin-bottom:44px}
 #locations .sec-title{letter-spacing:.06em}
