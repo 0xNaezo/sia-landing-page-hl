@@ -1,38 +1,35 @@
 {
-  "columns": ["WHAT MATTERS", "ORDINARY CAMPS", "SIA ARCHAEOLOGY CAMP"],
+  "columns": ["What matters", "Ordinary camps", "SIA Archaeology Camp"],
   "rows": [
     {
+      "icon": "line-target",
       "label": "Purpose",
       "ordinary": "Childcare and time-filling activities",
-      "sia": "Fun, hands-on learning and discovery"
+      "sia": "Fun, <b>hands-on</b> learning and discovery"
     },
     {
+      "icon": "line-calendar",
       "label": "Schedule Options",
       "ordinary": "Only one schedule",
-      "sia": "Flexible 1, 3, or 4-day options",
-      "highlight": true
+      "sia": "<b>Flexible</b> 1, 3 or 4-day options"
     },
     {
+      "icon": "line-shield",
       "label": "Staff",
       "ordinary": "General camp staff",
-      "sia": "<span class=\"hl\">Official Garda-vetted</span> and certified staff"
+      "sia": "<b>Garda-vetted</b>, certified staff"
     },
     {
+      "icon": "line-scroll",
       "label": "Programme",
       "ordinary": "Basic activity-based programme",
-      "sia": "Expert-designed by historians with <span class=\"hl\">15+ years experience</span> — fun, learning &amp; growth"
+      "sia": "Historian-designed, <b>15+ years' experience</b>"
     },
     {
+      "icon": "line-puzzle",
       "label": "Activities",
       "ordinary": "Standard sports (football, etc.)",
-      "sia": "Unique games designed to immerse children in history and inspire a lifelong love of learning"
+      "sia": "<b>Unique games</b> that bring history to life"
     }
-  ],
-  "mobileCards": [
-    { "icon": "amphora", "label": "Purpose", "text": "Fun, <span class=\"hl\">hands-on learning</span> &amp; discovery" },
-    { "icon": "calendar", "label": "Flexibility", "text": "<span class=\"hl\">1, 3 or 4-day</span> options — your choice" },
-    { "icon": "shield", "label": "Staff", "text": "<span class=\"hl\">Garda-vetted</span> &amp; fully certified" },
-    { "icon": "alembic", "label": "Programme", "text": "Designed by historians with <span class=\"hl\">15+ years</span> of experience" },
-    { "icon": "trophy", "label": "Activities", "text": "Unique games that bring <span class=\"hl\">history to life</span>" }
   ]
 }

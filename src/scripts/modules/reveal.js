@@ -1,9 +1,10 @@
 /**
  * Fade-up reveal for `.reveal` elements when they enter the viewport. The footer
- * `.horizon` rides along: it gets the same `.visible`, which lights its lamps.
+ * `.horizon` rides along: it gets the same `.visible`, which lights its lamps, and so
+ * does `.seam`, which draws its spiral.
  */
 export function initReveal() {
-  const els = document.querySelectorAll('.reveal, .horizon');
+  const els = document.querySelectorAll('.reveal, .horizon, .seam');
   const show = (el) => el.classList.add('visible');
 
   // No observer, or the visitor asked for less motion: just show everything.

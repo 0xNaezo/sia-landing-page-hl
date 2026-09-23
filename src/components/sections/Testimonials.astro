@@ -8,20 +8,42 @@ import Emoji from '../Emoji.astro';
 <section class="sec sec-cream" id="testimonials">
   <div class="container">
     <SectionHead label="What Parents Say" title="Real Experiences, Real Stories" />
-    <div class="testi-wrap reveal">
-      <div class="testi-track" id="ttrack">
-        {
-          testimonials.map((t) => (
-            <div class="tcard">
-              <div class="tstars">
-                {Array.from({ length: 5 }, () => (
-                  <Emoji name="star-solid" />
-                ))}
+    <div class="testi-stage reveal">
+      <!-- a raven perched on the card's top edge by the left corner, head turned to the review.
+           It sits outside the sliding track, so while the cards slide testimonials.js has it
+           flutter up (the raised wing, hidden at rest) and land as the next one settles. Body
+           and legs are separate groups, both hinged at the hip, so the flight can pitch the one
+           and tuck the other. -->
+      <svg class="testi-raven" viewBox="0 0 120 100" aria-hidden="true">
+        <g class="raven-body">
+          <path class="raven-flap" d="M76 30C72 18 64 8 54 2L42 0L47 6L37 5L43 11L33 12L41 17L33 21L43 25C50 32 58 38 64 40Z" />
+          <path d="M68 22C64 33 55 43 44 52L20 75L22 79.5L25 80L44 70C50 73 56 75 60 75C72 75 82 68 86 58C88 54 89 50 89 46L78 32Z" />
+          <path class="raven-wing" d="M71 33C63 46 49 58 31 70" />
+          <g class="raven-head">
+            <path d="M112.5 35.5C108 27 100 21.5 92 21C88 17 84 15 79 15C72 15 67 19 66 25C65 31 68 38 74 44L86 50L87.5 47.5L89.5 46.5L89 44L91.5 43L91 40.5L93.5 39.5L93 36.5C95 34.5 99 34.5 103 35C107 35.5 110 36 112.5 35.5Z" />
+            <circle class="raven-eye" cx="86" cy="25" r="2.4" />
+          </g>
+        </g>
+        <g class="raven-legs">
+          <path d="M60 73h5l1 15h-3zM53 72h4.5l-.5 16h-3z" />
+          <path class="raven-feet" d="M58 88.5h15q3 0 3 4M58 88.5q-2 0-2 3.5M50 88.5h9M50 88.5q-2.5 0-2.5 3.5" />
+        </g>
+      </svg>
+      <div class="testi-wrap">
+        <div class="testi-track" id="ttrack">
+          {
+            testimonials.map((t) => (
+              <div class="tcard">
+                <div class="tstars">
+                  {Array.from({ length: 5 }, () => (
+                    <Emoji name="star-solid" />
+                  ))}
+                </div>
+                <p class="ttext">{t.text}</p>
               </div>
-              <p class="ttext">{t.text}</p>
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
       </div>
     </div>
     <div class="tcontrols">

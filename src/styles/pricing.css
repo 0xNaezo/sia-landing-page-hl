@@ -68,3 +68,5 @@
 
 #pricing .sec-head{margin-bottom:0}
 #pricing .pgrid{margin-bottom:14px}
+/* desktop: the boughs on the seam (Founder.astro) reach ~60px up into this section, keep the cards clear of them */
+@media(min-width:1025px){#pricing{padding-bottom:130px}}

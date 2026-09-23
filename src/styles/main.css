@@ -14,6 +14,7 @@
 @import './nav.css';
 @import './hero.css';
 @import './sections.css';
+@import './seam.css';
 
 /* page sections (desktop first) */
 @import './who.css';

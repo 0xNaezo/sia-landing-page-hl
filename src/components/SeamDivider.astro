@@ -1,0 +1,25 @@
+---
+/**
+ * Divider for the seam between two light sections: a hairline across the content width that
+ * fades out towards both ends, broken around a small triskele. Goes between the two sections
+ * in the page; see styles/seam.css. reveal.js sets `.visible` on it, which draws the spirals in.
+ */
+// the triple spiral of the SIA logo: three spirals round centres 120deg apart, each starting
+// in the middle and winding two turns inwards
+const R = 26;
+const f = (n: number) => +n.toFixed(1);
+const arms = [0, 1, 2].map((k) => {
+  const a = ((120 * k - 90) * Math.PI) / 180;
+  const pts = Array.from({ length: 65 }, (_, i) => {
+    const t = i / 64;
+    const r = 3 + (R - 3) * (1 - t);
+    const phi = a + Math.PI - t * 4 * Math.PI;
+    return `${f(R * Math.cos(a) + r * Math.cos(phi))} ${f(R * Math.sin(a) + r * Math.sin(phi))}`;
+  });
+  return `M${pts.join('L')}`;
+});
+---
+
+<div class="seam" aria-hidden="true">
+  <svg class="seam-tri" viewBox="-46 -49 90 87">{arms.map((d) => <path d={d} pathLength="1" />)}</svg>
+</div>

@@ -3,34 +3,53 @@
    without a seam. Two light sources on a diagonal: the storm lantern top-left (.found-lamp) on the
    portrait, the jack-o'-lanterns bottom-right on the quote card. Nothing purple here, that is #pricing's.
    overflow:hidden keeps the pumpkin glow off the cream of #awards and trims the pumpkins' shells at the
-   bottom edge. Extra top padding: room under the pricing cards for the lantern. */
-#founder{position:relative;overflow:hidden;padding:120px 5% 110px;background:#161412}
+   bottom edge. Extra top padding: room for the lantern hanging off the boughs on the seam. */
+#founder{position:relative;overflow:hidden;padding:180px 5% 110px;background:#161412}
 #founder .container{position:relative;z-index:1}
 /* pumpkin light in the section background; its own period so it never pulses in step with the lantern */
 #founder::before{content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(ellipse 32% 45% at 74% 100%,rgba(224,123,26,.20),transparent 70%);animation:lampFlicker 5.7s ease-in-out infinite}
 
-/* lantern assembly: a zero-height block on the seam (see Founder.astro). Not a stacking context itself, so
+/* boughs + lantern: a zero-height block on the seam (see Founder.astro). Not a stacking context itself, so
    .found-light screens onto the page rather than onto its own empty group. --hook-x is where the lantern
    hangs: ~12% of the viewport, in the gap between the pricing cards and the photo, but never left of the
    portrait's top-left corner on wide screens (the container is centred at 1200px, so its edge is 50% - 600px). */
 .found-lamp,.found-port{--hook-x:max(11.7vw,50vw - 570px)}
 .found-lamp{position:relative;height:0;pointer-events:none}
 .found-lamp>*{position:absolute;z-index:2}
-.found-branch,.found-rim{left:calc(var(--hook-x) - 450px);top:-90px;width:520px;height:80px}
-/* rim-light dies with distance from the hook (x=450 of the box) */
-.found-rim{-webkit-mask:radial-gradient(circle 260px at 450px 100%,#000,rgba(0,0,0,.35) 45%,transparent);mask:radial-gradient(circle 260px at 450px 100%,#000,rgba(0,0,0,.35) 45%,transparent)}
-.found-lantern{left:calc(var(--hook-x) - 33px);top:-47px;width:66px;height:138px;overflow:visible}
+/* the 3000px box is centred on the viewport at 1:1, so x=1500 of it is 50vw */
+.found-branch,.found-rim{left:calc(50% - 1500px);top:-60px;width:3000px;height:120px;overflow:visible} /* the bat hangs out of the box */
+/* rim light only where a light reaches: strongest right over the lantern's glass (at --hook-x, 125px down
+   the box) and dying out towards the edges; a weaker, smaller pool around the pumpkin (x=1920, 55px down).
+   The drop-shadow gives the strokes a glow; mask applies after filter, so the glow fades with them. */
+.found-rim{--rim:radial-gradient(circle 300px at calc(var(--hook-x) - 50vw + 1500px) 125px,#000,rgba(0,0,0,.4) 35%,transparent),
+  radial-gradient(circle 120px at 1920px 55px,rgba(0,0,0,.75),transparent);-webkit-mask:var(--rim);mask:var(--rim);
+  filter:drop-shadow(0 0 2px rgba(255,160,60,.8))}
+/* hung by its hook (5px down the box): a slow sway, a few degrees either way */
+.found-lantern{left:calc(var(--hook-x) - 33px);top:-6px;width:66px;height:138px;overflow:visible;
+  transform-origin:50% 5px;animation:lampSway 5.2s ease-in-out infinite alternate}
+@keyframes lampSway{from{transform:rotate(-2.2deg)}to{transform:rotate(2.2deg)}}
+/* flame: squashes and stretches from its base (viewBox units); the halo breathes with the pool of light */
+.fl-flame{transform-origin:22px 53.5px;animation:flameFlicker 1.7s ease-in-out infinite}
+@keyframes flameFlicker{0%,100%{transform:scale(1)}23%{transform:scale(.92,1.07)}47%{transform:scale(1.05,.94)}71%{transform:scale(.96,1.04)}}
+.fl-halo{animation:lampFlicker 4.3s ease-in-out infinite}
+/* pumpkin on the right bough's top edge (x +420, sunk 3px into it); dimmer than the lantern on purpose, the
+   main light stays on the left. Its pool is centred on the pumpkin and flickers on its own period. */
+.found-jack{left:calc(50% + 397px);top:-33px;width:46px;height:46px;transform:rotate(4deg);
+  filter:brightness(.88) drop-shadow(0 0 2px rgba(255,200,110,.3)) drop-shadow(0 0 10px rgba(255,150,50,.35))}
+.found-glow{left:calc(50% + 420px);top:-5px;width:420px;height:340px;transform:translate(-50%,-50%);mix-blend-mode:screen;
+  background:radial-gradient(closest-side,rgba(255,180,90,.17),rgba(245,150,60,.08) 30%,rgba(230,130,40,.03) 60%,transparent);
+  animation:lampFlicker 3.7s ease-in-out infinite}
 /* centred on the globe. Weak core and a gentle, near-exponential falloff: a steep first step reads as a disc
    with an edge. ::after lays grain over it, masked to the same shape, so the 8-bit gradient does not band. */
-.found-light{left:var(--hook-x);top:24px;width:1000px;height:1100px;transform:translate(-50%,-42%);mix-blend-mode:screen;
+.found-light{left:var(--hook-x);top:65px;width:1000px;height:1100px;transform:translate(-50%,-42%);mix-blend-mode:screen;
   background:radial-gradient(ellipse 50% 50% at 50% 42%,rgba(255,200,120,.30) 0%,rgba(255,175,80,.20) 10%,rgba(250,150,60,.12) 24%,rgba(240,135,40,.06) 42%,rgba(224,123,26,.025) 62%,rgba(224,123,26,.008) 82%,transparent 100%);
   animation:lampFlicker 4.3s ease-in-out infinite}
 .found-light::after{content:'';position:absolute;inset:0;background:var(--grain) 0 0/200px 200px;opacity:.06;
   -webkit-mask:radial-gradient(ellipse 50% 50% at 50% 42%,#000,transparent 80%);mask:radial-gradient(ellipse 50% 50% at 50% 42%,#000,transparent 80%)}
-/* ±6%: any more and the lantern looks faulty. No sway, the FAQ spider already does that. */
+/* ±6%: any more and the lantern looks faulty */
 @keyframes lampFlicker{0%,100%{opacity:1}18%{opacity:.955}37%{opacity:.985}58%{opacity:.94}79%{opacity:.97}}
-@media(prefers-reduced-motion:reduce){.found-light,#founder::before{animation:none}}
+@media(prefers-reduced-motion:reduce){.found-light,.found-glow,.found-lantern,.fl-flame,.fl-halo,#founder::before{animation:none}}
 
 /* each pumpkin sinks ~12% of its height below the edge, so it reads as standing on it, not floating */
 .found-pumpkins{position:absolute;left:72%;bottom:0;width:240px;height:150px;pointer-events:none}
@@ -39,7 +58,8 @@
 .found-pumpkin:nth-of-type(2){left:124px;bottom:-12px;width:100px;height:100px;transform:rotate(7deg)}
 
 @media(max-width:1024px){
-  .found-branch,.found-rim,.found-lantern{display:none} /* the light stays */
+  .found-glow,.found-branch,.found-rim,.found-lantern,.found-jack{display:none} /* the lantern's light stays */
+  #founder{padding-top:120px} /* nothing hangs into the section any more */
   .found-pumpkins{left:50%;transform:translateX(-50%) scale(.7);transform-origin:50% 100%}
 }
 
@@ -47,9 +67,9 @@
 .found-vis{position:relative}
 .found-port{width:100%;aspect-ratio:3/4;background:linear-gradient(145deg,#1c1a18,#0d0c0b);border-radius:11px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 /* the lantern's light on the photo: a warm soft-light wash centred where the lantern hangs, i.e. --hook-x
-   minus the container's left edge, with the glass ~96px above the portrait's top edge */
+   minus the container's left edge, with the glass ~116px above the portrait's top edge */
 .found-port::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;
-  background:radial-gradient(circle 460px at calc(var(--hook-x) - max(5vw,50vw - 600px)) -96px,rgba(255,190,90,.95),rgba(255,160,60,.5) 40%,transparent 72%)}
+  background:radial-gradient(circle 460px at calc(var(--hook-x) - max(5vw,50vw - 600px)) -116px,rgba(255,190,90,.95),rgba(255,160,60,.5) 40%,transparent 72%)}
 
 .found-lbl{position:absolute;top:18px;left:50%;transform:translateX(-50%);background:rgba(224,123,26,.9);color:#fff;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
 .found-yrs{position:absolute;bottom:18px;left:18px;background:rgba(6,14,9,.85);padding:13px 16px;border-radius:7px;text-align:center}

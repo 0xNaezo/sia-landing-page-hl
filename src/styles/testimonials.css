@@ -5,6 +5,24 @@
    one stays outside that bleed; scripts/modules/testimonials.js reads the step from the DOM. */
 .testi-wrap{position:relative;overflow:hidden;padding:40px 30px;margin:-40px -30px}
 .testi-track{position:relative;z-index:1;display:flex;gap:60px;transition:transform .5s cubic-bezier(.4,0,.2,1);width:100%}
+/* the raven: perched on the card's top edge by the left corner, claws curled over the edge, clear
+   of the stars below. The perch is y=90 of its 100-unit viewBox (54px down a 60px box); the
+   stage's top is the wrap's, which sits 40px above the card (it bleeds out that far for the card's
+   shadow, and its negative margin collapses through the stage). Dark sections' ink, amber eye.
+   `.fly` is on while testimonials.js has it flutter over a switch: the raised wing shows (it
+   beats round the shoulder) and the folded wing's highlight goes. Squash and stretch scale round
+   the perch line, so the feet stay put while the bird crouches. */
+.testi-stage{position:relative}
+.testi-raven{position:absolute;z-index:2;left:26px;top:-14px;width:72px;height:60px;fill:var(--ink);overflow:visible;transform-origin:50% 90%}
+.raven-body,.raven-legs{transform-box:view-box;transform-origin:61px 73px} /* the hip */
+.raven-feet{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.raven-wing{fill:none;stroke:rgba(255,255,255,.12);stroke-width:1}
+.raven-eye{fill:var(--amber)}
+.raven-flap{visibility:hidden;transform-box:view-box;transform-origin:72px 34px}
+.testi-raven.fly .raven-flap{visibility:visible}
+.testi-raven.fly .raven-wing{opacity:0}
+/* phone: smaller; the wrap's padding is 4px there, so the card's top is 4px below the stage's */
+@media(max-width:480px){.testi-raven{left:14px;top:-32px;width:48px;height:40px}}
 .tcard{background:var(--white);border:1px solid var(--border);border-radius:11px;padding:32px 36px;width:100%;min-width:0;flex:0 0 100%;box-shadow:var(--shadow);box-sizing:border-box;transition:box-shadow .25s,border-color .25s,transform .25s}
 .tcard:hover{border-color:rgba(212,135,42,.4)}
 .tstars{color:var(--gold);font-size:16px;margin-bottom:14px;display:flex;gap:3px}

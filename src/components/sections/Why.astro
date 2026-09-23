@@ -2,39 +2,58 @@
 import why from '../../data/why.json';
 import SectionHead from '../SectionHead.astro';
 import Emoji from '../Emoji.astro';
+import { asset } from '../../lib/asset';
+import { cornerWeb } from '../../lib/corner-web';
+
+// The SIA column's web: the "chosen option" mark shared with the featured pricing card.
+// It fills a W x H box in the pillar's top-right corner, inside the header cell and clear of
+// the logo. The hub is the box's corner, so the pillar's rounded corner swallows it, and the
+// outer spokes run along the top and right edges, so every ring hangs off the card's edges.
+// Drawn from the top-left (x = distance from the right edge), flipped in the markup.
+const W = 100, H = 70;
+const fan = cornerWeb({ spokes: 6, rings: 5, seed: 11, lengths: [W, 90, 80, 72, 67, H] });
 ---
 
-<section class="sec sec-dark" id="why">
+<section class="sec sec-cream" id="why">
   <div class="container">
-    <SectionHead title="Why Parents Choose SIA" light />
+    <SectionHead label="The SIA Difference" title="Why Parents Choose SIA" />
 
-    <!-- Desktop comparison table -->
-    <div class="why-table why-desktop-table reveal d1">
-      <div class="why-row why-head">
-        <div class="why-th">{why.columns[0]}</div>
-        <div class="why-th c">{why.columns[1]}</div>
-        <div class="why-th sia">{why.columns[2]}</div>
+    <!-- Desktop comparison table: one grid (rows are display:contents), so the SIA pillar can be
+         a single element behind the whole column: absolutely positioned in that column's grid area,
+         it stays out of auto-placement and pokes out above and below the card. -->
+    <div class="why-table why-desktop-table reveal d1" role="table" aria-label="Ordinary camps compared with SIA">
+      <span class="why-pillar" style={`grid-row:1 / span ${why.rows.length + 1}`} aria-hidden="true">
+        <svg class="why-fan" viewBox={`0 0 ${W} ${H}`} width={W} height={H}>
+          <g transform={`translate(${W} 0) scale(-1 1)`}><path d={fan} vector-effect="non-scaling-stroke" /></g>
+        </svg>
+      </span>
+      <div class="why-row" role="row">
+        <div class="why-th" role="columnheader">{why.columns[0]}</div>
+        <div class="why-th" role="columnheader">{why.columns[1]}</div>
+        <div class="why-th sia" role="columnheader">
+          <img src={asset('/assets/images/logo-mark.webp')} alt={why.columns[2]} width="360" height="118" />
+        </div>
       </div>
       {
         why.rows.map((row) => (
-          <div class="why-row">
-            <div class="why-td label">{row.label}</div>
-            <div class="why-td ord">{row.ordinary}</div>
-            <div class:list={['why-td', 'sia', { hl: row.highlight }]} set:html={row.sia} />
+          <div class="why-row" role="row">
+            <div class="why-td label" role="rowheader"><span class="why-ico"><Emoji name={row.icon} /></span>{row.label}</div>
+            <div class="why-td ord" role="cell">{row.ordinary}</div>
+            <div class="why-td sia" role="cell"><span class="why-chk"><Emoji name="check" /></span><span set:html={row.sia} /></div>
           </div>
         ))
       }
     </div>
 
-    <!-- Mobile cards (hidden on desktop) -->
+    <!-- Mobile cards (hidden on desktop): the SIA column alone, one card per row -->
     <div class="why-mobile-cards reveal d1">
       {
-        why.mobileCards.map((card) => (
+        why.rows.map((row) => (
           <div class="why-mcard">
-            <span class="why-mcard-icon"><Emoji name={card.icon} /></span>
+            <span class="why-mcard-icon"><Emoji name={row.icon} /></span>
             <div>
-              <div class="why-mcard-lbl">{card.label}</div>
-              <div class="why-mcard-txt" set:html={card.text} />
+              <div class="why-mcard-lbl">{row.label}</div>
+              <div class="why-mcard-txt" set:html={row.sia} />
             </div>
           </div>
         ))

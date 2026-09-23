@@ -1,0 +1,20 @@
+/* ── SEAM DIVIDER (components/SeamDivider.astro) ── */
+
+/* the box is the triskele; margins of minus half its height leave it no net height, so it sits
+   centred on the boundary between the two sections — halfway between their contents, as both
+   have the same padding. z-index lifts it over the next section's background. The line is two
+   halves, each fading out towards its end, with a gap either side of the spiral. Colour: the
+   brown the webs use on the light sections. */
+.seam{position:relative;z-index:3;width:min(1200px,90%);height:33px;margin:-16.5px auto;display:flex;justify-content:center}
+.seam::before,.seam::after{content:"";position:absolute;top:50%;width:calc(50% - 32px);height:1px}
+.seam::before{left:0;background:linear-gradient(90deg,transparent,rgba(120,70,20,.22))}
+.seam::after{right:0;background:linear-gradient(270deg,transparent,rgba(120,70,20,.22))}
+.seam-tri{width:34px;height:33px;fill:none;stroke:rgba(224,123,26,.55);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+/* scroll draws the three arms out from the middle; gated like .reveal (see animations.css). The
+   transition sits on the drawn state only, so hiding at load is instant rather than an undraw. */
+.reveal-ready .seam-tri path{stroke-dasharray:1;stroke-dashoffset:1}
+.seam.visible .seam-tri path{stroke-dashoffset:0;transition:stroke-dashoffset 1.8s ease-out}
+@media(max-width:480px){
+  .seam{width:62%;height:27px;margin:-13.5px auto}
+  .seam::before,.seam::after{width:calc(50% - 26px)}
+  .seam-tri{width:28px;height:27px}}

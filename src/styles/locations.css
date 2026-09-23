@@ -1,56 +1,40 @@
 /* ── LOCATIONS ── */
 
-#locations{position:relative}
-
-/* a big moon rising at the section's right edge: 560px across, centred 50px in from the viewport edge
-   (body is overflow-x:hidden, so the overhang never scrolls) and on the seam with Testimonials, so
-   half of it hangs into the next section. Both sections are .sec-cream, so it crosses the seam
-   without one showing. z-index:1 lifts it over the next section's background while staying under
-   #testimonials .container (same level, later in the DOM), so the review card sits on top of it.
-   Craters are radial-gradients, the glow is two box-shadow rings. */
-.loc-decor{position:absolute;inset:0;pointer-events:none}
-.loc-moon{position:absolute;z-index:1;bottom:-280px;right:-230px;width:560px;height:560px;border-radius:50%;
+/* decor: a moon low in the right column under the cards, its disc resting on the map's bottom
+   edge (the layout's height), so the lower edge of the section stays clear; bats fly off it
+   up-left towards the cards, small/far first. The box spans just the right column (the grid gap
+   is 40px) and .loc-list is lifted over it. Everything is sized in em off the box's font-size
+   (1em = 1/100 of the moon as drawn, before its 78% scale), so one declaration rescales moon, craters, glow and flock. */
+.loc-decor{position:absolute;top:0;bottom:0;left:calc(50% + 20px);right:0;font-size:2.4px;pointer-events:none}
+.loc-list{position:relative;z-index:1}
+/* a flat disc, craters a shade deeper than it so it reads as a moon, and one faint glow ring.
+   Drawn at 100em and scaled to 78% round its bottom centre: the disc still rests on the map's
+   bottom edge and keeps its centre line, with air around it. */
+.loc-moon{position:absolute;bottom:0;right:10em;width:100em;height:100em;border-radius:50%;
+  transform:scale(.78);transform-origin:50% 100%;
   background:
-    radial-gradient(circle at calc(50% + 5px) calc(50% - 142px),#f1cfa2 43px,transparent 44px),
-    radial-gradient(circle at calc(50% - 138px) calc(50% + 100px),#f1cfa2 36px,transparent 37px),
-    radial-gradient(circle at calc(50% - 81px) calc(50% + 152px),#f1cfa2 14px,transparent 15px),
-    radial-gradient(circle at calc(50% - 180px) calc(50% + 48px),#f1cfa2 10px,transparent 11px),
-    #f7ddbb;
-  box-shadow:0 0 0 56px rgba(244,211,168,.28),0 0 0 112px rgba(244,211,168,.15)}
-/* the flock: a diagonal from the gap under the cards (big, near, pale) down-right into the moon
-   (small, far). Offsets are measured from the moon's centre (right:50px, bottom:0). */
-.loc-bat{position:absolute;z-index:1;fill:#5e2f0a}
-.loc-bat:nth-of-type(1){bottom:145px;right:427px;width:140px;height:70px;opacity:.22;transform:rotate(-14deg)}
-.loc-bat:nth-of-type(2){bottom:157px;right:264px;width:114px;height:57px;opacity:.36;transform:rotate(4deg)}
-.loc-bat:nth-of-type(3){bottom:118px;right:172px;width:80px;height:40px;opacity:.34;transform:rotate(-10deg)}
-.loc-bat:nth-of-type(4){bottom:42px;right:115px;width:70px;height:35px;opacity:.32;transform:rotate(6deg)}
-.loc-bat:nth-of-type(5){bottom:-12px;right:54px;width:48px;height:24px;opacity:.3;transform:rotate(-6deg)}
-.loc-bat:nth-of-type(6){bottom:-50px;right:7px;width:38px;height:19px;opacity:.28;transform:rotate(8deg)}
-/* phone: the moon stays, the flock does not — six bats over a 360px column is noise.
-   Halved with a transform anchored to its own bottom-right corner rather than by re-deriving
-   every crater offset; bottom/right are halved too, so the centre still lands on the seam. */
-@media(max-width:960px){.loc-bat{display:none}
-  /* z-index:0 instead of 1: there is no column beside the cards at this width, so the moon is
-     pure background — it still paints over both sections' own backgrounds (they are in flow,
-     the moon is positioned) but never over anything in them. */
-  .loc-moon{z-index:0;bottom:-170px;right:-150px;transform:scale(.5);transform-origin:100% 100%}
-  /* the decor and its content are siblings in one stacking context, and in-flow content paints
-     below a positioned z-index:0 box — so both sections' content needs a layer of its own. */
-  #locations .container,#testimonials .container{position:relative;z-index:2}}
-/* phone: four of the six bats come back, flying down-right into the moon across the band between
-   the last location card and the testimonials label — the one strip there with nothing in it.
-   They sit above the moon (z-index:1 against its 0) and below both containers, so they pass
-   behind the cards rather than over them. Slow drift, each on its own period so the four never
-   move in step; --r carries the per-bat tilt into the keyframe, which owns `transform`. */
+    radial-gradient(circle at calc(50% + .9em) calc(50% - 25.4em),#eec494 7.7em,transparent 7.9em),
+    radial-gradient(circle at calc(50% - 24.6em) calc(50% + 17.9em),#eec494 6.4em,transparent 6.6em),
+    radial-gradient(circle at calc(50% - 14.5em) calc(50% + 27.1em),#eec494 2.5em,transparent 2.7em),
+    radial-gradient(circle at calc(50% - 32.1em) calc(50% + 8.6em),#eec494 1.8em,transparent 2em),
+    #f7dbb7;
+  box-shadow:0 0 0 6em rgba(244,211,168,.2)}
+/* the moon's centre is at right:60em, bottom:39em; the first bat crosses the disc. The rest
+   rise, dip and rise again at uneven steps, so they read as a flight rather than a row. */
+.loc-bat{position:absolute;fill:#5e2f0a}
+.loc-bat:nth-of-type(1){right:75em;bottom:64em;width:10em;height:5em;opacity:.4;transform:rotate(-12deg)}
+.loc-bat:nth-of-type(2){right:93em;bottom:88em;width:12.5em;height:6.25em;opacity:.34;transform:rotate(12deg)}
+.loc-bat:nth-of-type(3){right:113em;bottom:79em;width:16em;height:8em;opacity:.3;transform:rotate(-3deg)}
+.loc-bat:nth-of-type(4){right:149em;bottom:99em;width:22em;height:11em;opacity:.26;transform:rotate(-14deg)}
+@media(max-width:960px){.loc-decor{font-size:1.6px}}
+/* phone: one column, no map. The moon shrinks to 50px and hugs the right edge just under the last
+   card, a third of it cropped by the viewport; the layout grows 40px at the bottom to hold it, so
+   it stays clear of the section's edge. The flock stays home — there is no room for it. */
 @media(max-width:480px){
-  .loc-bat{display:block;opacity:.3;animation:locBatDrift 16s ease-in-out infinite alternate}
-  .loc-bat:nth-of-type(1){--r:-14deg;right:150px;bottom:26px;width:34px;height:17px;opacity:.3;animation-duration:15s}
-  .loc-bat:nth-of-type(2){--r:5deg;right:98px;bottom:2px;width:28px;height:14px;opacity:.28;animation-duration:19s;animation-delay:-4s}
-  .loc-bat:nth-of-type(3){--r:-9deg;right:56px;bottom:-22px;width:22px;height:11px;opacity:.26;animation-duration:23s;animation-delay:-9s}
-  .loc-bat:nth-of-type(4){--r:7deg;right:18px;bottom:-44px;width:17px;height:9px;opacity:.24;animation-duration:27s;animation-delay:-2s}
-  .loc-bat:nth-of-type(5),.loc-bat:nth-of-type(6){display:none}}
-@keyframes locBatDrift{from{transform:rotate(var(--r))}to{transform:rotate(var(--r)) translate(-15px,-9px)}}
-@media(prefers-reduced-motion:reduce){.loc-bat{animation:none}}
+  .loc-layout{padding-bottom:40px}
+  .loc-decor{left:0;font-size:.64px}
+  .loc-moon{right:-38px}
+  .loc-bat{display:none}}
 
 #locations .sec-head{margin-bottom:44px}
 #locations .sec-title{letter-spacing:.06em}
