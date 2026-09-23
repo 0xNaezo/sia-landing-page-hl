@@ -2,6 +2,20 @@
 import site from '../data/site.json';
 import nav from '../data/nav.json';
 import { asset } from '../lib/asset';
+import Spider from './Spider.astro';
+
+// Garland, left to right; a phone shows the first three (scripts/modules/nav-decor.js picks
+// the count and hangs them). Shape, size, tilt and carving vary so the string doesn't look
+// stamped out. `flicker`/`blink` are loop lengths in seconds, kept apart so no two pumpkins
+// ever fall into step.
+const pumpkins = [
+  { shape: 'a', size: 22, tilt: -6, face: 1, flicker: 3.7, blink: 19 },
+  { shape: 'b', size: 19, tilt: 5, face: 0, flicker: 4.3, blink: 29 },
+  { shape: 'c', size: 21, tilt: -3, face: 1, flicker: 3.3, blink: 23 },
+  { shape: 'b', size: 20, tilt: 7, face: 1, flicker: 4.9, blink: 37 },
+  { shape: 'a', size: 18, tilt: -5, face: 0, flicker: 3.9, blink: 31 },
+  { shape: 'c', size: 22, tilt: 3, face: 1, flicker: 4.6, blink: 41 },
+];
 ---
 
 <nav id="nav">
@@ -14,12 +28,39 @@ import { asset } from '../lib/asset';
   </a>
   <ul class="nav-links">
     {nav.links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
-    <li>
+    <li class="nav-cta">
       <a href={site.bookingUrl} class="nav-book" target="_blank" rel="noopener">Book a Camp</a>
+      <!-- hides behind the button, legs peeking out under it, and drops on its thread on
+           hover (nav.css, driven by scripts/modules/nav-decor.js) -->
+      <span class="nav-spider" aria-hidden="true">
+        <span class="nav-spider-hang">
+          <span class="nav-spider-thread"></span>
+          <Spider class="nav-spider-svg" friendly />
+        </span>
+      </span>
     </li>
   </ul>
   <div class="nav-toggle" data-action="nav-toggle" role="button" tabindex="0" aria-label="Menu">
     <span></span><span></span><span></span>
+  </div>
+  <!-- olive vine swagged under the bar and tied round the button's bottom-left corner (the
+       middle of its bottom edge is the spider's). The paths and pumpkin positions come from
+       scripts/modules/nav-decor.js. -->
+  <div class="garland" aria-hidden="true">
+    <svg class="garland-vine">
+      <path class="garland-leaf" />
+      <path class="garland-line" />
+    </svg>
+    {
+      pumpkins.map((p, i) => (
+        <span
+          class="garland-pumpkin"
+          style={`--i:${i};--size:${p.size}px;--tilt:${p.tilt}deg;--face:${p.face};--flicker:${p.flicker}s;--blink:${p.blink}s`}
+        >
+          <svg><use href={`#stl-pumpkin-${p.shape}`} /></svg>
+        </span>
+      ))
+    }
   </div>
 </nav>
 <div class="mob-menu" id="mobmenu">

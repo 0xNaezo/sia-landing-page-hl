@@ -2,9 +2,72 @@
 import gallery from '../../data/gallery.json';
 import SectionHead from '../SectionHead.astro';
 import { asset } from '../../lib/asset';
+
+// Bubbles that rise off the cauldron's brew and pop (gallery.css). `x` is % of the cauldron's
+// width (the brew spans ~20-80%), `dx` the sideways drift in px, `r` the share of --rise-max a
+// bubble climbs before it pops, so none reaches the photos. `dur` loop lengths are kept apart so
+// they never settle into a rhythm; negative delays start them mid-flight.
+const bubbles = [
+  { x: 30, s: 7, dur: 8.3, delay: -1.2, dx: -6, r: 0.6 },
+  { x: 42, s: 6, dur: 10.7, delay: -6.1, dx: 5, r: 1 },
+  { x: 50, s: 9, dur: 9.1, delay: -3.4, dx: -4, r: 0.8 },
+  { x: 57, s: 6, dur: 11.9, delay: -8.2, dx: 7, r: 0.9 },
+  { x: 64, s: 8, dur: 7.9, delay: -4.7, dx: -5, r: 0.7 },
+  { x: 70, s: 5, dur: 12.7, delay: -10.3, dx: 4, r: 0.55 },
+];
 ---
 
 <section class="sec sec-deep" id="gallery">
+  <!-- decor: the witch's cauldron from the hero photo, bottom-left under the first photo, cut off by the
+       bottom edge, with purple steam and bubbles rising off the brew. Drawn at 240px, scaled in CSS. -->
+  <div class="gal-brew" aria-hidden="true">
+    <div class="gal-steam"><span></span><span></span><span></span></div>
+    {
+      bubbles.map((b) => (
+        <span
+          class="gal-bubble"
+          style={`--x:${b.x}%;--s:${b.s}px;--dur:${b.dur}s;--delay:${b.delay}s;--dx:${b.dx}px;--r:${b.r}`}
+        />
+      ))
+    }
+    <svg class="gal-cauldron" viewBox="0 0 240 84">
+      <defs>
+        <radialGradient id="gal-brew-fill">
+          <stop offset="0" stop-color="#f1d6ff"></stop>
+          <stop offset=".45" stop-color="#b57bff"></stop>
+          <stop offset="1" stop-color="#5b2f9c"></stop>
+        </radialGradient>
+        <!-- the pot is lit from the upper right, where the section's orange glow is -->
+        <radialGradient id="gal-belly-fill" cx=".7" cy=".3" r=".8">
+          <stop offset="0" stop-color="#2e1d17"></stop>
+          <stop offset=".5" stop-color="#140f16"></stop>
+          <stop offset="1" stop-color="#08070a"></stop>
+        </radialGradient>
+        <linearGradient id="gal-rim-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1e1624"></stop>
+          <stop offset="1" stop-color="#0c0a0e"></stop>
+        </linearGradient>
+        <linearGradient id="gal-rim-light" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="240" y2="0">
+          <stop offset="0" stop-color="#f08c3c" stop-opacity=".12"></stop>
+          <stop offset="1" stop-color="#f08c3c" stop-opacity=".7"></stop>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="#0c0a0e" stroke-width="4">
+        <circle cx="24" cy="40" r="8"></circle>
+        <circle cx="216" cy="40" r="8"></circle>
+      </g>
+      <path d="M40 36C6 46 2 66 2 84H238C238 66 234 46 200 36Z" fill="url(#gal-belly-fill)"></path>
+      <ellipse cx="120" cy="28" rx="90" ry="15" fill="url(#gal-rim-fill)"></ellipse>
+      <!-- rim-light: orange on the shoulders and the front of the rim, purple on the lip from the brew -->
+      <path
+        d="M40 36C6 46 2 66 2 84M200 36C234 46 238 66 238 84M30 28A90 15 0 0 0 210 28"
+        fill="none"
+        stroke="url(#gal-rim-light)"
+        stroke-width="1.5"></path>
+      <path d="M30 28A90 15 0 0 1 210 28" fill="none" stroke="rgba(200,150,255,.5)" stroke-width="1.5"></path>
+      <ellipse class="gal-cauldron-brew" cx="120" cy="27" rx="76" ry="9" fill="url(#gal-brew-fill)"></ellipse>
+    </svg>
+  </div>
   <div class="container">
     <SectionHead
       label="Life at Camp"

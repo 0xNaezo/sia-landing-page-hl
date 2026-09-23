@@ -20,3 +20,71 @@ nav.scrolled{background:rgba(10,9,8,0.96);-webkit-backdrop-filter:blur(20px);bac
 
 .logo-img{height:34px;width:auto;object-fit:contain;display:block;flex-shrink:0}
 .mob-menu a.mob-book{background:var(--amber);color:#fff;margin-top:8px}
+
+/* ── Halloween decor: a pumpkin garland under the bar, a spider behind the book button ──
+   Both behave the same over the hero and on the scrolled bar; only the backdrop changes. */
+
+/* a real box rather than an inline with overflowing padding, so the spider can hide behind it */
+.nav-cta{position:relative}
+.nav-book{display:block;position:relative;z-index:1}
+
+/* garland: olive vine in shallow swags, about half the bar's height with the pumpkins, drawn by
+   scripts/modules/nav-decor.js, which also positions the pumpkins and adds .ready (no JS, no
+   garland). Each pumpkin hangs from its top centre, so the tilt here and the scroll sway (inline
+   `rotate`) both pivot on the vine. z-index over the button: the vine is tied round its corner. */
+.garland{--k:1;--hang:4px;display:none;position:absolute;z-index:2;top:100%;left:0;right:0;height:0;pointer-events:none}
+.garland.ready{display:block}
+nav:has(~ .mob-menu.open) .garland{visibility:hidden} /* would hang over the open menu */
+.garland-vine{position:absolute;top:0;left:0;width:100%;height:64px;overflow:visible}
+.garland-line{fill:none;stroke:#5b6b2e;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.garland-leaf{fill:#5b6b2e;fill-opacity:.6}
+.garland-pumpkin{--w:calc(var(--size)*var(--k));position:absolute;width:var(--w);margin-left:calc(var(--w)/-2);padding-top:var(--hang);transform-origin:50% 0;transform:rotate(var(--tilt));
+  animation:garlandBlink var(--blink) linear calc(var(--i)*-4.3s) infinite}
+.garland-pumpkin::before{content:'';position:absolute;left:50%;top:0;width:1.6px;height:calc(var(--hang) + var(--w)*.2);margin-left:-.8px;border-radius:1px;background:#5b6b2e} /* stalk, into the stem */
+.garland-pumpkin svg{display:block;width:100%;height:var(--w);animation:garlandOn .8s ease-out calc(.6s + var(--i)*.22s) backwards}
+.garland-pumpkin::after{content:'';position:absolute;z-index:-1;left:50%;top:calc(var(--hang) + var(--w)*.6);width:calc(var(--w)*1.8);aspect-ratio:1;translate:-50% -50%;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,160,64,.5) 0%,rgba(240,160,64,.18) 45%,rgba(240,160,64,0) 70%);
+  animation:garlandHaloOn .8s ease-out calc(.6s + var(--i)*.22s) backwards,garlandFlicker var(--flicker) ease-in-out calc(1.4s + var(--i)*.22s) infinite}
+@media(max-width:480px){.garland{--k:.8;--hang:3px}}
+/* plugged in: each one dark until its turn, left to right, then a bulb's stutter up to full */
+@keyframes garlandOn{0%,30%{filter:brightness(.35) saturate(.6)}45%{filter:brightness(1.3)}60%{filter:brightness(.55) saturate(.8)}100%{filter:none}}
+@keyframes garlandHaloOn{0%,30%{opacity:0}45%{opacity:1}60%{opacity:.3}100%{opacity:1}}
+/* then a candle: the glow breathes unevenly, each pumpkin on its own loop (Nav.astro) */
+@keyframes garlandFlicker{0%,100%{opacity:1}14%{opacity:.72}23%{opacity:.9}37%{opacity:.66}51%{opacity:.95}62%{opacity:.78}71%{opacity:.88}86%{opacity:.7}}
+/* and once per long loop, the one noticeable blink */
+@keyframes garlandBlink{0%,95%,100%{filter:none}96%{filter:brightness(.45)}97%{filter:brightness(1.15)}98%{filter:brightness(.6)}}
+@media(prefers-reduced-motion:reduce){.garland-pumpkin,.garland-pumpkin svg,.garland-pumpkin::after{animation:none}}
+
+/* spider: .nav-spider is a window from the button's top edge down, so the thread above the
+   button never shows; .nav-spider-hang (thread + spider) slides inside it. At rest the button
+   covers all but the tips of the back legs. .drop (hover, or the one-off teaser) lowers it
+   --drop on the thread; .fled (click/tap) yanks it back up. --peek is how far the rest pose
+   pokes out under the button, 130px is the window's reach below it. */
+.nav-spider{--peek:5px;--drop:52px;position:absolute;top:0;bottom:-130px;left:50%;width:80px;margin-left:-40px;overflow:hidden;pointer-events:none}
+.nav-spider-hang{position:absolute;left:26px;bottom:calc(130px - var(--peek));width:28px;height:117px;
+  transform-origin:50% calc(100% - var(--peek) - var(--drop)); /* once dropped: where the thread leaves the button */
+  transition:translate 1s ease-in-out;
+  transition:translate 1.5s linear(0,.28 10%,.3 26%,.56 36%,.58 52%,.84 62%,.86 78%,1 88%,1)} /* back up in pulls */
+.nav-spider-thread{position:absolute;left:50%;top:0;bottom:26px;width:1px;margin-left:-.5px;background:rgba(236,224,200,.5)}
+/* dark body; the warm rim keeps it off the dark hero */
+.nav-spider-svg{position:absolute;left:0;bottom:0;width:28px;height:27px;overflow:visible;color:#1c1510;
+  filter:drop-shadow(0 0 .8px rgba(255,200,130,.9)) drop-shadow(0 0 3px rgba(240,160,64,.3))}
+.nav-spider-svg .spider-leg{stroke-width:5;transform-box:view-box} /* origin: inline, at the leg's attachment */
+/* resting: the peeking legs twitch every 7s */
+.nav-spider:not(.drop) .spider-leg-4{animation:navSpiderTwitch 7s ease-in-out 3s infinite}
+.nav-spider:not(.drop) .spider-leg-3{animation:navSpiderTwitch 7s ease-in-out 3.08s infinite}
+/* dropped: falls, overshoots on the stretching thread and settles, swings out, then turns slowly
+   on the thread, paddling its legs */
+.nav-spider.drop .nav-spider-hang{translate:0 var(--drop);
+  transition:translate .4s cubic-bezier(.5,0,.8,1);
+  transition:translate .6s linear(0,.1 12%,.36 24%,.8 36%,1.14 46%,1.08 54%,.95 66%,1.03 80%,1);
+  animation:navSpiderSwing 2.4s ease-in-out .45s}
+.nav-spider.drop .nav-spider-svg{animation:navSpiderLook 6s ease-in-out .8s infinite}
+.nav-spider.drop .spider-gait-a{animation:navSpiderPaw 1.9s ease-in-out .6s infinite alternate}
+.nav-spider.drop .spider-gait-b{animation:navSpiderPaw 1.9s ease-in-out 1.55s infinite alternate}
+.nav-spider.fled .nav-spider-hang{transition:translate .2s cubic-bezier(.2,.7,.3,1)}
+@keyframes navSpiderTwitch{0%,86%,100%{transform:none}89%{transform:rotate(calc(var(--s)*-16deg))}92%{transform:rotate(calc(var(--s)*6deg))}95%{transform:rotate(calc(var(--s)*-9deg))}}
+@keyframes navSpiderSwing{0%,100%{rotate:0deg}14%{rotate:5deg}32%{rotate:-3.6deg}50%{rotate:2.2deg}68%{rotate:-1.2deg}84%{rotate:.5deg}}
+@keyframes navSpiderLook{0%,100%{transform:perspective(90px) rotateY(0)}30%{transform:perspective(90px) rotateY(40deg)}70%{transform:perspective(90px) rotateY(-35deg)}}
+@keyframes navSpiderPaw{to{transform:rotate(calc(var(--s)*10deg))}}
+@media(prefers-reduced-motion:reduce){.nav-spider *{animation:none!important;transition:none!important}}

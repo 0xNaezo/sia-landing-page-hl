@@ -1,5 +1,6 @@
 /* ── FOOTER ── */
-footer{background:linear-gradient(160deg,#080706 0%,#0f0e0c 50%,#131210 100%);padding:60px 5% 80px;border-top:1px solid rgba(255,255,255,.06)}
+/* --u: the skyline's drawing unit (.horizon below); the bottom padding is its band plus air under the legal line */
+footer{--u:1px;background:linear-gradient(160deg,#080706 0%,#0f0e0c 50%,#131210 100%);padding:60px 5% calc(var(--u)*100 + 22px);border-top:1px solid rgba(255,255,255,.06)}
 
 .footer-grid{max-width:1200px;margin:0 auto;padding:0 5%;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;align-items:start}
 .footer-logo{display:inline-block;margin-bottom:14px}
@@ -26,4 +27,42 @@ footer{background:linear-gradient(160deg,#080706 0%,#0f0e0c 50%,#131210 100%);pa
 .footer-credit a:hover{color:var(--amber)}
 @media(max-width:768px){
   .footer-grid{grid-template-columns:1fr!important}
+}
+
+/* ── HORIZON (Footer.astro): the landscape the page ends on ──
+   A band across the bottom of the footer, in the room its bottom padding leaves. The ground runs the
+   full width; everything on it stays inside the content column (--cw, the width of .footer-bottom):
+   the round tower dead centre in the brightest light, cross, graves and pumpkins around it, the dolmen
+   and the tree out towards the dome's dim edges, framing it. Sizes are viewBox units times --u. */
+.horizon{--cw:min(1200px,90%);position:absolute;left:0;right:0;bottom:0;height:calc(var(--u)*100);color:#040303}
+/* the afterglow: a low, wide dome centred on the tower, a little higher than its tip and about as wide as
+   the column, nearly out by the column's edges. The stops ease out like a falloff, not a disc, so it has
+   no edge anywhere. Replaces the footer's old bottom-right glow (polish.css). The box carries the dome's
+   size because Chrome drops a gradient whose size mixes % and px in calc(). */
+.horizon::before{content:'';position:absolute;left:50%;bottom:0;width:calc(var(--cw)*.92);height:calc(var(--u)*118);translate:-50% 0;
+  background:radial-gradient(50% 100% at 50% 100%,rgba(245,140,45,.5),rgba(240,134,40,.44) 15%,rgba(232,126,34,.37) 30%,rgba(228,122,30,.29) 45%,rgba(224,120,28,.21) 58%,rgba(224,120,28,.13) 70%,rgba(224,120,28,.07) 80%,rgba(224,120,28,.03) 90%,transparent)}
+/* a thin ground mist in front of everything, only where there is light for it to catch */
+.horizon::after{content:'';position:absolute;left:50%;bottom:calc(var(--u)*4);width:calc(var(--cw)*.84);height:calc(var(--u)*18);translate:-50% 0;
+  background:radial-gradient(closest-side,rgba(255,205,160,.1),transparent)}
+.horizon svg{position:absolute;bottom:0;fill:currentColor;translate:-50% 0}
+.hz-ground{left:50%;width:100%;height:calc(var(--u)*20)}
+.hz-branches{fill:none;stroke:currentColor;stroke-linecap:round}
+.hz-dolmen{left:calc(50% - var(--cw)*.32);width:calc(var(--u)*94);height:calc(var(--u)*44)}
+.hz-tree{left:calc(50% + var(--cw)*.32);width:calc(var(--u)*80);height:calc(var(--u)*72)}
+/* offset so the tower (x 70 of the 166-wide drawing) is the one centred, not the drawing */
+.hz-abbey{left:calc(50% + var(--u)*13);width:calc(var(--u)*166);height:calc(var(--u)*100);overflow:visible} /* the end pumpkin's halo runs past the drawing */
+
+/* lights: on by default (print, no JS, reduced motion); dark only while reveal.js waits for the band.
+   Then the header garland's switch-on and candle flicker, the same keyframes (nav.css): lights at the
+   top of the page, lights at the end. */
+.reveal-ready .horizon:not(.visible) .hz-lamp{opacity:0}
+.reveal-ready .horizon.visible .hz-lamp{animation:garlandHaloOn .8s ease-out var(--d) backwards}
+.reveal-ready .horizon.visible .hz-halo{animation:garlandFlicker var(--f) ease-in-out calc(var(--d) + .8s) infinite}
+
+@media(max-width:1024px){footer{--u:.9px}}
+/* phone: only the monastic site under a narrower dome (the column is the viewport less mobile.css's 16px
+   gutters); the dolmen and the tree would shrink to crumbs */
+@media(max-width:480px){
+  .horizon{--cw:calc(100% - 32px)}
+  .hz-dolmen,.hz-tree{display:none}
 }

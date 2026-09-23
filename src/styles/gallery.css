@@ -1,3 +1,66 @@
 /* ── GALLERY: section spacing + "show more" wrapper (grid/lightbox rules live in polish.css) ── */
 #gallery .sec-head{margin-bottom:36px}
 .gal-more-wrap{text-align:center;margin-top:10px}
+
+/* ── Cauldron: the witch's cauldron from the hero photo (and the Cauldron Workshop) stands bottom-left,
+   under the first photo, cut off by the bottom edge so only the rim and shoulders show. --brew-x is the
+   centre of the first grid column, measured from the grid edge (--grid-l), not the viewport, so it stays
+   with the photos on a wide screen. Two lights on a diagonal that frames the centred content replace the
+   shared .sec-deep corner blobs (polish.css): the brew's purple bottom-left is the key light, the orange
+   spreading out of the top-right corner is only a fill, wider and much weaker. Unrelated periods, so the
+   pulse never repeats.
+   Steam and bubbles rise off the brew and die before the photos. */
+#gallery{--grid-l:max(5%,50% - 600px);--brew-x:calc(var(--grid-l) + min(1200px,90%)/8)}
+#gallery::before,#gallery::after{inset:0;width:auto;height:auto;border-radius:0}
+/* brand amber kept saturated (a yellower orange goes olive-brown at this alpha on the near-black); the mask
+   dims it along the top edge so it doesn't run into the cream section above as a dirty seam */
+#gallery::before{background:radial-gradient(ellipse 900px 640px at 100% 0,rgba(245,125,30,.22) 0%,rgba(230,115,26,.1) 35%,rgba(224,110,26,.035) 65%,transparent 90%);
+  -webkit-mask:linear-gradient(rgba(0,0,0,.35),#000 140px);mask:linear-gradient(rgba(0,0,0,.35),#000 140px);
+  transform-origin:100% 0;animation:fireBreath 6.7s ease-in-out infinite}
+#gallery::after{background:radial-gradient(ellipse 280px 240px at var(--brew-x) 100%,rgba(150,80,230,.4) 0%,rgba(110,50,180,.18) 40%,rgba(80,30,140,.05) 70%,transparent 100%);
+  animation:brewFlicker 4.3s ease-in-out infinite}
+@keyframes fireBreath{0%,100%{opacity:.85;transform:none}27%{opacity:1;transform:scale(1.04)}46%{opacity:.8;transform:scale(.98)}71%{opacity:.95;transform:scale(1.02)}}
+@keyframes brewFlicker{0%,100%{opacity:1}12%{opacity:.78}21%{opacity:.92}38%{opacity:.7}52%{opacity:1}67%{opacity:.82}83%{opacity:.95}}
+
+/* drawn at 240x84 and scaled as a whole (steam and bubbles too) to about half a photo's width.
+   z-index:1 lifts it over #gallery::after (painted after it); .container comes later and still wins */
+.gal-brew{--rise-max:70px;position:absolute;left:var(--brew-x);bottom:0;z-index:1;width:240px;height:84px;
+  transform:translateX(-50%) scale(.6);transform-origin:50% 100%;pointer-events:none}
+.gal-cauldron{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.gal-cauldron-brew{filter:drop-shadow(0 0 6px rgba(181,123,255,.8));animation:brewFlicker 3.1s ease-in-out infinite}
+
+/* steam: three soft puffs a third of a loop apart, each swelling as it climbs off the brew */
+.gal-steam{position:absolute;left:50%;bottom:52px}
+.gal-steam span{position:absolute;left:-60px;bottom:-30px;width:120px;height:70px;opacity:0;
+  background:radial-gradient(closest-side,rgba(195,145,255,.42),rgba(140,80,220,.16) 55%,transparent);
+  animation:steamRise 7.2s ease-out infinite}
+.gal-steam span:nth-child(2){--dx:14px;animation-delay:-2.4s}
+.gal-steam span:nth-child(3){--dx:-8px;animation-delay:-4.8s}
+@keyframes steamRise{
+  0%{opacity:0;transform:scale(.5)}
+  25%{opacity:1}
+  100%{opacity:0;transform:translate(var(--dx,-14px),-110px) scale(1.6,1.9)}
+}
+
+/* the climb takes the first 30% of the loop, then the bubble pops and the rest is dark: rare */
+.gal-bubble{position:absolute;bottom:56px;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;opacity:0;
+  border:1px solid rgba(230,205,255,.85);background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.7),rgba(181,123,255,.25) 60%);
+  box-shadow:0 0 6px rgba(181,123,255,.7);
+  animation:bubblePop var(--dur) linear var(--delay) infinite}
+@keyframes bubblePop{
+  0%{opacity:0;transform:none}
+  4%{opacity:1}
+  15%{transform:translate(calc(var(--dx)*-.5),calc(var(--rise-max)*var(--r)*-.5))}
+  30%{opacity:1;transform:translate(var(--dx),calc(var(--rise-max)*var(--r)*-1))}
+  33%,100%{opacity:0;transform:translate(var(--dx),calc(var(--rise-max)*var(--r)*-1)) scale(2.2)}
+}
+/* narrower photos, smaller pot */
+@media(max-width:960px){.gal-brew{transform:translateX(-50%) scale(.45)}}
+/* two columns: centred under the first one it would sit under the button, so it hugs the grid edge */
+@media(max-width:600px){#gallery{--brew-x:calc(5% + 54px)}}
+/* slideshow: room for the pot below the dots */
+@media(max-width:480px){#gallery{--brew-x:70px;padding-bottom:56px}}
+@media(prefers-reduced-motion:reduce){
+  #gallery::before,#gallery::after,.gal-cauldron-brew{animation:none}
+  .gal-steam,.gal-bubble{display:none}
+}

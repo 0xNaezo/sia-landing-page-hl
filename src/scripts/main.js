@@ -2,6 +2,7 @@
 // so the DOM is already parsed when it runs. Each module is self-contained
 // and no-ops when its markup is not on the page.
 import { initNav } from './modules/nav.js';
+import { initNavDecor } from './modules/nav-decor.js';
 import { initHero } from './modules/hero.js';
 import { initReveal } from './modules/reveal.js';
 import { initCounters } from './modules/counters.js';
@@ -16,6 +17,7 @@ import { initCookieConsent } from './modules/cookie-consent.js';
 import { initUtmPassthrough } from './modules/utm-passthrough.js';
 
 initNav();
+initNavDecor();
 initHero();
 initReveal();
 initCounters();

@@ -79,4 +79,96 @@ import { asset } from '../lib/asset';
       >
     </div>
   </div>
+  <!-- Horizon: the page ends on a sunset, with an Irish landscape on the ground at the very bottom:
+       a monastic site (round tower, high cross, graves) with pumpkins at its foot, between a portal
+       dolmen and a lone bare tree, all out of the camp programme. Each group stands on its own mound, which
+       rises out of the rough strip of ground running the full width. The pumpkin faces and the tower
+       window (.hz-lamp) are lit by default and only go dark behind .reveal-ready until reveal.js marks
+       the band .visible, then come on the way the header garland does (footer.css). -->
+  <div class="horizon" aria-hidden="true">
+    <svg class="hz-ground" viewBox="0 0 1000 20" preserveAspectRatio="none">
+      <path d="M0 20V11.6L8 11.5L16 11.8L24 11.1L32 11.4L40 11.2L48 11.0L56 11.6L64 11.4L72 11.9L80 11.5L88 11.4L96 11.3L104 11.2L112 10.0L120 9.6L128 9.7L136 9.9L144 9.6L152 9.7L160 10.5L168 9.8L176 10.7L184 10.1L192 9.8L200 9.6L208 9.6L216 10.1L224 9.6L232 10.3L240 10.8L248 11.0L256 11.5L264 11.2L272 11.2L280 11.1L288 11.2L296 10.5L304 10.0L312 10.0L320 9.7L328 9.5L336 9.9L344 9.8L352 9.1L360 9.1L368 8.5L376 8.2L384 7.4L392 6.3L400 6.5L408 5.4L416 5.7L424 6.2L432 5.8L440 6.3L448 6.0L456 6.6L464 6.6L472 6.2L480 6.4L488 5.8L496 6.4L504 6.7L512 7.2L520 7.6L528 8.5L536 9.0L544 8.6L552 8.8L560 8.0L568 8.4L576 8.1L584 8.3L592 8.1L600 7.8L608 8.1L616 8.5L624 8.0L632 8.3L640 7.7L648 7.3L656 6.8L664 7.1L672 6.3L680 6.4L688 6.8L696 7.7L704 7.3L712 8.2L720 8.6L728 9.2L736 9.2L744 9.3L752 8.7L760 9.0L768 9.3L776 10.3L784 11.0L792 10.9L800 11.5L808 12.0L816 12.3L824 12.5L832 12.5L840 11.9L848 11.4L856 11.6L864 11.5L872 11.8L880 12.3L888 12.2L896 12.0L904 11.9L912 11.6L920 10.4L928 10.7L936 10.0L944 9.7L952 9.5L960 9.1L968 9.2L976 9.2L984 10.0L992 9.5L1000 9.5V20Z" />
+    </svg>
+
+    <!-- portal dolmen: two tall portal stones up front, the capstone sloping back onto lower ones -->
+    <svg class="hz-dolmen" viewBox="0 0 94 44">
+      <path d="M0 42C17 41 30 33 47 33C64 33 77 41 94 42V44H0Z" />
+      <g transform="translate(3.5 -8.5) scale(.72)">
+        <path d="M13 66L14 33L17 27L22 26L25 31L24 66ZM30 66L31 34L35 30L38 33L39 66ZM52 66L53 44L60 36L78 40L82 66L72 66L66 55L61 66ZM94 66L95 49L101 46L106 50L106 66Z" />
+        <path d="M2 23L11 17L42 19L74 27L104 38L119 46L117 50L100 45L72 37L42 31L13 30L4 28Z" />
+      </g>
+    </svg>
+
+    <!-- bare tree on a knoll, leaning in towards the tower -->
+    <svg class="hz-tree" viewBox="0 0 80 72">
+      <path d="M0 70C18 69 28 60 40 60C52 60 62 69 80 70V72H0Z" />
+      <g transform="translate(40 61) rotate(-7) scale(.41) translate(-64 -140)">
+        <path d="M52 146C57 136 58 124 58 110C58 98 55 90 54 80L64 80C64 92 66 100 66 112C66 124 69 136 76 146Z" />
+        <g class="hz-branches">
+          <path stroke-width="6" d="M59 84C56 72 50 64 40 58M60 82C64 70 72 62 84 56" />
+          <path stroke-width="5" d="M59 82C60 70 58 58 60 46" />
+          <path stroke-width="3.5" d="M40 58C32 54 26 48 22 38M84 56C94 52 102 44 106 34M60 46C62 36 58 26 62 16M57 104C48 100 40 102 31 97" />
+          <path stroke-width="2.2" d="M22 38C20 32 16 28 10 26M22 38C22 30 26 26 26 18M46 61C40 52 38 46 40 38M106 34C110 28 116 26 122 26M106 34C104 26 106 20 104 12M78 60C80 50 86 44 88 36M62 16C66 12 70 10 74 4M61 30C54 26 50 20 50 12M31 97C26 93 24 88 25 83" />
+          <path stroke-width="1.2" d="M10 26L4 22M26 18L24 11M40 38L36 32M122 26L128 21M104 12L107 5M88 36L93 30M50 12L46 7M74 4L79 1M31 97L24 98" />
+        </g>
+      </g>
+    </svg>
+
+    <!-- monastic site on a rise, left to right: pumpkins, round tower, pumpkin, high cross, graves.
+         The tower and the cross are drawn large and set down at .57; the pumpkins, the graves (.72) and
+         the window keep their size, they are at the limit of legibility as it is. -->
+    <svg class="hz-abbey" viewBox="0 0 166 100">
+      <defs>
+        <radialGradient id="hz-halo">
+          <stop offset="0" stop-color="#ffb048" stop-opacity=".55" />
+          <stop offset=".45" stop-color="#ffb048" stop-opacity=".18" />
+          <stop offset="1" stop-color="#ffb048" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <path d="M0 96C10 90 30 88 80 87C115 86 150 87 166 94V100H0Z" />
+      <!-- round tower: plinth, tapering shaft, conical cap -->
+      <path transform="translate(18.7 1.6) scale(.57)" d="M76 152V147H104V152ZM78 148L81 38H99L102 148ZM79.5 40L90 12L100.5 40Z" />
+      <!-- high cross: capstone, shaft, flared arms, ring, stepped base -->
+      <g transform="translate(99.5 42.2) scale(.57)">
+        <path d="M17 7L22 2L27 7ZM18.5 6H25.5L26.5 66H17.5ZM4 19L10 20H34L40 19V29L34 28H10L4 29ZM10 80L13 66H31L34 80Z" />
+        <circle cx="22" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="3.2" />
+      </g>
+      <g transform="translate(123.1 68) scale(.72)">
+        <path d="M4 33V13a7 7 0 0 1 14 0v20z" transform="rotate(-7 11 30)" />
+        <path d="M27 33V16h-4v-4h4V8h4v4h4v4h-4v17z" transform="rotate(5 29 30)" />
+        <path d="M40 33V17l2-3h8l2 3v16z" transform="rotate(10 46 30)" />
+      </g>
+      <!-- the tower's belfry window, last to light -->
+      <g class="hz-lamp" style="--d:1.2s;--f:5.3s">
+        <circle class="hz-halo" cx="70" cy="30.3" r="10" fill="url(#hz-halo)" />
+        <path fill="url(#stl-face)" d="M68.7 32.8V27.7a1.3 1.3 0 0 1 2.6 0V32.8Z" />
+      </g>
+      <!-- the pumpkins (shapes and carvings of the header garland's, Sprite.astro) -->
+      <g transform="translate(1.8 64.5) scale(.74)">
+        <ellipse cx="20" cy="24" rx="17" ry="13.5" />
+        <path d="M17.6 11c-.6-3.2.3-5.9 2.6-8 1.6 2.2 2.1 4.9 1.5 8z" />
+        <g class="hz-lamp" style="--d:.15s;--f:3.7s">
+          <ellipse class="hz-halo" cx="20" cy="26" rx="30" ry="22" fill="url(#hz-halo)" />
+          <path fill="url(#stl-face)" d="M10 23l4-6 3 6zM23 23l3-6 4 6zM18 26.5l2-3 2 3zM9 29h22l-2.5 4.2-2.7-2.6-3 3.4-2.8-3.2-2.8 3.2-3-3.4-2.7 2.6z" />
+        </g>
+      </g>
+      <g transform="translate(30.9 60.7) scale(.76)">
+        <ellipse cx="20" cy="25.5" rx="18.5" ry="12.5" />
+        <path d="M17.8 13.5c-1.2-3 0-5.6 2.8-7.2 1.2 2.1 1.5 4.6.8 7.2z" />
+        <g class="hz-lamp" style="--d:.4s;--f:4.3s">
+          <ellipse class="hz-halo" cx="20" cy="27" rx="32" ry="22" fill="url(#hz-halo)" />
+          <path fill="url(#stl-face)" d="M10.5 22.5l3.5-3.5 3.5 3.5-3.5 3.5zM22.5 22.5l3.5-3.5 3.5 3.5-3.5 3.5zM9.5 29q10.5 9.5 21 0-10.5 3.8-21 0z" />
+        </g>
+      </g>
+      <g transform="translate(76.9 64.1) scale(.62)">
+        <ellipse cx="20" cy="24" rx="15" ry="15" />
+        <path d="M18 9.5c-.3-3.4 1-5.9 3.4-7.5 1 2.2 1.1 4.8.1 7.5z" />
+        <g class="hz-lamp" style="--d:.65s;--f:4.9s">
+          <ellipse class="hz-halo" cx="20" cy="26" rx="28" ry="22" fill="url(#hz-halo)" />
+          <path fill="url(#stl-face)" d="M10 22l6.5-5.5.5 5.5zM23 22l.5-5.5 6.5 5.5z" />
+          <ellipse cx="20" cy="30" rx="3.4" ry="4" fill="url(#stl-face)" />
+        </g>
+      </g>
+    </svg>
+  </div>
 </footer>

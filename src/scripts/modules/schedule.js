@@ -1,3 +1,5 @@
+import { leaf, rib, spiral } from '../lib/vine.js';
+
 /** Schedule timeline: cards expand on tap (mobile accordion, see mobile.css). */
 export function initSchedule() {
   document.querySelectorAll('.stl-card').forEach((card) => {
@@ -14,14 +16,6 @@ export function initSchedule() {
   const leaves = vine.querySelector('.stl-vine-leaf');
   const X = 11; // centre of the 22px-wide svg
   const centre = (el) => el.offsetTop + el.offsetHeight / 2;
-
-  // s = 1 grows to the right, -1 to the left
-  const leaf = (x, y, s) => `M${x} ${y}q${8 * s} -10 ${17 * s} -8q${-8 * s} 9 ${-17 * s} 8z`;
-  const rib = (x, y, s) => `M${x} ${y}l${13 * s} -6`;
-  const spiral = (x, y, s) => {
-    const sw = s > 0 ? 1 : 0;
-    return `M${x} ${y}l${4 * s} -2a4.5 4.5 0 0 ${sw} 0 9a3 3 0 0 ${sw} 0 -6a1.5 1.5 0 0 ${sw} 0 3`;
-  };
 
   const draw = () => {
     const ys = [...dots].map(centre);

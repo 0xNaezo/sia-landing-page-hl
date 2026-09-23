@@ -373,7 +373,7 @@
   #locations .loc-note{font-size:10px!important}
 
   /* ── FOOTER ── */
-  footer{padding:24px 16px 60px}
+  footer{padding-top:24px;padding-inline:16px} /* bottom: room for the skyline, footer.css */
   .footer-grid{grid-template-columns:1fr!important;gap:20px!important}
   .footer-grid > div:nth-child(2){display:none}
   .footer-grid > div:nth-child(3){display:none}

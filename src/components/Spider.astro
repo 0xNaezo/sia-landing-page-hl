@@ -10,9 +10,11 @@
  * `.spider-leg-1` (front pair) to `-4`, and `.spider-gait-a`/`-b` mark the two phases
  * of a diagonal gait; `--s` is +1 on the left and -1 on the right, so one
  * keyframe can rotate both sides symmetrically.
+ *
+ * `friendly` is the header's spider (Nav.astro): a round abdomen and two light eyes.
  */
-interface Props { class: string }
-const { class: className } = Astro.props;
+interface Props { class: string; friendly?: boolean }
+const { class: className, friendly = false } = Astro.props;
 // Left legs, front to back, each bent at the knee. The first pair is the attachment.
 const legs = [
   'M44 45Q33 34 25 22Q19 14 9 6',
@@ -46,6 +48,7 @@ const sides = [
       </g>
     ))
   }
-  <ellipse cx="50" cy="21" rx="16" ry="19" fill="currentColor" />
+  <ellipse cx="50" cy="21" rx={friendly ? 18 : 16} ry={friendly ? 18 : 19} fill="currentColor" />
   <ellipse cx="50" cy="50" rx="12.5" ry="11.5" fill="currentColor" />
+  {friendly && <g fill="#ffe9a8"><circle cx="44.5" cy="53" r="3.6" /><circle cx="55.5" cy="53" r="3.6" /></g>}
 </svg>

@@ -1,6 +1,9 @@
-/** Fade-up reveal for `.reveal` elements when they enter the viewport. */
+/**
+ * Fade-up reveal for `.reveal` elements when they enter the viewport. The footer
+ * `.horizon` rides along: it gets the same `.visible`, which lights its lamps.
+ */
 export function initReveal() {
-  const els = document.querySelectorAll('.reveal');
+  const els = document.querySelectorAll('.reveal, .horizon');
   const show = (el) => el.classList.add('visible');
 
   // No observer, or the visitor asked for less motion: just show everything.

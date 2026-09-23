@@ -136,7 +136,6 @@
 /* Footer top amber line */
 footer{position:relative;overflow:hidden}
 footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,var(--amber) 35%,var(--amber-dark) 65%,transparent 100%);pointer-events:none;z-index:1}
-footer::after{content:'';position:absolute;bottom:-100px;right:-40px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(224,123,26,.14) 0%,transparent 65%);pointer-events:none}
 
 /* Section transition accents */
 .sec-white+.sec-dark,.sec-cream+.sec-dark,.sec-white+.sec-deep,.sec-cream+.sec-deep{border-top:1px solid rgba(224,123,26,.20)}
