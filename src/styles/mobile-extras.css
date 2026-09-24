@@ -126,7 +126,7 @@ html body .mob-gal-dots{visibility:hidden;height:0;overflow:hidden;margin:0;padd
 
 .photo-banner-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.27) 0%, rgba(0,0,0,.46) 100%);
+  background:linear-gradient(to top, rgba(0,0,0,.1) 0%, rgba(0,0,0,.2) 100%);
   display:block
 }
 .photo-banner-overlay span{display:none}

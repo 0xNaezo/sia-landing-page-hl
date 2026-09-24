@@ -3,9 +3,9 @@
 
 .hero-photo{position:absolute;inset:0;background:url('/assets/images/hero-cauldron.webp') center 25%/cover no-repeat;z-index:1}
 .hero-overlay{position:absolute;inset:0;z-index:2;background:
-  linear-gradient(to bottom, rgba(0,0,0,.85) 0%, rgba(0,0,0,.4) 20%, rgba(0,0,0,.05) 35%),
-  radial-gradient(ellipse 65% 80% at 18% 65%, rgba(0,0,0,.82) 0%, rgba(0,0,0,.0) 70%),
-  linear-gradient(to right, rgba(0,0,0,.6) 0%, rgba(0,0,0,.3) 40%, rgba(0,0,0,.08) 65%, rgba(0,0,0,.0) 85%)}
+  linear-gradient(to bottom, rgba(0,0,0,.7) 0%, rgba(0,0,0,.25) 15%, rgba(0,0,0,0) 28%),
+  radial-gradient(ellipse 55% 70% at 20% 62%, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 60%),
+  linear-gradient(to right, rgba(0,0,0,.5) 0%, rgba(0,0,0,.2) 35%, rgba(0,0,0,0) 55%)}
 /* decor: the generated corner web (Hero.astro), above the overlay, under the fixed nav.
    Two masks intersect: one fades the whole thing out from 30% of its radius so the threads
    dissolve over a long ramp rather than stopping, the other punches a hole over the logo + wordmark (nav padding is 5%,

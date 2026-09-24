@@ -1,4 +1,4 @@
-// Olive-vine pieces shared by the schedule timeline and the header garland, as SVG
+// Olive-vine pieces for the schedule timeline, as SVG
 // path data in real pixels. s = 1 grows to the right, -1 to the left; v = 1 points
 // the leaf up, -1 down.
 export const leaf = (x, y, s, v = 1) =>

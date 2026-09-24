@@ -53,11 +53,12 @@ footer{--u:1px;background:linear-gradient(160deg,#080706 0%,#0f0e0c 50%,#131210 
 .hz-abbey{left:calc(50% + var(--u)*13);width:calc(var(--u)*166);height:calc(var(--u)*100);overflow:visible} /* the end pumpkin's halo runs past the drawing */
 
 /* lights: on by default (print, no JS, reduced motion); dark only while reveal.js waits for the band.
-   Then the header garland's switch-on and candle flicker, the same keyframes (nav.css): lights at the
-   top of the page, lights at the end. */
+   Then a bulb's stutter up to full, and a candle's uneven breathing on each one's own loop. */
 .reveal-ready .horizon:not(.visible) .hz-lamp{opacity:0}
-.reveal-ready .horizon.visible .hz-lamp{animation:garlandHaloOn .8s ease-out var(--d) backwards}
-.reveal-ready .horizon.visible .hz-halo{animation:garlandFlicker var(--f) ease-in-out calc(var(--d) + .8s) infinite}
+.reveal-ready .horizon.visible .hz-lamp{animation:hzLampOn .8s ease-out var(--d) backwards}
+.reveal-ready .horizon.visible .hz-halo{animation:hzFlicker var(--f) ease-in-out calc(var(--d) + .8s) infinite}
+@keyframes hzLampOn{0%,30%{opacity:0}45%{opacity:1}60%{opacity:.3}100%{opacity:1}}
+@keyframes hzFlicker{0%,100%{opacity:1}14%{opacity:.72}23%{opacity:.9}37%{opacity:.66}51%{opacity:.95}62%{opacity:.78}71%{opacity:.88}86%{opacity:.7}}
 
 @media(max-width:1024px){footer{--u:.9px}}
 /* phone: only the monastic site under a narrower dome (the column is the viewport less mobile.css's 16px

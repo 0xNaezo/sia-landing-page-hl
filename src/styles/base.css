@@ -1,7 +1,11 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+/* Horizontal guard: decor bleeds off the right edge on purpose (the locations moon, the founder glow).
+   overflow-x:hidden on body alone is handed up to the viewport, and a phone still widens its layout
+   viewport to that overflow, so the page pans sideways. clip on html (propagates) and on body (kept
+   and applied) really cuts it, and unlike hidden it makes no scroll container, so sticky and view-timelines keep working. */
+html{scroll-behavior:smooth;overflow-x:clip}
 section[id],div[id]{scroll-margin-top:80px}
-body{padding-bottom:0;font-family:var(--font-body);background:var(--white);color:var(--text-dark);overflow-x:hidden}
+body{padding-bottom:0;font-family:var(--font-body);background:var(--white);color:var(--text-dark);overflow-x:clip}
 
 /* Emoji icons (components/Emoji.astro). Sized in em on purpose: these replace text
    glyphs, so every font-size rule that used to size an emoji — .acard-icon,

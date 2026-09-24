@@ -3,24 +3,21 @@ import site from '../data/site.json';
 import nav from '../data/nav.json';
 import { asset } from '../lib/asset';
 import Spider from './Spider.astro';
-
-// Garland, left to right; a phone shows the first three (scripts/modules/nav-decor.js picks
-// the count and hangs them). Shape, size, tilt and carving vary so the string doesn't look
-// stamped out. `flicker`/`blink` are loop lengths in seconds, kept apart so no two pumpkins
-// ever fall into step.
-const pumpkins = [
-  { shape: 'a', size: 22, tilt: -6, face: 1, flicker: 3.7, blink: 19 },
-  { shape: 'b', size: 19, tilt: 5, face: 0, flicker: 4.3, blink: 29 },
-  { shape: 'c', size: 21, tilt: -3, face: 1, flicker: 3.3, blink: 23 },
-  { shape: 'b', size: 20, tilt: 7, face: 1, flicker: 4.9, blink: 37 },
-  { shape: 'a', size: 18, tilt: -5, face: 0, flicker: 3.9, blink: 31 },
-  { shape: 'c', size: 22, tilt: 3, face: 1, flicker: 4.6, blink: 41 },
-];
 ---
 
 <nav id="nav">
   <a href="#" class="logo">
     <img src={asset("/assets/images/logo-mark.webp")} alt="SIA Logo" class="logo-img" />
+    <!-- Halloween: a witch hat worn on the S. A layer over the logo, not a new logo, so it comes
+         off after the season without touching the artwork (nav.css places it) -->
+    <svg class="logo-hat" viewBox="0 0 40 22" aria-hidden="true">
+      <clipPath id="logo-hat-cone">
+        <path id="logo-hat-cone-shape" d="M13 19.4C14.9 14.6 16.4 10.2 17.6 6.6C18.2 4.9 19.4 4 20.8 4.1C23.8 4.3 27.2 8.6 29.4 14.4C27.2 11.6 24.8 10.2 22.3 10C23.2 13.2 24.8 16.6 27 19.4Z" />
+      </clipPath>
+      <ellipse cx="20" cy="19.4" rx="18.5" ry="1.5" />
+      <use href="#logo-hat-cone-shape" />
+      <rect class="logo-hat-band" clip-path="url(#logo-hat-cone)" y="16.1" width="40" height="3.3" />
+    </svg>
     <div class="logo-brand-group">
       <span class="logo-brand-name">{site.name}</span>
       <span class="logo-brand-tagline">{site.tagline}</span>
@@ -42,25 +39,6 @@ const pumpkins = [
   </ul>
   <div class="nav-toggle" data-action="nav-toggle" role="button" tabindex="0" aria-label="Menu">
     <span></span><span></span><span></span>
-  </div>
-  <!-- olive vine swagged under the bar and tied round the button's bottom-left corner (the
-       middle of its bottom edge is the spider's). The paths and pumpkin positions come from
-       scripts/modules/nav-decor.js. -->
-  <div class="garland" aria-hidden="true">
-    <svg class="garland-vine">
-      <path class="garland-leaf" />
-      <path class="garland-line" />
-    </svg>
-    {
-      pumpkins.map((p, i) => (
-        <span
-          class="garland-pumpkin"
-          style={`--i:${i};--size:${p.size}px;--tilt:${p.tilt}deg;--face:${p.face};--flicker:${p.flicker}s;--blink:${p.blink}s`}
-        >
-          <svg><use href={`#stl-pumpkin-${p.shape}`} /></svg>
-        </span>
-      ))
-    }
   </div>
 </nav>
 <div class="mob-menu" id="mobmenu">
