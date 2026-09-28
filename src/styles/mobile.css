@@ -44,7 +44,11 @@
   .mob-gal-dot.active{background:#fff;width:18px;border-radius:3px}
   .hero{min-height:100svh;display:flex;align-items:flex-end}
   .hero-inner{padding:0 18px 96px;width:100%;justify-content:flex-end}
-  .hero-photo{background-position:80% 25%!important}
+  /* Phones show only a ~800px-wide slice of the 2560px photo, stretched ~1.5x on 3x screens.
+     hero-cauldron-mobile.webp is that region (x 928-2328 of the original, 1400px wide) upscaled 1.7x
+     with Real-ESRGAN (blended 60/40 with a Lanczos upscale to keep skin texture). The offset satisfies 928 + 0.8*1400 = 0.8*2560, so at 80% it frames exactly
+     like the full photo for any viewport narrower than ~0.82 aspect. */
+  .hero-photo{background-image:url('/assets/images/hero-cauldron-mobile.webp');background-position:80% 25%!important}
   .hero-overlay{background:linear-gradient(to bottom, rgba(0,0,0,.7) 0%, rgba(0,0,0,.25) 12%, rgba(0,0,0,0) 28%),linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.8) 25%, rgba(0,0,0,.45) 38%, rgba(0,0,0,0) 58%)!important}
   
   .hero-h1{font-size:28px;line-height:1.06;margin-bottom:8px}
